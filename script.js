@@ -1,4 +1,5 @@
 sections = document.querySelectorAll("h2")
+content = document.querySelectorAll("content-part")
 h3 = document.querySelectorAll("h3")
 
 sections.forEach((section) => {
@@ -6,6 +7,9 @@ sections.forEach((section) => {
     section.style.color = randDarkColor()
 
     section.addEventListener("click", () => {
+        sections.forEach((section) => {
+            section.nextElementSibling.classList.add("display")
+        })
         if (section.nextElementSibling) {
             section.nextElementSibling.classList.toggle("display") 
         } 
@@ -32,6 +36,10 @@ function randDarkColor() {
 
 h3.forEach((header) => {
     header.addEventListener("click", () => {
+        h3.forEach((head) => {
+            head.nextElementSibling.classList.add("display") 
+        })
+
         if (header.nextElementSibling) {
             header.nextElementSibling.classList.toggle("display") 
         } 

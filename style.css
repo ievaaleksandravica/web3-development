@@ -44,6 +44,7 @@ h1 {
   opacity: 0.6;
   width: 100%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 }
 
 .content {
@@ -53,12 +54,17 @@ h1 {
   text-align: justify;
 }
 
+.empty {
+  font-weight: lighter;
+  color: #9e9797;
+}
+
 .display {
   display: none;
   background-color: #e0d9d9;
 }
 
-.bulletpoints {
+li {
   list-style-type: circle;
 }
 
