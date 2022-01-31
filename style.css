@@ -58,7 +58,7 @@ h1 {
   background-color: #e0d9d9;
 }
 
-.bulletpoints {
+li {
   list-style-type: circle;
 }
 
