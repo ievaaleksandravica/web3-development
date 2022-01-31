@@ -1,2 +1,2 @@
 # Getting Started with Web 3 Development
-![image](https://user-images.githubusercontent.com/79845207/151809284-04d2872c-801d-4fc1-88c3-6ec726a223ad.png)
+![image](https://user-images.githubusercontent.com/79845207/151833794-e16b9e8b-30ae-451e-af55-b71ba7cd27fc.png)
