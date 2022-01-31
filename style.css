@@ -44,6 +44,7 @@ h1 {
   opacity: 0.6;
   width: 100%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 }
 
 .content {
@@ -51,6 +52,11 @@ h1 {
   font-weight: lighter;
   font-size: 18px;
   text-align: justify;
+}
+
+.empty {
+  font-weight: lighter;
+  color: #9e9797;
 }
 
 .display {
