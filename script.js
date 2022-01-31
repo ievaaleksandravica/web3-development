@@ -12,6 +12,8 @@ sections.forEach((section) => {
     })
 })
 
+
+
 function randDarkColor() {
     var lum = -0.25;
     var hex = String('#' + Math.random().toString(16).slice(2, 8).toUpperCase()).replace(/[^0-9a-f]/gi, '');
