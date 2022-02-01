@@ -7,8 +7,12 @@ hideContent()
 
 h2s.forEach((h2) => {
     h2.style.color = randDarkColor()
-    hideContent()
     h2.addEventListener("click", () => {  
+        if (h2.nextElementSibling.classList.contains("do-not-display")) {
+            hideContent()
+            hideDetails()
+        }
+        
         
         h2.nextElementSibling.classList.toggle("do-not-display")
     })
@@ -16,8 +20,11 @@ h2s.forEach((h2) => {
 
 
  content_titles.forEach((title) => {
-     let previousEl
      title.addEventListener("click", () => {
+        if (title.nextElementSibling.classList.contains("do-not-display")) {
+            hideDetails()
+        }
+        
         title.nextElementSibling.classList.toggle("do-not-display")
      })
  })
@@ -28,7 +35,7 @@ function hideContent() {
     })
 }
 
-function clearDetails() {
+function hideDetails() {
     content_details.forEach((detail) => {
         detail.classList.add("do-not-display")
     })

@@ -71,6 +71,11 @@ h1 {
   background-color: #e0d9d9;
 }
 
+.close {
+  display: none;
+  background-color: #e0d9d9;
+}
+
 li {
   list-style-type: circle;
 }
