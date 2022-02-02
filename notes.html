@@ -231,17 +231,44 @@
                 </div>
             </div>
             <div class="content-title">
-                <h3 class="empty">Blockchain Instances</h3>
-                <div class="content-details">                
+                <h3>Blockchain Instances</h3>
+                <div class="content-details"> 
+                    <p>The genesis block</p>  
+                    <ul>
+                        <li>Blockchain is based on a data structure, that stores the information of all the modifications on a state, where operations are bundled in ordered blocks.</li>
+                        <li>A blockchain protocol builds up a blockchain history - genesis block</li>
+                        <li>The only one without any predecessor, so there is no information it can pick up</li>
+                        <li>You have to create this genesis block and then spread it further: <b>instantiation</b> </li>
+                        <li>The chain of blocks build on top of this genesis block is called an <b>instance</b></li>
+                    </ul>   
+                    <p>The Ethereum example</p>    
+                    <ul>
+                        <li>Every implementation has a main instance: the main net</li>
+                        <li>There are some test chains (nets): Morden, Ropsten to connect and test your own applications</li>
+                        <li>Your own private nets</li>
+                        <li>Cryptocurrency created on one instance, cannot be used on another instance.</li>
+                    </ul>  
+                    <p>The notion of a fork</p>    
+                    <ul>
+                        <li>Based on one single genesis block, the network (ledger) starts diverging after a given block if changes are made</li>
+                    </ul>
+                    <p>The 3-layer model</p>
+                    <ul>
+                        <li>Design goals: distributed, decentralized, immutable, trustless</li>
+                        <li>Implementations: Ethereum, Bitcoin, Hyperledger Fabric</li>
+                        <li>Instances: Main Net, Test Nets, private nets, etc.</li>
+                    </ul>
                 </div>
            </div>
            <div class="content-title">
                 <h3 class="empty">Public Blockchains as Tricameral Systems</h3>
                 <div class="content-details">                
             </div>
+            </div>
             <div class="content-title">
                 <h3 class="empty">Blockchain Key Components 1/2</h3>
                 <div class="content-details">                
+            </div>
             </div>
             <div class="content-title">
                 <h3 class="empty">What a Blochhain is not</h3>
