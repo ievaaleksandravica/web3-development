@@ -159,8 +159,34 @@
                  </div>
             </div>
             <div class="content-title">
-                <h3 class="empty">Blockchain Design Goals</h3>
-                <div class="content-details">                
+                <h3>Blockchain Design Goals</h3>
+                <div class="content-details">  
+                    <p>Peer-to-peer data distribution</p> 
+                    <ul>
+                        <li>Data itself and processes to read and modified the data</li>
+                        <li>In centralized setup, if the data storage is lost, it's gone forever. Here comes the distribution.</li>
+                        <li>Distribute several copies of it in a way that if one node fails, you can still retreive the data.</li>
+                        <li>Only one node can modify the data, all others can keep a copy and synchronize it in read-only node.</li>
+                        <li>Everyone can potentially see and verify the entire dataset. Creates issues with privacy though. This is solved with pseudonimity.</li>
+                        <li>Scalability issue: volume of data. All modificiations are stored.</li>
+                    </ul> 
+                    <p>Decentralization</p>
+                    <ul>
+                        <li>If there is only one centralized point of modifications, it still is a weakness - if this point fails, the whole system stops working</li>
+                        <li>If each node has power of modifying and applying changes, then its almost impossible to take it down. </li>
+                        <li>Issue with consistency - if all the nodes can modify the data in the way they want it, how do you ensure that they all work in the same way?</li>
+                        <li>In blockchain it is solved by <b>consensus algorithm</b>: change the owner of the changes randomly all the time</li>
+                    </ul>  
+                    <p>Immutability</p> 
+                    <ul>
+                        <li>Changing historical data is a risk.</li>
+                        <li>Only thing you can do is append transactions</li>
+                    </ul> 
+                    <p>Trustless Environment</p> 
+                    <ul>
+                        <li>Nodes can join the network at any time and start making changes without needing to trust them. </li>
+                        <li>Trust should be build in the system.</li>
+                    </ul>       
                 </div>
            </div>
            <div class="content-title">
