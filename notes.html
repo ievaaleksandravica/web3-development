@@ -190,8 +190,44 @@
                 </div>
            </div>
            <div class="content-title">
-                <h3 class="empty">Blockchain Implementations</h3>
-                <div class="content-details">                
+                <h3>Blockchain Implementations</h3>
+                <div class="content-details"> 
+                    <p>In <u>Bitcoin</u> peer-to-peer distribution, decentralization and immutability is created in completely trustless environment</p>   
+                    <ul>
+                        <li>Basic element that transactions are keeping track of: Unspend Transaction Output (UTXO) - digital equivalent of a check.</li>
+                        <li>Bitcoin takes non-cashed checks as inputs, makes a transaction and produces non-cashed checks as outputs.</li>
+                        <li>Any node in the network can create and sign these transactions</li>
+                        <li>Every 10 minutes, there is a competition, which node will append which transactions. This happens automatically.</li>
+                        <li>To make the process more efficient, transactions are grouped in blocks of transations</li>
+                        <li>The nodes are motivated to participate because the winner of the transaction includes one transaction to send it to himself.
+                            <ul>
+                                <li>This is the only way how the currency actually gets created</li>
+                                <li>It incentivizes miners to do the best work.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p>Implementation Artifacts</p>
+                    <ul>
+                        <li>There can be several coding languages, but they should all have the same protocols and algorithms. So that a code created by any version, is accepted by any other version</li>
+                        <li>This code is usually open-source.</li>
+                        <li>Easy to create new blockchain</li>
+                    </ul>
+                    <p>The Ethereum Implementation</p>
+                    <ul>
+                        <li>More opportunities than just a currency system</li>
+                        <li>If you made the variables even more generic, you can turn it into generic, decentralized, distributed computer: whether on top of blockchain (sidechain) or a part of complete new implementation - that's Ethereum </li>
+                        <li>All the same principles as Bitcoin, adds a few more and does it slightly differently.</li>
+                        <li>In Ethereum there are no UTXOs because it stores the balance after each block</li>
+                        <li>In Ethereum the block schedule is 17s</li>
+                        <li>In Ethereum transactions can have some code attached to them - this allows to execute more sophisticated pieces of logic: <b>smart contracts</b></li>
+                        <li>To make sure that these smart contracts do not overload the system, you have to pay a small fee, called "Ether". </li>
+                        <li>Ethereum is working on changing the "proof of consensus" algorithm to "<b>proof of stake</b>" algorithm</li>
+                    </ul>
+                    <p>Permissioned "blockchains"</p>
+                    <ul>
+                        <li>Bitcoin is a trustless environment</li>
+                        <li>Some implementations get rid of some of the principles. They control who gets in.</li>
+                    </ul>
                 </div>
             </div>
             <div class="content-title">
