@@ -142,7 +142,6 @@
             </div>
         </div>
      </section>
-
      <section>
         <h2>What is a blockchain (and what it's not)?</h2> 
         <div class="content-section">
@@ -261,21 +260,164 @@
                 </div>
            </div>
            <div class="content-title">
-                <h3 class="empty">Public Blockchains as Tricameral Systems</h3>
+                <h3>Public Blockchains as Tricameral Systems</h3>
                 <div class="content-details">                
-            </div>
+                    <p>Open vs Permissioned</p>
+                    <ul>
+                        <li>Permissioned Blockchains barely qualify as blockchains as it does not follow the decentralization design goal</li>
+                    </ul>
+                    <p>Open Blockchains as tricameral systems</p>
+                    <ul>
+                        <li>Developers:
+                            <ul>
+                                <li>Designing the protocol</li>
+                                <li>Implementing protocol in software clients</li>
+                                <li>Most of these developments are open source</li>
+                                <li>Important strategic decisions</li>
+                                <li>Key role of the governance</li>
+                            </ul>
+                        </li>
+                        <li>Miners
+                            <ul>
+                                <li>Use a special wallet software</li>
+                                <li>Resource intensive process to contribute to network (work on the puzzle)</li>
+                                <li>Also play a role in the governance</li>
+                            </ul>
+                        </li>
+                        <li>Users
+                            <ul>
+                                <li>Account holders</li>
+                                <li>Install software clients</li>
+                                <li>Submits transactions to the networks</li>
+                                <li>Can freely connect and disconnect and use different wallets</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="content-title">
-                <h3 class="empty">Blockchain Key Components 1/2</h3>
-                <div class="content-details">                
-            </div>
+                <h3>Blockchain Key Components 1</h3>
+                <div class="content-details"> 
+                    <p>A peer-to-peer network DB</p>  
+                    <ul>
+                        <li>Constitutes the first large scale fusion with a database with a network.</li>
+                    </ul> 
+                    <p>A node software client</p> 
+                    <ul>
+                        <li>Peer-to-peer network of nodes, that each run a software that can store data, run some transactions to update the data and connect with its peers to download and spread new data</li>
+                    </ul>
+                    <p>Different forms of nodes</p>  
+                    <ul>
+                        <li> Storing your wallet in remote database and creating transactions on your behalf (e.g. coinbase) (more practical)
+                        </li>
+                        <li>Use external storage or hardware (more secure) </li> 
+                    </ul>  
+                    <p>A wallet with keys</p>     
+                    <ul>
+                        <li>Wallet is the only key to joining the network</li>
+                    </ul>  
+                    <p>A ledger</p>
+                    <ul>
+                        <li>First download verified copy, then create transactions based on the truth (series of blocks containing series of transactions)</li>
+                        <li>Extremely difficult to change historical transactions - transaction finality.</li>
+                        <li>51% attack - one mining node should have more than the entire networks power in order to be faster than the rest of the network in creating fraudulent transactions and blocks</li>
+                    </ul>
+                    <p>A consensus algorithm</p>
+                    <ul>
+                        <li>Simple user nodes do not need to particpate in the consensus algorithm</li>
+                        <li>Mechanism for mining</li>
+                        <li>Proof of work - contributing power (hash rate)</li>
+                        <li>This algorithm can be seen as a game to decide who is gonna be the next node to process the network history</li>
+                        <li>Combination of cryptographic mechanisms</li>
+                        <li>Proof of Work algorithms have processing issues (electricity).</li>
+                    </ul>
+                </div>
             </div>
             <div class="content-title">
-                <h3 class="empty">What a Blochhain is not</h3>
-                <div class="content-details">                
+                <h3>Blockchain Key Components 2</h3>
+                <div class="content-details"> 
+                    <p>A cryptocurrency</p>   
+                    <ul>
+                        <li>Built-in cryptocurrency.</li>
+                        <li>Incentivize miners to do the security bidding (reward)</li>
+                        <li>The more people trust a given blockchain implementation, the bigger its own network gets </li>
+                        <li>Currency has to be: durable, portable, acceptable, limited in supply, divisible and fungible</li>
+                        <li>Each transaction has transaction fees. They are also collected by the miner of the block</li>
+                    </ul> 
+                    <p>A smart contract language</p>     
+                        <ul>
+                            <li>Small piece of computer code attached to each transaction to implement more sophisticated transaction mechanism</li>
+                            <li>For Bitcoin the language is voluntarily limited (not allowing loops) for processing power </li>
+                            <li>For Ethereum you have a special language with all the necessary tools to create different logics. </li>
+                            <li>There is a mechanism for Ethereum to measure GAS (maximum power/also transaction fee).</li>
+                            <li>EVM - Etherium Virtual Machine: Code is processed in this byte language. Developers use Solidity to write code</li>
+                        </ul>      
+                </div>
+            </div>
+            <div class="content-title">
+                <h3>What a Blockhain is not</h3>
+                <div class="content-details">   
+                    <p>Hint: <b>it's not a solution to every problem</b></p>      
+                    <p>Privacy</p>       
+                    <ul>
+                        <li>Every node has access to all the data</li>
+                    </ul>
+                    <p>Pseudonimity</p>
+                    <ul>
+                        <li>Users can hide behind wallet addresses</li>
+                        <li>Content of transaction can be seen though</li>
+                    </ul>
+                    <p>Transaction costs</p>
+                    <ul>
+                        <li>Miners need to be incentivized</li>
+                        <li>For Bitcoin it's every 4 years</li>
+                        <li>Every modification in blockchain comes at a cost</li>
+                    </ul>
+                    <p>Transaction speed</p>
+                    <ul>
+                        <li>In centralized system its basically immediate</li>
+                        <li>In decentralization, there are many processes. For Bitcoin is 10 min or 1 hour to be sure.</li>
+                        <li>For Ethereum its 17 seconds / 3.5 minutes until its final.</li>
+                    </ul>
+                    <p>Throughput (volume)</p>
+                    <ul>
+                        <li>The bigger the block, the longer it takes to calculate it.</li>
+                        <li>In Bitcoin its max 1MB, in Ethereum 4 millions gas</li>
+                    </ul>
+                    <p>Evolutivity</p>
+                    <ul>
+                        <li>Platform evolution. Changing thousands of nodes, machines that are not even connected (called forks)</li>
+                    </ul>
+                    <p>Blockchain size</p>
+                    <ul>
+                        <li>Full copy of ledger keeps growing and growing</li>
+                        <li>Bitcoin (112 GB) and growing 4GB a month</li>
+                        <li>Ethereum (40GB) and growing 2GB a month</li>
+                    </ul>
                 </div>
             </div>
            </div>
+       </div>
+        </div>
+     </section>
+
+     <section>
+        <h2>Cryptography 101</h2> 
+        <div class="content-section">
+            <div class="content-title">
+                 <h3>Hashing Functions</h3>
+                 <div class="content-details">                
+                 </div>
+            </div>
+            <div class="content-title">
+                <h3 class="empty">Asymmetric Cryptography</h3>
+                <div class="content-details">                
+                </div>
+           </div>
+           <div class="content-title">
+            <h3 class="empty">Merkle Trees</h3>
+            <div class="content-details">                
+            </div>
        </div>
         </div>
      </section>
