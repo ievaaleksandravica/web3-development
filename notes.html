@@ -486,14 +486,55 @@
                 </div>
            </div>
            <div class="content-title">
-            <h3 class="empty">Merkle Trees</h3>
-            <div class="content-details">                
+            <h3>Merkle Trees</h3>
+            <div class="content-details">  
+                <p>Data Stucture / Hash Tree</p>   
+                <p>Naive block hashes</p>          
+                <ul>
+                    <li>Hash the entire block (transactions) at once</li>
+                    <li>But this block can be big and you will need to wait for all transactions to be there before calculating the hash (on miners side)</li>
+                    <li>You would need to download the whole block to verify its integrity (on users side)</li>
+                </ul> 
+                <p>Merkle Tree</p>
+                <ul>
+                    <li>Calculate hash (h1- h8) for each transaction (t1-t8)</li>
+                    <li>Calculate a hash of (h1+h2) and you get a new hash (h12)</li>
+                    <li>Do the same for each pair and repeat the process</li>
+                    <li>When all the concatenations are done, you get a root hash</li>
+                </ul>
+                <p>Modification impact</p>
+                <ul>
+                    <li>If only one transaction changes, the root hash is completely different</li>
+                    <li>Two identical root hashes correspond to identical blocks</li>
+                    <li>You can calculate the hash progressivly as your receive the transactions</li>
+                </ul>
+                <p>Partial Verification</p>
+                <ul>
+                    <li>To verify the integrity of t5 you would need to get h5 and h6 to get h56 and some other things to calculate the root hash</li>
+                </ul>
+                <p>Usage</p>
+                <ul>
+                    <li>Bittorrent</li>
+                    <li>Git</li>
+                    <li>Bitcoin</li>
+                    <li>Ethereum</li>
+                </ul>
+                <p>Only the root hash is stored in the blockchain itself (less storage)</p>
+                <p>Three Mercle Tree rules for Ethereum Blocks</p>
+                <ul>
+                    <li>For transactions</li>
+                    <li>For state</li>
+                    <li>For transaction receipts</li>
+                </ul>
+                <p>Ethereum uses special Mercle Tree - Patricia tree</p>
+                <p>Crypto blockchain demo</p>
+                <ul>
+                    <li>anders.com/blockchain</li>
+                </ul>
             </div>
        </div>
         </div>
      </section>
-
-
 
      <section>
         <h2>Section Title</h2> 
