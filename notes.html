@@ -440,7 +440,49 @@
             <div class="content-title">
                 <h3>Asymmetric Cryptography</h3>
                 <div class="content-details">   
-                    <p></p>             
+                    <p>General Principle</p>  
+                    <ul>
+                        <li>Process that uses pair of related keys in order to transfer some readable content to make it unreadable and vice versa </li>
+                        <li>Used in two scenarios:
+                            <ul>
+                                <li>Authentication: to prove that some given data originates from a given user</li>
+                                <li>Data Confidentiality: to ensure that only the recipient of a given message can actually access its real contents</li>
+                            </ul>
+                        </li>
+                        <li>A public key encryption algorithm takes the private key and original content as inputs and produces output</li>
+                        <li>The only way to recover the original content is to reverse the process using the associated public key for the decryption process</li>
+                        <li>The keys are related (from the private one, the public one is generated). But you cannot recover the private key from the public one</li>
+                    </ul>    
+                    <p>Digital Signature</p>    
+                    <ul>
+                        <li>You want to prove that a given message really comes from you</li>
+                        <li>You start by hasing this message by using a hashing function to get a defined length hash</li>
+                        <li>You encrypt that hash with your private key</li>
+                        <li>You send the original message together with the encrypted hash (called signature)</li>
+                        <li>The recipient knows your public key, so he can verify that you were able to produce that signature with the corresponding private key</li>
+                    </ul>   
+                    <p>RSA vs ECDSA</p>
+                    <ul>
+                        <li>RSA
+                            <ul>
+                                <li>Older Cryptography, not so used anymore</li>
+                                <li>Signature Process takes the original message, the encrypted hash and public key as inputs.</li>
+                            </ul>
+                        </li>
+                        <li>ECDSA
+                            <ul>
+                                <li>Elyptic Curve</li>
+                                <li>Higher Levels of Security with smaller keys than RSA</li>
+                                <li>Signature Process also takes the original messages, encrypted hash and the public key, but it compared the inputs differently (Recovers the public key)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p>Usage in Blockchain</p>
+                    <ul>
+                        <li>Unspend Transaction Outputs (UTXOs) in Bitcoin are linked to users through their wallet address (which is a hash of users public key) </li>
+                        <li>Private key is not accessible to anyone</li>
+                        <li>In online places like Coinbase, your key is actually stored in an online database, not available to anyone</li>
+                    </ul>
                 </div>
            </div>
            <div class="content-title">
