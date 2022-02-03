@@ -406,23 +406,135 @@
         <div class="content-section">
             <div class="content-title">
                  <h3>Hashing Functions</h3>
-                 <div class="content-details">                
+                 <div class="content-details">   
+                     <p>Goal: to guarantee the integrity of data in decentralized and distributed environment</p>
+                     <p>Principle: Takes arbitrary volume of data as input and produces number as output</p> 
+                     <p>Properties</p>  
+                     <ul>
+                         <li><u>Defined Range:</u> output will always have the same size, whatever the size of the input</li>
+                         <li><u>Deterministic:</u>  the same input will always give the same output</li>
+                         <li><u>Discontinuous:</u> the slightest difference in the input, will give completely different output</li>
+                         <li><u>Uniform:</u> for any set of inputs, corresponding outputs should be distributed as evenly as possible accross the possible range of outputs. </li>
+                         <li><u>Non-invertible:</u> should be impossible to find the input based on the output</li>
+                     </ul>   
+                     <p>Usage</p>     
+                     <ul>
+                         <li>Prove that given piece of content has not been tempered with</li>
+                         <li>Easier to compare hashes that big inputs with variable length</li>
+                         <li>Finding a coliding input</li>
+                         <li>To chain block together
+                             <ul>
+                                 <li>Every hash has to have certain number of zero's at the beginning of the hash (it has to be smaller than difficulty target)</li>
+                                 <li>Each block contains an arbitrary number, called "nonce" that you can set yourself</li>
+                                 <li>Proof-of-Work</li>
+                             </ul>
+                         </li>
+                     </ul> 
+                     <p>Hashing methods</p>
+                     <ul>
+                         <li>Bitcoin uses SHA-256 for hashing</li>
+                         <li>Ethereum uses Keccak-256 / Keccak-512</li>
+                     </ul>
                  </div>
             </div>
             <div class="content-title">
-                <h3 class="empty">Asymmetric Cryptography</h3>
-                <div class="content-details">                
+                <h3>Asymmetric Cryptography</h3>
+                <div class="content-details">   
+                    <p>General Principle</p>  
+                    <ul>
+                        <li>Process that uses pair of related keys in order to transfer some readable content to make it unreadable and vice versa </li>
+                        <li>Used in two scenarios:
+                            <ul>
+                                <li>Authentication: to prove that some given data originates from a given user</li>
+                                <li>Data Confidentiality: to ensure that only the recipient of a given message can actually access its real contents</li>
+                            </ul>
+                        </li>
+                        <li>A public key encryption algorithm takes the private key and original content as inputs and produces output</li>
+                        <li>The only way to recover the original content is to reverse the process using the associated public key for the decryption process</li>
+                        <li>The keys are related (from the private one, the public one is generated). But you cannot recover the private key from the public one</li>
+                    </ul>    
+                    <p>Digital Signature</p>    
+                    <ul>
+                        <li>You want to prove that a given message really comes from you</li>
+                        <li>You start by hasing this message by using a hashing function to get a defined length hash</li>
+                        <li>You encrypt that hash with your private key</li>
+                        <li>You send the original message together with the encrypted hash (called signature)</li>
+                        <li>The recipient knows your public key, so he can verify that you were able to produce that signature with the corresponding private key</li>
+                    </ul>   
+                    <p>RSA vs ECDSA</p>
+                    <ul>
+                        <li>RSA
+                            <ul>
+                                <li>Older Cryptography, not so used anymore</li>
+                                <li>Signature Process takes the original message, the encrypted hash and public key as inputs.</li>
+                            </ul>
+                        </li>
+                        <li>ECDSA
+                            <ul>
+                                <li>Elyptic Curve</li>
+                                <li>Higher Levels of Security with smaller keys than RSA</li>
+                                <li>Signature Process also takes the original messages, encrypted hash and the public key, but it compared the inputs differently (Recovers the public key)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p>Usage in Blockchain</p>
+                    <ul>
+                        <li>Unspend Transaction Outputs (UTXOs) in Bitcoin are linked to users through their wallet address (which is a hash of users public key) </li>
+                        <li>Private key is not accessible to anyone</li>
+                        <li>In online places like Coinbase, your key is actually stored in an online database, not available to anyone</li>
+                    </ul>
                 </div>
            </div>
            <div class="content-title">
-            <h3 class="empty">Merkle Trees</h3>
-            <div class="content-details">                
+            <h3>Merkle Trees</h3>
+            <div class="content-details">  
+                <p>Data Stucture / Hash Tree</p>   
+                <p>Naive block hashes</p>          
+                <ul>
+                    <li>Hash the entire block (transactions) at once</li>
+                    <li>But this block can be big and you will need to wait for all transactions to be there before calculating the hash (on miners side)</li>
+                    <li>You would need to download the whole block to verify its integrity (on users side)</li>
+                </ul> 
+                <p>Merkle Tree</p>
+                <ul>
+                    <li>Calculate hash (h1- h8) for each transaction (t1-t8)</li>
+                    <li>Calculate a hash of (h1+h2) and you get a new hash (h12)</li>
+                    <li>Do the same for each pair and repeat the process</li>
+                    <li>When all the concatenations are done, you get a root hash</li>
+                </ul>
+                <p>Modification impact</p>
+                <ul>
+                    <li>If only one transaction changes, the root hash is completely different</li>
+                    <li>Two identical root hashes correspond to identical blocks</li>
+                    <li>You can calculate the hash progressivly as your receive the transactions</li>
+                </ul>
+                <p>Partial Verification</p>
+                <ul>
+                    <li>To verify the integrity of t5 you would need to get h5 and h6 to get h56 and some other things to calculate the root hash</li>
+                </ul>
+                <p>Usage</p>
+                <ul>
+                    <li>Bittorrent</li>
+                    <li>Git</li>
+                    <li>Bitcoin</li>
+                    <li>Ethereum</li>
+                </ul>
+                <p>Only the root hash is stored in the blockchain itself (less storage)</p>
+                <p>Three Mercle Tree rules for Ethereum Blocks</p>
+                <ul>
+                    <li>For transactions</li>
+                    <li>For state</li>
+                    <li>For transaction receipts</li>
+                </ul>
+                <p>Ethereum uses special Mercle Tree - Patricia tree</p>
+                <p>Crypto blockchain demo</p>
+                <ul>
+                    <li>anders.com/blockchain</li>
+                </ul>
             </div>
        </div>
         </div>
      </section>
-
-
 
      <section>
         <h2>Section Title</h2> 
