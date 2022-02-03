@@ -406,12 +406,41 @@
         <div class="content-section">
             <div class="content-title">
                  <h3>Hashing Functions</h3>
-                 <div class="content-details">                
+                 <div class="content-details">   
+                     <p>Goal: to guarantee the integrity of data in decentralized and distributed environment</p>
+                     <p>Principle: Takes arbitrary volume of data as input and produces number as output</p> 
+                     <p>Properties</p>  
+                     <ul>
+                         <li><u>Defined Range:</u> output will always have the same size, whatever the size of the input</li>
+                         <li><u>Deterministic:</u>  the same input will always give the same output</li>
+                         <li><u>Discontinuous:</u> the slightest difference in the input, will give completely different output</li>
+                         <li><u>Uniform:</u> for any set of inputs, corresponding outputs should be distributed as evenly as possible accross the possible range of outputs. </li>
+                         <li><u>Non-invertible:</u> should be impossible to find the input based on the output</li>
+                     </ul>   
+                     <p>Usage</p>     
+                     <ul>
+                         <li>Prove that given piece of content has not been tempered with</li>
+                         <li>Easier to compare hashes that big inputs with variable length</li>
+                         <li>Finding a coliding input</li>
+                         <li>To chain block together
+                             <ul>
+                                 <li>Every hash has to have certain number of zero's at the beginning of the hash (it has to be smaller than difficulty target)</li>
+                                 <li>Each block contains an arbitrary number, called "nonce" that you can set yourself</li>
+                                 <li>Proof-of-Work</li>
+                             </ul>
+                         </li>
+                     </ul> 
+                     <p>Hashing methods</p>
+                     <ul>
+                         <li>Bitcoin uses SHA-256 for hashing</li>
+                         <li>Ethereum uses Keccak-256 / Keccak-512</li>
+                     </ul>
                  </div>
             </div>
             <div class="content-title">
-                <h3 class="empty">Asymmetric Cryptography</h3>
-                <div class="content-details">                
+                <h3>Asymmetric Cryptography</h3>
+                <div class="content-details">   
+                    <p></p>             
                 </div>
            </div>
            <div class="content-title">
