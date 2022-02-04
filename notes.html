@@ -400,7 +400,6 @@
        </div>
         </div>
      </section>
-
      <section>
         <h2>Cryptography 101</h2> 
         <div class="content-section">
@@ -535,8 +534,6 @@
        </div>
         </div>
      </section>
-
-
      <section>
         <h2>Installing the Development Environment (Truffle 4)</h2> 
         <div class="content-section">
@@ -562,7 +559,50 @@
                                 <li>run "brew --version" to check that you have it now</li>
                             </ul>
                         </li>
-                     </ul>   
+                     </ul>
+                     <p>Intall Geth (aka go-ethereum)</p>   
+                     <ul>
+                         <li>Command Line interface that allows to run and operate full ethereum node.</li>
+                         <li>Geth is implemented in Go adn allows you to mine blocks, to generate Ether, to deploy and interact with smart contracts, to transfer funds, to inspect block history, to create accounts and do all the things that are needed for managing Ethereum node</li>
+                         <li>Geth can be used to connect to the public Ethereum Network (main net) or to create your own private network for development purposes</li>
+                         <li>Let's you fully test your application before deploying it to the live network.</li>
+                         <li>Install using Homebrew:
+                             <ul>
+                                 <li>Connect Homebrew to the repository providing Geth: 1."brew update", 2."brew tap ethereum/ethereum", 3."brew install ethereum" </li>
+                                 <li>"brew upgrade ethereum" if you need to update the version</li>
+                             </ul>
+                         </li>
+                     </ul>
+                     <p>Install Ganache</p>
+                     <ul>
+                         <li>Ethereum blockchain emulator that you can use for development purposes</li>
+                         <li>Can be seen as a replacement for "Test RPC", which were used in previous versions of the course</li>
+                         <li>UI that allows to inspect blocks and transactions in a user friendly way</li>
+                         <li>Compared to Geth, Ganache is an "in-memory" Ethereum node, that runs faster and provides all the visual components for testing your contracts locally before deploying them to real Ethereum application</li>
+                         <li>http://truffleframework.com/ganache - download the app from here</li>
+                     </ul>
+                     <p>NodeJS and NPM</p>
+                     <ul>
+                         <li>NodeJS - server side JS platform to create applications that will interact with your Ethereum node</li>
+                         <li>When we install Node, we also install the Node Package Manager: NPM, that is required to set up and install most of the tools to develop Ethereum.</li>
+                         <li>Check if you already have it installed: "node -v" and "npm -v"</li>
+                     </ul>
+                     <p>Truffle 4</p>
+                     <ul>
+                         <li>To compile, test and compile smart contracts you will need a built framework that will increase your development velocity compared to doing it manually.</li>
+                         <li>https://truffleframework.com</li>
+                         <li>This version of Truffle embeds Truffle develop - a development blockchain that you can use to speed up your automated testing and your development lifecycle</li>
+                         <li>"npm install -g truffle@4.0.4" to install</li>
+                         <li>"truffle version" to see which version was installed</li>
+                     </ul>
+                     <p>Atom</p>
+                     <ul>
+                         <li>Text Editor to Edit Smart Contracts and Text Files</li>
+                         <li>"https://github.com/atom/atom" - go to releases and download "atom-mac.zip"</li>
+                         <li>Open it up, drag it to Applications</li>
+                         <li>Install Shell Commands from Atom options</li>
+                         <li>"apm install language-ethereum" install plugin for Solidity</li>
+                     </ul>
                  </div>
             </div>
             <div class="content-title">
