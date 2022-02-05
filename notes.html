@@ -641,6 +641,19 @@
                     <p>Initialize Private Node</p>
                     <ul>
                         <li>Quit Atom</li>
+                        <li>"geth --datadir private init chainskills.json" creates "geth" and "keystore" directories</li>
+                        <li>"geth" will store the blockchain instance data and "keystore" will store all accounts</li>
+                    </ul>
+                    <p>Prepare the instance for mining and usage</p>
+                    <ul>
+                        <li>Create 3 accounts - one to receive mining awards and the other two will act as the buyer/seller</li>
+                        <li>"geth --datadir . account new" and set up a password</li>
+                        <li>The accounts are created and have unique addresses now</li>
+                        <li>Private Keys are listed under "keystore" directory.</li>
+                        <li>"geth --datadir . account list" to get the order of the listed accounts</li>
+                    </ul>
+                    <p>Create a starting script</p>
+                    <ul>
                         <li></li>
                     </ul>
                 </div>
