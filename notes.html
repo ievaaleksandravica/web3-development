@@ -606,8 +606,73 @@
                  </div>
             </div>
             <div class="content-title">
-                <h3 class="empty">Setting Up private node on MacOS</h3>
-                <div class="content-details">                
+                <h3>Setting Up private node on MacOS</h3>
+                <div class="content-details">   
+                    <p>Truffle and Ganache can easily emulate Ethereum node (fake nodes) for development purposes</p>  
+                    <p>Keep in mind, that they are just emulators and provide the same interface as Ethereum node deployed in public Ethereum network, but internally they work completely differently</p>     
+                    <p>If you want to ensure that your contract will run properly on the main network, it is highly recommended to test it with full Ethereum node</p>      
+                    <p>In this lecture, we will install a private Ethereum instance with Geth on MacOs.</p>
+                    <p>Create a folder that will host the database and accounts for the private node.</p>
+                    <ul>
+                        <li>In terminal "mkdir -p ChainSkills/private"</li>
+                        <li>Navigate to this directory</li>
+                    </ul>
+                    <p>Before we create the private instance, need to define a Genesis block</p>
+                    <ul>
+                        <li>Create it using a tool, called Puppeth</li>
+                        <li>Run "puppeth" in terminal and provide the settings</li>
+                        <li>Network Name: "chainskills"</li>
+                        <li>What to do: "Configure new genesis - create from scratch"</li>
+                        <li>Consensus: "Proof of Work"</li>
+                        <li>Should be prefunded: Enter</li>
+                        <li>Network ID: 4224</li>
+                        <li>What to do: "Manage Existing Genesis, Export Genesis Configurations"</li>
+                    </ul>
+                    <p>JSON file</p>
+                    <ul>
+                        <li>"atom chainskills.json"</li>
+                        <li>"config" section defines parameters for the chain. Contains network ID (chainID) and block numbers from which to apply rules</li>
+                        <li>"timestamp" used by Ethereum Virtual Maschine to adjust the level of difficulty that must be applied. Also used to ensure that blocks are in the right order</li>
+                        <li>"extraData" any information that we want to label our blockchain instance</li>
+                        <li>"gasLimit" to limit the processing power and size of blocks.</li>
+                        <li>"difficulty" that is needed to verify a block</li>
+                        <li>"parentHash" parent node hash</li>
+                    </ul>
+                    <p>Initialize Private Node</p>
+                    <ul>
+                        <li>Quit Atom</li>
+                        <li>"geth --datadir private init chainskills.json" creates "geth" and "keystore" directories</li>
+                        <li>"geth" will store the blockchain instance data and "keystore" will store all accounts</li>
+                    </ul>
+                    <p>Prepare the instance for mining and usage</p>
+                    <ul>
+                        <li>Create 3 accounts - one to receive mining awards and the other two will act as the buyer/seller</li>
+                        <li>"geth --datadir . account new" and set up a password</li>
+                        <li>The accounts are created and have unique addresses now</li>
+                        <li>Private Keys are listed under "keystore" directory.</li>
+                        <li>"geth --datadir . account list" to get the order of the listed accounts</li>
+                    </ul>
+                    <p>Create a starting script</p>
+                    <ul>
+                        <li>create file "startnode.sh" with the script</li>
+                        <li>make the file executable "chmod +x startnode.sh"</li>
+                        <li>start private node "./startnode.sh"</li>
+                        <li>It has to create all DAG and will start mining after</li>
+                    </ul>
+                    <p>Connect to the node from outside world</p>
+                    <ul>
+                        <li>"geth attach"</li>
+                        <li>You will have all the details here</li>
+                        <li>"eth.accounts" - accounts registered on the node</li>
+                        <li>"eth.coinbase" - main address for mining rewards</li>
+                        <li>"> eth.getBalance(eth.accounts[1])" Balance from mining in Wei currency</li>
+                        <li>"web3.fromWei(eth.getBalance(eth.coinbase),"ether")" Convert from Wei to Ether</li>
+                        <li>"miner.start" / "miner.stop"</li>
+                        <li>"net version"</li>
+                        <li>"> personal.unlockAccount(eth.accounts[1],"password",300)"</li>
+                        <li>"eth.sendTransaction({from: eth.accounts[0], to: eth.accounts[1], value: web3.toWei(10,"ether")})" </li>
+                        <li>quit by typing "exit"</li>
+                    </ul>
                 </div>
            </div>
            <div class="content-title">
@@ -622,8 +687,6 @@
             </div>
         </div>
      </section>
-
-
      <section>
         <h2>Section Title</h2> 
         <div class="content-section">
