@@ -607,7 +607,42 @@
             </div>
             <div class="content-title">
                 <h3>Setting Up private node on MacOS</h3>
-                <div class="content-details">                
+                <div class="content-details">   
+                    <p>Truffle and Ganache can easily emulate Ethereum node (fake nodes) for development purposes</p>  
+                    <p>Keep in mind, that they are just emulators and provide the same interface as Ethereum node deployed in public Ethereum network, but internally they work completely differently</p>     
+                    <p>If you want to ensure that your contract will run properly on the main network, it is highly recommended to test it with full Ethereum node</p>      
+                    <p>In this lecture, we will install a private Ethereum instance with Geth on MacOs.</p>
+                    <p>Create a folder that will host the database and accounts for the private node.</p>
+                    <ul>
+                        <li>In terminal "mkdir -p ChainSkills/private"</li>
+                        <li>Navigate to this directory</li>
+                    </ul>
+                    <p>Before we create the private instance, need to define a Genesis block</p>
+                    <ul>
+                        <li>Create it using a tool, called Puppeth</li>
+                        <li>Run "puppeth" in terminal and provide the settings</li>
+                        <li>Network Name: "chainskills"</li>
+                        <li>What to do: "Configure new genesis - create from scratch"</li>
+                        <li>Consensus: "Proof of Work"</li>
+                        <li>Should be prefunded: Enter</li>
+                        <li>Network ID: 4224</li>
+                        <li>What to do: "Manage Existing Genesis, Export Genesis Configurations"</li>
+                    </ul>
+                    <p>JSON file</p>
+                    <ul>
+                        <li>"atom chainskills.json"</li>
+                        <li>"config" section defines parameters for the chain. Contains network ID (chainID) and block numbers from which to apply rules</li>
+                        <li>"timestamp" used by Ethereum Virtual Maschine to adjust the level of difficulty that must be applied. Also used to ensure that blocks are in the right order</li>
+                        <li>"extraData" any information that we want to label our blockchain instance</li>
+                        <li>"gasLimit" to limit the processing power and size of blocks.</li>
+                        <li>"difficulty" that is needed to verify a block</li>
+                        <li>"parentHash" parent node hash</li>
+                    </ul>
+                    <p>Initialize Private Node</p>
+                    <ul>
+                        <li>Quit Atom</li>
+                        <li></li>
+                    </ul>
                 </div>
            </div>
            <div class="content-title">
