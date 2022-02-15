@@ -675,14 +675,41 @@
                     </ul>
                 </div>
            </div>
-           <div class="content-title">
-                <h3 class="empty">Troubleshooting your private node</h3>
-                <div class="content-details">                
-                </div>
-            </div>
             <div class="content-title">
-                <h3 class="empty">Setting Up MetaMask on all environments</h3>
-                <div class="content-details">                
+                <h3>Setting Up MetaMask on all environments</h3>
+                <div class="content-details">   
+                    <p>So far we interacted with Ganache and the private node through CLI</p>      
+                    <p>Later we will combine Smart Contracts and a web interface into a Dapp - Decentralized Application that people will be able to use through a special kind of web browser called "Dapp Browser"</p>  
+                    <p>Dapp Browser is a web browser connected to an Ethereum node that can manage a set of keys</p>   
+                    <p>There are not a lot of Dapp browsers, most common ones are Mist and Metamask that works in Chrome and Firefox as an extension</p> 
+                    <p>Install MetaMask extension</p>
+                    <ul>
+                        <li>https://metamask.io/ - Download and add as extension for Chrome</li>
+                    </ul>
+                    <p>Initialize the vault</p>
+                    <ul>
+                        <li>Metamask uses vault concept to store the keys that correspond to your account</li>
+                        <li>Ganache generates 10 accounts by default, that will always be identical if we keep the default settings. </li>
+                        <li>Seedphrase stored in .env file.</li>
+                        <li>Never use that seedphrase in the import existing metamask</li>
+                        <li>Create a new wallet and get your seedphrase. Store it in your password manager</li>
+                    </ul>
+                    <p>Import accounts from Ganache</p>
+                    <ul>
+                        <li>Start Ganache and you will see the 10 accounts that were generated</li>
+                        <li>In MetaMask add a new network with host: "http://localhost:7545"</li>
+                        <li>Import all the accounts one by one</li>
+                    </ul> 
+                    <p>Import all the accounts from the private node</p>
+                    <ul>
+                        <li>cd ChainSkills/private</li>
+                        <li>./startnode.sh</li>
+                        <li>use 8545 private network on metamask</li>
+                        <li>in a seperate terminal windon run "geth attached"</li>
+                        <li>eth.accounts to list your keys</li>
+                        <li>upload in metamask using json type and files under keystroke folder</li>
+                    </ul>
+                    <p>In case of any issues, best to contact MetaMask team via http://slack.metamask.io</p>
                 </div>
             </div>
         </div>
