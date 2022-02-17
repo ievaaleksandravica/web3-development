@@ -772,7 +772,15 @@
                      <ul>
                          <li>compiledCode = solc.compile(sourceCode)</li>
                      </ul>
-                     <p>Deploy contract to Ganache Ethereum Node</p>
+                     <p>Get the Application Binary Interface (ABI) of the contract</p>
+                     <ul>
+                         <li>ABI defines what functions are available in the contract and how to call them</li>
+                         <li>contractABI = JSON.parse(compiledCode.contracts[":Greetings"].interface)</li>
+                     </ul>
+                     <p>Deploy Byte Contract to Ethereum Node</p>
+                     <ul>
+                         <li></li>
+                     </ul>
                  </div>
             </div>
         </div>
