@@ -747,15 +747,22 @@
                         <li>".sol" convention for Solidity source files</li>
                         <li>"pragma solidity ^0.4.18;" every .sol file beginning</li>
                         <li>"contract Greetings {}" declare contract</li>
-
                     </ul>
                  </div>
             </div>
         </div>
         <div class="content-section">
             <div class="content-title">
-                 <h3 class="empty">Deploying a smart contract without Truffle (2/2)</h3>
-                 <div class="content-details">        
+                 <h3>Deploying a smart contract without Truffle (2/2)</h3>
+                 <div class="content-details">
+                     <p>We will use Ganache as Ethereum node to deploy the smart contract</p>
+                     <p>Compile the "greetings.sol" smart contract</p>
+                     <ul>
+                         <li>In  terminal type "node" to start node console</li>
+                         <li>Web3 = require("web3"): load web3 library</li>
+                         <li>web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545")): instantiate web3</li>
+                         <li>web3.eth.accounts: list of all Ganache accounts</li>
+                     </ul>
                  </div>
             </div>
         </div>
