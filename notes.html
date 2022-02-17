@@ -779,7 +779,9 @@
                      </ul>
                      <p>Deploy Byte Contract to Ethereum Node</p>
                      <ul>
-                         <li></li>
+                         <li>greetingsContract = web3.eth.contract(contractABI): create contract factory based on the ABI: </li>
+                         <li>byteCode = compiledCode.contracts[":Greetings"].bytecode :extract the byte code of the contract</li>
+                         <li>greetingsDeployed = greetingsContract.new({data: byteCOde, from: web3.eth.accounts[0], gas: 4700000}) :deploy the contract</li>
                      </ul>
                  </div>
             </div>
