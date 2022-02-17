@@ -1,4 +1,5 @@
 ChainSkills/private/keystore
 ChainSkills/private/password.sec
 ChainSkills/private/geth
+Greetings/node_modules
 .env
