@@ -781,8 +781,11 @@
                      <ul>
                          <li>greetingsContract = web3.eth.contract(contractABI): create contract factory based on the ABI: </li>
                          <li>byteCode = compiledCode.contracts[":Greetings"].bytecode :extract the byte code of the contract</li>
-                         <li>greetingsDeployed = greetingsContract.new({data: byteCOde, from: web3.eth.accounts[0], gas: 4700000}) :deploy the contract</li>
+                         <li>greetingsDeployed = greetingsContract.new({data: byteCode, from: web3.eth.accounts[0], gas: 4700000}) :deploy the contract - this command signs and sends the transaction from the Ethereum node</li>
                      </ul>
+                     <p>View Transaction in Ganache</p>
+                     <p>Access Contract Address:  greetingsDeployed.address</p>
+                     <p>Get an instance of the contract: greetingsInstance = greetingsContract.at(greetingsDeployed.address)</p>
                  </div>
             </div>
         </div>
