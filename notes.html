@@ -756,13 +756,23 @@
                  <h3>Deploying a smart contract without Truffle (2/2)</h3>
                  <div class="content-details">
                      <p>We will use Ganache as Ethereum node to deploy the smart contract</p>
-                     <p>Compile the "greetings.sol" smart contract</p>
+                     <p>Load Web3 and Ganache</p>
                      <ul>
                          <li>In  terminal type "node" to start node console</li>
                          <li>Web3 = require("web3"): load web3 library</li>
                          <li>web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545")): instantiate web3</li>
                          <li>web3.eth.accounts: list of all Ganache accounts</li>
                      </ul>
+                     <p>Load Solidity Compiler</p>
+                     <ul>
+                         <li>solc = require("solc")</li>
+                         <li>sourceCode = fs.readFileSync("Greetings.sol").toString()</li>
+                     </ul>
+                     <p>Compile Code</p>
+                     <ul>
+                         <li>compiledCode = solc.compile(sourceCode)</li>
+                     </ul>
+                     <p>Deploy contract to Ganache Ethereum Node</p>
                  </div>
             </div>
         </div>
