@@ -832,14 +832,19 @@
                         <li>"truffle develop --log" connect to the running Ganache core node</li>
                     </ul>
                  </div>
-
             </div>
         </div>
         <div class="content-section">
             <div class="content-title">
-                 <h3 class="empty">Deploying a smart contract with Truffle (2/3)</h3>
+                 <h3>Deploying a smart contract with Truffle (2/3)</h3>
                  <div class="content-details">
-                     <p></p>
+                     <p>Truffle offers set of commands to build and deploy your contracts</p>
+                     <p>Some of the commands try to avoid deploying a contract that was already deployed to a given network. Use "migrate --compile-all --reset" to make sure nothing is lost</p>
+                     <ul>
+                         <li>--compileAll forces recompilation of all our solidity files</li>
+                         <li>--reset resets the state of the migrations contract and forces rerun of all migration scripts</li>
+                    </ul>
+                    <p></p>
                  </div>  
                  </div>
             </div>
