@@ -784,25 +784,63 @@
                          <li>greetingsDeployed = greetingsContract.new({data: byteCode, from: web3.eth.accounts[0], gas: 4700000}) :deploy the contract - this command signs and sends the transaction from the Ethereum node</li>
                      </ul>
                      <p>View Transaction in Ganache</p>
-                     <p>Access Contract Address:  greetingsDeployed.address</p>
-                     <p>Get an instance of the contract: greetingsInstance = greetingsContract.at(greetingsDeployed.address)</p>
                      <ul>
-                         <li>greetingsInsance.getGreetings()</li>
+                         <li>Access Contract Address:  greetingsDeployed.address</li>
+                         <li>Get an instance of the contract: greetingsInstance = greetingsContract.at (greetingsDeployed. address)</li>
+                        
+                    
+                         <li>greetingsInstance.getGreetings()</li>
+                         <li>greetingsInstance.setGreetings("Hello ChainSkills!", {from: web3.eth.accounts[0]})</li>
                      </ul>
                  </div>
             </div>
         </div>
         <div class="content-section">
             <div class="content-title">
-                 <h3 class="empty">Deploying a smart contract with Truffle (1/3)</h3>
-                 <div class="content-details">        
+                 <h3>Deploying a smart contract with Truffle (1/3)</h3>
+                 <div class="content-details">
+                     <p>Previously we compiled and deployed Smart Contract manually through a node console using the Ethereum Wrapper Library (Web3 through JS) and Solidity Compiler (Solc)</p>  
+                    <p>Painful and error prone to type all those commands when deploying a Smart Contract. To boost this development process, we need some accelerator, such as Truffle.</p> 
+                    <p>Truffle is the most used development framework for Ethereum</p>
+                    <p>Prepare the environment from the terminal</p>     
+                    <ul>
+                        <li>Create new directory "GreetingsTruffle"</li>
+                        <li>Check if you have Truffle: "truffle version"</li>
+                        <li>Initialize truffle: "truffle init" - you might get errors, so follow lecture</li>
+                        <li>Launch atom to analyze the project: "atom ."</li>
+                    </ul>
+                    <p>Project Structure</p>
+                    <ul>
+                        <li>Contracts - will contain all Solidity contracts</li>
+                        <li>Migrations.sol contract needs to be kept, it will help track which contracts have already been deployed</li>
+                        <li>Migrations - contains the logic used during the deployment process</li>
+                        <li>Test - contains test scripts used to test your contract</li>
+                    </ul>
+                    <p>Adapt the project for Greetings Smart Contract</p>
+                    <ul>
+                        <li>"Greetings.sol" same code as in the previous lesson</li>
+                    </ul>
+                    <p>Create Deployment Script</p>
+                    <ul>
+                        <li>"migrations/2_deploy_contracts.js" - very similar to the initial migration script</li>
+                    </ul>
+                    <p>Deployment</p>
+                    <ul>
+                        <li>1. Deploy Greetings Smart Contract to Ganache Core Ethereum development node bundled with truffle</li>
+                        <li>In terminal start truffle development mode "truffle develop"</li>
+                        <li>Truffle uses same accounts as Ganache due to the phrase</li>
+                        <li>"truffle develop --log" connect to the running Ganache core node</li>
+                    </ul>
                  </div>
+
             </div>
         </div>
         <div class="content-section">
             <div class="content-title">
                  <h3 class="empty">Deploying a smart contract with Truffle (2/3)</h3>
-                 <div class="content-details">        
+                 <div class="content-details">
+                     <p></p>
+                 </div>  
                  </div>
             </div>
         </div>
