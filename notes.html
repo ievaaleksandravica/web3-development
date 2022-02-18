@@ -844,7 +844,15 @@
                          <li>--compileAll forces recompilation of all our solidity files</li>
                          <li>--reset resets the state of the migrations contract and forces rerun of all migration scripts</li>
                     </ul>
-                    <p></p>
+                    <p>Once a contract is compiled its details are stored in build/Greetings.json</p>
+                    <p>Interact with the Contract</p>
+                    <ul>
+                        <li>"Greetings.address"</li>
+                        <li>"web3.eth.accounts"</li>
+                        <li>"Greetings.deployed().then(function(instance) {app = instance; })" create instance</li>
+                        <li>"app.getGreetings()"</li>
+                        <li>"app.setGreetings("Hello Chainskills!", {from: web3.eth.accounts[0]})"</li>
+                    </ul>
                  </div>  
                  </div>
             </div>
