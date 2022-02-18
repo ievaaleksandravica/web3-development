@@ -859,8 +859,21 @@
         </div>
         <div class="content-section">
             <div class="content-title">
-                 <h3 class="empty">Deploying a smart contract with Truffle (3/3)</h3>
-                 <div class="content-details">        
+                 <h3>Deploying a smart contract with Truffle (3/3)</h3>
+                 <div class="content-details"> 
+                     <p>"truffle develop" starts a Ganache develop node in the console.</p>
+                     <p>Deploy the contract to Ganache instead of the Ethereum node bundled with Truffle;e</p>   
+                     <p>Configure Truffle to add deployment network</p> 
+                     <ul>
+                         <li>Define network in truffle.js</li>
+                         <li>Change node version "nvm use 10.16" </li>
+                         <li>Force migration with the network "truffle migrate --compile-all --reset --network ganache"truffle migrate --compile-all --reset --network ganache
+                        </li>
+                     </ul>  
+                     <p>Interact with the contract</p> 
+                     <ul>
+                         <li>"truffle console --network ganache"</li>
+                     </ul>
                  </div>
             </div>
         </div>
