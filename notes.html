@@ -887,8 +887,17 @@
                      <p>Prepare the environment</p>
                      <ul>
                          <li>Navigate to GreetingsTruffle directory</li>
-                         <li>Deploy contracts to Ganache network: truffle migrate --compile-all --reset --network ganache</li>
-                         <li>Start new truffle console connected to Ganache</li>
+                         <li>Deploy contracts to Ganache network: "truffle migrate --compile-all --reset --network ganache"</li>
+                         <li>Start new truffle console connected to Ganache "truffle console --network ganache"</li>
+                     </ul>
+                     <p>Transaction details</p>
+                     <ul>
+                         <li>Transaction hash - unique identifier for the transaction</li>
+                         <li>From address - account that created the transaction (in our case Coinbase account)</li>
+                         <li>Contract address - address of the deployed contract</li>
+                         <li>Gas used - how much gas was used to create the contract</li>
+                         <li>Transaction type - contact creation, contract call, ether transfer </li>
+                         <li>Value - sent along with the contract</li>
                      </ul>
                  </div>
             </div>
