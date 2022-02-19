@@ -855,7 +855,6 @@
                     </ul>
                  </div>  
                  </div>
-            </div>
         </div>
         <div class="content-section">
             <div class="content-title">
@@ -879,15 +878,83 @@
         </div>
         <div class="content-section">
             <div class="content-title">
-                 <h3 class="empty">Blocks and transactions</h3>
+                 <h3>Blocks and transactions</h3>
                  <div class="content-details">        
+                     <p>Blockchain is an immutable chain of blocks strongly linked together. Inside each block we have a set of transactions.</p>
+                     <p>Transaction can describe a transfer of Ether between two accounts, the code of a smart contract or a call to a smart contract function that will change its state.</p>
+                     <p>Ethereum transaction always has four fundamental fields: from, to, value, data/input.</p>
+                     <p>In any case, both senders and recipients can be external accounts or other smart contracts.</p>
+                     <p>Prepare the environment</p>
+                     <ul>
+                         <li>Navigate to GreetingsTruffle directory</li>
+                         <li>Deploy contracts to Ganache network: "truffle migrate --compile-all --reset --network ganache"</li>
+                         <li>Start new truffle console connected to Ganache "truffle console --network ganache"</li>
+                     </ul>
+                     <p>Transaction details</p>
+                     <ul>
+                         <li>Transaction hash - unique identifier for the transaction</li>
+                         <li>From address - account that created the transaction (in our case Coinbase account)</li>
+                         <li>Contract address - address of the deployed contract</li>
+                         <li>Gas used - how much gas was used to create the contract</li>
+                         <li>Transaction type - contact creation, contract call, ether transfer </li>
+                         <li>Value - sent along with the contract</li>
+                     </ul>
+                     <p>Inspect the transaction</p>
+                     <ul>
+                         <li>Gas Price - set by default by truffle</li>
+                         <li>Gas Limit - set by default by truffle </li>
+                         <li>Mined in block - number of the block in which this transaction was mined</li>
+                         <li>Tx Data - contains the byte code of our greetings contract </li>
+                     </ul>
+                     <p>Retreive more information than in Ganache by using web3.eth function in truffle console</p>
+                     <ul>
+                         <li>Copy transaction hash and go to terminal</li>
+                         <li>web3.eth.gettransaction("TX_HASH")</li>
+                         <li>nonce - increases by one with each transaction a given sender sends to the network. Used to create a unique address for our contract</li>
+                         <li>blockHash - hash of the block containing the transaction</li>
+                         <li>transactionIndex - index of the transaction inside the block</li>
+                     </ul>
+                     <p>Blocks</p>
+                     <ul>
+                         <li>In case of Ganache, with the automining setting on, a new block is automatically mined when new transaction is created.</li>
+                         <li>We have four blocks plus the Genesis block that's generated when we start Ganache</li>
+                         <li>Number of the block: also called block height </li>
+                         <li>Date and time when the block was mined</li>
+                         <li>Gas used - total gas used by transactions in this block</li>
+                         <li>Number of transactions contained in this block</li>
+                     </ul>
+                     <p>Block mining intervals</p>
+                     <ul>
+                         <li>In Ethereum nothing prevents us from having empty blocks (with no transactions)</li>
+                         <li>In proof of work consensus algorithm, the mining process is not only for mining transactions. It is also used as some sort of a clock for cryptocurrency creation</li>
+                         <li>In a normal node implementation, blocks are produced at regular intervals of time, whether there are pending transactions or not</li>
+                         <li>In Ganache, by default it is auto-mining - meaning blocks are only mined when there is one pending transaction, but we could also configure it to mine at regular intervals</li>
+                     </ul>
+                     <p>Additional information on blocks</p>
+                     <ul>
+                         <li>Gas Limit of the block</li>
+                         <li>Hash of the block</li>
+                         <li>List of all transactions in the block</li>
+                     </ul>
+                     <p>Additional information on blocks using web3.eth.getBlock command</p>
+                     <ul>
+                         <li>"web3.eth.getBlock("BLOCK_HASH")</li>
+                         <li>parentHash - hash of the parent block that chains this block to the previous one</li>
+                         <li>nonce - the mining nonce. the magic number that makes it possible to solve the consensus riddle</li>
+                         <li>transactionRoot, stateRoot. receiptsRoot - Mekle tree rootes of the three trees referenced in each block</li>
+                         <li>miner - the address of the miner who will receive the mining reward. In ganache, all blocks are automatically added to the in memory blockchain</li>
+                         <li>difficulty - used to validate this block</li>
+                         <li>total difficulty - sum of all the difficulties of all blocks until this point</li>
+                         <li>size - size of the block expressed in bytes </li>
+                     </ul>
                  </div>
             </div>
         </div>
         <div class="content-section">
             <div class="content-title">
-                 <h3 class="empty">Gas</h3>
-                 <div class="content-details">        
+                 <h3>Gas</h3>
+                 <div class="content-details"> 
+                     <p></p>       
                  </div>
             </div>
         </div>
