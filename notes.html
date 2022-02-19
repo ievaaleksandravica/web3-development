@@ -882,7 +882,14 @@
                  <div class="content-details">        
                      <p>Blockchain is an immutable chain of blocks strongly linked together. Inside each block we have a set of transactions.</p>
                      <p>Transaction can describe a transfer of Ether between two accounts, the code of a smart contract or a call to a smart contract function that will change its state.</p>
-                     <p>Ethereum transaction always has four fundamental fields: from, to, value, data/input </p>
+                     <p>Ethereum transaction always has four fundamental fields: from, to, value, data/input.</p>
+                     <p>In any case, both senders and recipients can be external accounts or other smart contracts.</p>
+                     <p>Prepare the environment</p>
+                     <ul>
+                         <li>Navigate to GreetingsTruffle directory</li>
+                         <li>Deploy contracts to Ganache network: truffle migrate --compile-all --reset --network ganache</li>
+                         <li>Start new truffle console connected to Ganache</li>
+                     </ul>
                  </div>
             </div>
         </div>
