@@ -906,9 +906,13 @@
                          <li>Mined in block - number of the block in which this transaction was mined</li>
                          <li>Tx Data - contains the byte code of our greetings contract </li>
                      </ul>
-                     <p>Retreive more information than in Ganache by using web3.eth function</p>
+                     <p>Retreive more information than in Ganache by using web3.eth function in truffle console</p>
                      <ul>
-                         <li></li>
+                         <li>Copy transaction hash and go to terminal</li>
+                         <li>web3.eth.gettransaction("TX_HASH")</li>
+                         <li>nonce - increases by one with each transaction a given sender sends to the network. Used to create a unique address for our contract</li>
+                         <li>blockHash - hash of the block containing the transaction</li>
+                         <li>transactionIndex - index of the transaction inside the block</li>
                      </ul>
                  </div>
             </div>
