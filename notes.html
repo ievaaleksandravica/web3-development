@@ -954,7 +954,48 @@
             <div class="content-title">
                  <h3>Gas</h3>
                  <div class="content-details"> 
-                     <p></p>       
+                     <p>Usage of the blockchain costs money. This money is to reward miners who work hard to validate your transactions and append them to the blockchain</p>       
+                     <p>When you send money to another account / deploy a smart contract / call a function on a smart contract, you have to pay for that. This cost is valued in GAS</p>
+                     <p>In Ethereum, GAS is just a unit of complexity,  that is used to set the price of the code execution inside the Ethereum Virtual Machine. Each EVM operation, has a certain absolute complexity expressed in GAS</p>
+                     <p>This complexity does not depend on the current value of Ether. Deploying Smart Contract or calling one of its functions, will cost a certain amount of gas, depending on the code complexity of the operation to perform </p>
+                     <p>Correspondance between gas and the real price in Ether, is computed by using Gas Price</p>
+                     <p>Prepare the environment</p>
+                     <ul>
+                         <li>Start Ganache</li>
+                         <li>"truffle migrate --compile-all --reset --network ganache"</li>
+                         <li>"truffle console --network ganache"</li>
+                         <li>"truffle(ganache)> web3.fromWei(web3.eth.getBalance(web3.eth.accounts[0]),"ether").toNumber()" balance of the first account in ETH </li>
+                     </ul>
+                     <p>One account is considered your primary account - by default its the first one. Identify it "web3.eth.coinbase" (Coinabase / Etherbase) </p>
+                     <p>Transaction Costs</p>
+                     <ul>
+                         <li>Each transaction used a certain amount of gas</li>
+                         <li>Each transaction in Ganache has a gas price of 10^11 (100 000 000 000) WEI that corresponds to 0.0000001 ETH </li>
+                         <li>https://converter.murkin.me</li>
+                         <li>price = (gas usage) * (gas price)</li>
+                     </ul>
+                     <p>Gas you pay will be different depending on the network you use (test net / main net / private network) and complexity of your Smart Contract</p>
+                     <p>Gas Limit</p>
+                     <ul>
+                         <li>Default value provided by Truffle: 6 721 975. It's different from the Gas really used</li>
+                         <li>When we send transaction, we specifiy Gas Value and Gas Price</li>
+                         <li>Gas limit - a security mechanism with upper limit as it is difficult to predict how much gas you would actually use</li>
+                         <li>If Gas Limit is reached, process will stop</li>
+                     </ul>
+                     <p>Fees paid by these transactions</p>
+                     <ul>
+                         <li>Fees will go to the miner of the block containing your transaction as a reward for combining power</li>
+                         <li>Miners are interested in transactions with Gas Price - if it is high, transaction will be processed faster</li>
+                     </ul>
+                     <p>See an impact of getGreetings() and setGreetings() transaction</p>
+                     <ul>
+                         <li>"Greetings.deployed().then(function(instance) {app = instance;})"</li>
+                         <li>"app.getGreetings()"</li>
+                         <li>"app.getGreetings({from: web3.eth.accounts[1]})"</li>
+                         <li>Reading a value of a contract does not cost any gas, because it does require a transaction to be sent and is declared as view</li>
+                         <li>"app.setGreetings("how is it going", {from: web3.eth.accounts[1]})" will cost money though</li>
+                     </ul>
+                     
                  </div>
             </div>
         </div>
