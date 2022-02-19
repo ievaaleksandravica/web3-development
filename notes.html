@@ -1013,6 +1013,16 @@
                      <p>Inspect tranasctions inside Ganache</p>
                      <ul>
                          <li>TX DATA field shows the code of the smart contract deployed to the node</li>
+                         <li>Value deployed is the binary byte code of the smart contract compiled by the solidity compiler thanks to Truffle</li>
+                         <li>This code has to be executable by the Ethereum Virtual Machine that runs on every node in the network</li>
+                         <li>As the node can be run on all operating systems (Linux, Mac, etc.) it should be executable on all the platforms</li>
+                         <li>This byte code is decoded into series of Ethereum instructions called OpCodes</li>
+                     </ul>
+                     <p>OpCodes</p>
+                     <ul>
+                         <li>OpCodes compose the assembly language used by the EVM to execute the smart contract</li>
+                         <li>https://etherscan.io/opcode-tool - online converter to decompile the binary byte code in corresponding op codes</li>
+                         <li>Each upcode instruction has a corresponding cost in gas units depending on its complexity</li>
                      </ul>
                  </div>
             </div>
