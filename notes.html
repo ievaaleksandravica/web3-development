@@ -1029,8 +1029,16 @@
         </div>
         <div class="content-section">
             <div class="content-title">
-                 <h3 class="empty">Sending ether</h3>
-                 <div class="content-details">        
+                 <h3>Sending ether</h3>
+                 <div class="content-details"> 
+                     <p>Sending Ether</p>  
+                     <ul>
+                         <li>Start the Truffle Ganache console</li>
+                         <li>web3.eth.sendTransaction({from: web3.eth.accounts[0], to: web3.eth.accounts[1], value: web3.toWei(5,"ether")})</li>
+                         <li>web3.fromWei(web3.eth.getBalance(web3.eth.accounts[0]),"ether").toNumber()</li>
+                         <li>Price: 21'000</li>
+                     </ul>    
+                    <p>These transactions do not depend on the amount of the Ether you transfer</p> 
                  </div>
             </div>
         </div>
