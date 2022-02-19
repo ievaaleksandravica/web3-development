@@ -959,6 +959,13 @@
                      <p>In Ethereum, GAS is just a unit of complexity,  that is used to set the price of the code execution inside the Ethereum Virtual Machine. Each EVM operation, has a certain absolute complexity expressed in GAS</p>
                      <p>This complexity does not depend on the current value of Ether. Deploying Smart Contract or calling one of its functions, will cost a certain amount of gas, depending on the code complexity of the operation to perform </p>
                      <p>Correspondance between gas and the real price in Ether, is computed by using Gas Price</p>
+                     <p>Prepare the environment</p>
+                     <ul>
+                         <li>Start Ganache</li>
+                         <li>"truffle migrate --compile-all --reset --network ganache"</li>
+                         <li>"truffle console --network ganache"</li>
+                         <li>"truffle(ganache)> web3.fromWei(web3.eth.getBalance(web3.eth.accounts[0]),"ether").toNumber()" balance of the first account in ETH </li>
+                     </ul>
                  </div>
             </div>
         </div>
