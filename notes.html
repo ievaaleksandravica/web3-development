@@ -1001,8 +1001,29 @@
         </div>
         <div class="content-section">
             <div class="content-title">
-                 <h3 class="empty">OpCodes</h3>
-                 <div class="content-details">        
+                 <h3>OpCodes</h3>
+                 <div class="content-details">    
+                     <p>Prepare the environment</p> 
+                     <ul>
+                         <li>Start Ganache</li>
+                         <li>Open Terminal and navigate to Greetings Truffle</li>
+                         <li>Redeploy everything "truffle migrate --compile-all --reset --network ganache"</li>
+                         <li>Open console "truffle console --network ganache"</li>
+                     </ul>   
+                     <p>Inspect tranasctions inside Ganache</p>
+                     <ul>
+                         <li>TX DATA field shows the code of the smart contract deployed to the node</li>
+                         <li>Value deployed is the binary byte code of the smart contract compiled by the solidity compiler thanks to Truffle</li>
+                         <li>This code has to be executable by the Ethereum Virtual Machine that runs on every node in the network</li>
+                         <li>As the node can be run on all operating systems (Linux, Mac, etc.) it should be executable on all the platforms</li>
+                         <li>This byte code is decoded into series of Ethereum instructions called OpCodes</li>
+                     </ul>
+                     <p>OpCodes</p>
+                     <ul>
+                         <li>OpCodes compose the assembly language used by the EVM to execute the smart contract</li>
+                         <li>https://etherscan.io/opcode-tool - online converter to decompile the binary byte code in corresponding op codes</li>
+                         <li>Each upcode instruction has a corresponding cost in gas units depending on its complexity</li>
+                     </ul>
                  </div>
             </div>
         </div>
