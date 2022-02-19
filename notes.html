@@ -974,7 +974,14 @@
                          <li>https://converter.murkin.me</li>
                          <li>price = (gas usage) * (gas price)</li>
                      </ul>
-                     <p>Gas you pay will be different depending on the network you use</p>
+                     <p>Gas you pay will be different depending on the network you use (test net / main net / private network) and complexity of your Smart Contract</p>
+                     <p>Gas Limit</p>
+                     <ul>
+                         <li>Default value provided by Truffle: 6 721 975. It's different from the Gas really used</li>
+                         <li>When we send transaction, we specifiy Gas Value and Gas Price</li>
+                         <li>Gas limit - a security mechanism with upper limit as it is difficult to predict how much gas you would actually use</li>
+                         <li>If Gas Limit is reached, process will stop</li>
+                     </ul>
                  </div>
             </div>
         </div>
