@@ -966,6 +966,15 @@
                          <li>"truffle console --network ganache"</li>
                          <li>"truffle(ganache)> web3.fromWei(web3.eth.getBalance(web3.eth.accounts[0]),"ether").toNumber()" balance of the first account in ETH </li>
                      </ul>
+                     <p>One account is considered your primary account - by default its the first one. Identify it "web3.eth.coinbase" (Coinabase / Etherbase) </p>
+                     <p>Transaction Costs</p>
+                     <ul>
+                         <li>Each transaction used a certain amount of gas</li>
+                         <li>Each transaction in Ganache has a gas price of 10^11 (100 000 000 000) WEI that corresponds to 0.0000001 ETH </li>
+                         <li>https://converter.murkin.me</li>
+                         <li>price = (gas usage) * (gas price)</li>
+                     </ul>
+                     <p>Gas you pay will be different depending on the network you use</p>
                  </div>
             </div>
         </div>
