@@ -986,8 +986,16 @@
                      <ul>
                          <li>Fees will go to the miner of the block containing your transaction as a reward for combining power</li>
                          <li>Miners are interested in transactions with Gas Price - if it is high, transaction will be processed faster</li>
-        
                      </ul>
+                     <p>See an impact of getGreetings() and setGreetings() transaction</p>
+                     <ul>
+                         <li>"Greetings.deployed().then(function(instance) {app = instance;})"</li>
+                         <li>"app.getGreetings()"</li>
+                         <li>"app.getGreetings({from: web3.eth.accounts[1]})"</li>
+                         <li>Reading a value of a contract does not cost any gas, because it does require a transaction to be sent and is declared as view</li>
+                         <li>"app.setGreetings("how is it going", {from: web3.eth.accounts[1]})" will cost money though</li>
+                     </ul>
+                     
                  </div>
             </div>
         </div>
