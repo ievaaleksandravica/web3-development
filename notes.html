@@ -936,6 +936,17 @@
                          <li>Hash of the block</li>
                          <li>List of all transactions in the block</li>
                      </ul>
+                     <p>Additional information on blocks using web3.eth.getBlock command</p>
+                     <ul>
+                         <li>"web3.eth.getBlock("BLOCK_HASH")</li>
+                         <li>parentHash - hash of the parent block that chains this block to the previous one</li>
+                         <li>nonce - the mining nonce. the magic number that makes it possible to solve the consensus riddle</li>
+                         <li>transactionRoot, stateRoot. receiptsRoot - Mekle tree rootes of the three trees referenced in each block</li>
+                         <li>miner - the address of the miner who will receive the mining reward. In ganache, all blocks are automatically added to the in memory blockchain</li>
+                         <li>difficulty - used to validate this block</li>
+                         <li>total difficulty - sum of all the difficulties of all blocks until this point</li>
+                         <li>size - size of the block expressed in bytes </li>
+                     </ul>
                  </div>
             </div>
         </div>
