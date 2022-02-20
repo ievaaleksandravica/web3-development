@@ -1029,28 +1029,39 @@
             <div class="content-title">
                  <h3>Sell an article: smart contract</h3>
                  <div class="content-details">      
-                     <p>Start creating fully decentralized application, called ChainList - decentralized marketplac on the Ethereum blockchain</p>  
-                     <p>We will first create an application with which you can sell and buy just one item (later will add posibility for multiple items)</p>    
-                     <p class="bold">Preparing the environment</p>  
-                     <ul>
-                         <li>Open terminal and create dedicated folder <u>ChainList</u></li>
-                     </ul>  
-                     <p class="bold">Create the project</p>
-                     <ul>
-                         <li>Can create in multiple ways, previously we used <u>truffle init</u></li>
-                         <li>This time we will us <i>boxes</i> - boilerplate starter projects that you can use as a bases to build a real app. We will use <i>chainskills box</i> - custom box created for the course. Can be found <a href="https://github.com/chainskills/chainskills-box"> in this Github repository</a></li>
-                         <li><u>truffle unbox chainskills/chainskills-box</u> unboxes the github repository and creates the boilerplate</li>
-                     </ul>
-                     <p class="bold">First iteration of the contract</p>
-                     <ul>
-                         <li>Allow us to sell one article by identifying the seller, articles name, it's description and price</li>
-                         <li>Let us retreive the article by returning seller's address, articles name, it's description and price </li>
-                     </ul>
-                     <p class="bold">Creating new contract</p>
-                     <ul>
-                         <li></li>
-                     </ul>
-                 </div>
+                    <p>Start creating fully decentralized application, called ChainList - decentralized marketplac on the Ethereum blockchain</p>  
+                    <p>We will first create an application with which you can sell and buy just one item (later will add posibility for multiple items)</p>    
+                    <p class="bold">Preparing the environment</p>  
+                    <ul>
+                        <li>Open terminal and create dedicated folder <u>ChainList</u></li>
+                    </ul>  
+                    <p class="bold">Create the project</p>
+                    <ul>
+                        <li>Can create in multiple ways, previously we used <u>truffle init</u></li>
+                        <li>This time we will us <i>boxes</i> - boilerplate starter projects that you can use as a bases to build a real app. We will use <i>chainskills box</i> - custom box created for the course. Can be found <a href="https://github.com/chainskills/chainskills-box"> in this Github repository</a></li>
+                        <li><u>truffle unbox chainskills/chainskills-box</u> unboxes the github repository and creates the boilerplate</li>
+                    </ul>
+                    <p class="bold">First iteration of the contract</p>
+                    <ul>
+                        <li>Allow us to sell one article by identifying the seller, articles name, it's description and price</li>
+                        <li>Let us retreive the article by returning seller's address, articles name, it's description and price </li>
+                    </ul>
+                    <p class="bold">Creating new contract</p>
+                    <ul>
+                        <li>Create new file in <u>contracts</u> folder <u>ChainList.sol</u></li>
+                        <li><u>pragma solidity ^0.4.18;</u> build the contract with solidiy compiler with the version</li>
+                        <li>create <u>contract Chainlist {}</u></li>
+                        <li>Define state variables: seller, name, description, price</li>
+                        <li>Define a function  <u>sellArticle</u> to           sell an article</li>
+                        <li>Define a function <u>getArticle</u> to get an article</li>
+                    </ul>
+                    <p class="bold">Modify the deployment process</p>
+                    <ul>
+                        <li>in <u>migrations</u> folder create a new file <u>2_deploy_contracts</u></li>
+                        <li>Take the sample code from <u>initial_migration.js</u> file</li>
+                    </ul>
+                    
+                </div>
             </div>
             <div class="content-title">
                  <h3 class="empty">Sell an article: tests (1/2)</h3>
