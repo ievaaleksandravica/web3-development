@@ -1060,7 +1060,43 @@
                         <li>in <u>migrations</u> folder create a new file <u>2_deploy_contracts</u></li>
                         <li>Take the sample code from <u>initial_migration.js</u> file</li>
                     </ul>
-                    
+                    <p class="bold">Choose between deploying with Ganache or Truffle</p>
+                    <ul>
+                        <li>When you deploy, you can choose to use Ganache or Truffle Develop as an in-memory node implementation </li>
+                        <li>Ganache uses <u>5777</u> as network identifier, whereas Truffle <u>4447</u></li>
+                        <li>Ganache uses <u>7545</u> as port, whereas Truffle <u>9545</u></li>
+                        <li>For Ganache you can change those settings, for Truffle not</li>
+                    </ul>
+                    <p class="bold">In almost every lesson we will begin with starting Ganache</p>
+                    <ul>
+                        <li>Starts brand new in-memory implementation</li>
+                        <li>Creates 10 accounts with 100 ETH each</li>
+                        <li>Opens an RPC endpoint on localhost</li>
+                        <li>Always uses the same seedphrase, accounts will always be the same </li>
+                        <li>Normally to send transaction from ETH wallet, you need to unlock its private key. In ganache core they are automatically unlocked</li>
+                        <li>You can always see the logs in the logs tab</li>
+                    </ul>
+                    <p class="bold">Deploy the contract</p>
+                    <ul>
+                        <li><u>truffle migrate --network ganache</u></li>
+                        <li><u>--compile-all --reset</u> you can use it if you want to recompile everything, but you will loose your address </li>
+                    </ul>
+                    <p class="bold">Interact with the smart contract</p>
+                    <ul>
+                        <li><u>truffle console --network ganache</u></li>
+                        <li><u>Chainlist.address</u> check address of chainlist contract (comes from <u>build/contracts/Chainlist.json</u></li>
+                        <li>Check balances <u>web3.fromWei(web3.eth.getBalance(web3.eth.accounts[0]), "ether").toNumber()</u></li>
+                    </ul>
+                    <p class="bold">Get an instance of the contract</p>
+                    <ul>
+                        <li><u>Chainlist.deployed().then(function(instance){app = instance;})</u></li>
+                        <li><u>app</u> contains JS object that contains everything we need about this contract</li>
+                    </ul>
+                    <p class="bold">Call functions</p>
+                    <ul>
+                        <li><u>app.getArticle()</u> everything initialized with zero or empty when no data</li>
+                        <li><u>app.sellArticle("iPhone 7", "selling in order to buy iphone 8", web3.toWei(3,"ether"), {from: web3.eth.accounts[1]})</u></li>
+                    </ul>
                 </div>
             </div>
             <div class="content-title">
