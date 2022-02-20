@@ -78,4 +78,25 @@ h1 {
 
 li {
   list-style-type: circle;
+  margin-bottom: 10px;
+}
+
+u {
+  text-decoration: none;
+  font-family: Consolas, Monaco, Lucida Console, Liberation Mono,
+    DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
+  color: #6b6868;
+  font-size: smaller;
+  background-color: #eae8e8;
+  padding: 5px;
+}
+
+.bold {
+  font-weight: 400;
+}
+
+a {
+  text-decoration: underline;
+  color: #6b6868;
+  font-weight: bolder;
 }
