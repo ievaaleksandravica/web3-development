@@ -27,7 +27,9 @@ contract Chainlist {
             address _seller,
             string _name,
             string _description,
-            uint156 _price
+            uint256 _price
         )
-    {return (seller, name, description, price)}
+    {
+        return (seller, name, description, price);
+    }
 }

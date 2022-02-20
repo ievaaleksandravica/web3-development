@@ -1067,7 +1067,19 @@
                         <li>Ganache uses <u>7545</u> as port, whereas Truffle <u>9545</u></li>
                         <li>For Ganache you can change those settings, for Truffle not</li>
                     </ul>
-                    <p>In almost every lesson we will begin with starting Ganache</p>
+                    <p class="bold">In almost every lesson we will begin with starting Ganache</p>
+                    <ul>
+                        <li>Starts brand new in-memory implementation</li>
+                        <li>Creates 10 accounts with 100 ETH each</li>
+                        <li>Opens an RPC endpoint on localhost</li>
+                        <li>Always uses the same seedphrase, accounts will always be the same </li>
+                        <li>Normally to send transaction from ETH wallet, you need to unlock its private key. In ganache core they are automatically unlocked</li>
+                        <li>You can always see the logs in the logs tab</li>
+                    </ul>
+                    <p class="bold">Deploy the contract</p>
+                    <ul>
+                        <li><u>truffle migrate --network ganache</u></li>
+                    </ul>
                 </div>
             </div>
             <div class="content-title">
