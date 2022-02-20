@@ -18,4 +18,16 @@ contract Chainlist {
         description = _description;
         price = _price;
     }
+
+    // function to get an article
+    function getArticle()
+        public
+        view
+        returns (
+            address _seller,
+            string _name,
+            string _description,
+            uint156 _price
+        )
+    {return (seller, name, description, price)}
 }
