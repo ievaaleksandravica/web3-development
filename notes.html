@@ -1085,6 +1085,16 @@
                     <ul>
                         <li><u>truffle console --network ganache</u></li>
                         <li><u>Chainlist.address</u> check address of chainlist contract (comes from <u>build/contracts/Chainlist.json</u></li>
+                        <li>Check balances <u>web3.fromWei(web3.eth.getBalance(web3.eth.accounts[0]), "ether").toNumber()</u></li>
+                    </ul>
+                    <p class="bold">Get an instance of the contract</p>
+                    <ul>
+                        <li><u>Chainlist.deployed().then(function(instance){app = instance;})</u></li>
+                        <li><u>app</u> contains JS object that contains everything we need about this contract</li>
+                    </ul>
+                    <p class="bold">Call functions</p>
+                    <ul>
+                        <li></li>
                     </ul>
                 </div>
             </div>
