@@ -1134,6 +1134,18 @@
                         <li>use <u>return Chainlist.deployed...</u> to access the contract data and then call a function on this data once more</li>
                         <li><u>assert.equal(data[])</u> Chai assertion to verify that everything is properly initialized</li>
                     </ul>
+                    <p class="bold">Run the test suite</p>
+                    <ul>
+                        <li><u>truffle test --network ganache</u></li>
+                        <li>This command recompiles your contracts, deploys them to ganache and runs all test suites under test directory</li>
+                        <li>Each time a test suite is started, truffle deploys the last version of the contract to the node</li>
+                        <li>Each test suite will have a unique contract address</li>
+                        <li>Running a test suite will cost some gas for the deployment of the contract, therefore testing has to be done on the test environment</li>
+                    </ul>
+                    <p class="bold">New test case for sellArticle() function</p>
+                    <ul>
+                        <li></li>
+                    </ul>
                  </div>
             </div>
          
