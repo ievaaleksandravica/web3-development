@@ -1104,7 +1104,16 @@
                  <div class="content-details"> 
                      <p>Previously we saw how to create smart contract and implemented the function to sell and get an article. We deployed the contract to Ganache and called it's functions.</p>  
                      <p>One of the benefits of a blockchain is to make the transactions immutable in order to keep track of everything. The same principle applies to smart contracts deployed to the blockchain.</p> 
-                     <p>Once smart contract is deployed, it cannot be changed. If there are bugs, you can disable it and deploy another instance of the smart contract (with new state and address). That's why it is important to test beforehand. </p>            
+                     <p>Once smart contract is deployed, it cannot be changed. If there are bugs, you can disable it and deploy another instance of the smart contract (with new state and address). That's why it is important to test beforehand. </p>   
+                    <p class="bold">Testing Strategies</p>
+                    <ul>
+                        <li>Use several testing environments before deploying it</li>
+                        <li> Truffle Develop / Ganache are faster and have some testing features</li>
+                        <li>Geth to create private Ethereum Network and check your solution on the same node implementation as the one used in production </li>
+                        <li>Public Testnet - opportunity to share your solution with testers</li>
+                    </ul>   
+                    <p>In any of those solutions you can test using dedicated testing framework. Truffle bundles such a testing framework and provides two ways to test your contract: JavaScript (from client-side) and Solidity (within blockchain by simulating another contract interacting with yours) </p> 
+                    <p>We will focus on JavaScript testing</p>
                  </div>
             </div>
          
