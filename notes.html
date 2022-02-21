@@ -1100,15 +1100,43 @@
                 </div>
             </div>
             <div class="content-title">
-                 <h3 class="empty">Sell an article: tests (1/2)</h3>
-                 <div class="content-details">                
+                 <h3 class>Sell an article: tests </h3>
+                 <div class="content-details"> 
+                     <p>Previously we saw how to create smart contract and implemented the function to sell and get an article. We deployed the contract to Ganache and called it's functions.</p>  
+                     <p>One of the benefits of a blockchain is to make the transactions immutable in order to keep track of everything. The same principle applies to smart contracts deployed to the blockchain.</p> 
+                     <p>Once smart contract is deployed, it cannot be changed. If there are bugs, you can disable it and deploy another instance of the smart contract (with new state and address). That's why it is important to test beforehand. </p>   
+                    <p class="bold">Testing Strategies</p>
+                    <ul>
+                        <li>Use several testing environments before deploying it</li>
+                        <li> Truffle Develop / Ganache are faster and have some testing features</li>
+                        <li>Geth to create private Ethereum Network and check your solution on the same node implementation as the one used in production </li>
+                        <li>Public Testnet - opportunity to share your solution with testers</li>
+                    </ul>   
+                    <p>In any of those solutions you can test using dedicated testing framework. Truffle bundles such a testing framework and provides two ways to test your contract: JavaScript (from client-side) and Solidity (within blockchain by simulating another contract interacting with yours) </p> 
+                    <p>We will focus on JavaScript testing</p>
+                    <p>Main goal of such testing is to increase the level of confidence and quality of your solution and to provide big production issues that might compromise credibility </p>
+                    <p class="bold">Start writing tests</p>
+                    <ul>
+                        <li>Mocha as JS testing framework</li>
+                        <li>Chai as development driven assertion library</li>
+                        <li>Testing structure will have a test suite, containing several test cases to run</li>
+                        <li>A lot of function calls are asynchronous</li>
+                    </ul>
+                    <p class="bold">Setup test suite</p>
+                    <ul>
+                        <li><u>tests/ChainListHappyPath.js</u> test suite for happy path scenario </li>
+                        <li>loading the ChainList contract and wrapping in Truffle abstraction</li>
+                        <li>test suite defined with a contract call. It gets a function that gets inserted list of accounts available on the node we are connected to  </li>
+                    </ul>
+                    <p class="bold">Define a test case</p>
+                    <ul>
+                        <li><u>it("should ...", function(){})</u></li>
+                        <li>use <u>return Chainlist.deployed...</u> to access the contract data and then call a function on this data once more</li>
+                        <li><u>assert.equal(data[])</u> Chai assertion to verify that everything is properly initialized</li>
+                    </ul>
                  </div>
             </div>
-            <div class="content-title">
-                 <h3 class="empty">Sell an article: tests (2/2)</h3>
-                 <div class="content-details">                
-                 </div>
-            </div>
+         
             <div class="content-title">
                  <h3 class="empty">Sell an article: frontend preparation (1/2)</h3>
                  <div class="content-details">                
