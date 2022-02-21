@@ -1134,19 +1134,33 @@
                         <li>use <u>return Chainlist.deployed...</u> to access the contract data and then call a function on this data once more</li>
                         <li><u>assert.equal(data[])</u> Chai assertion to verify that everything is properly initialized</li>
                     </ul>
+                    <p class="bold">Run the test suite</p>
+                    <ul>
+                        <li><u>truffle test --network ganache</u></li>
+                        <li>This command recompiles your contracts, deploys them to ganache and runs all test suites under test directory</li>
+                        <li>Each time a test suite is started, truffle deploys the last version of the contract to the node</li>
+                        <li>Each test suite will have a unique contract address</li>
+                        <li>Running a test suite will cost some gas for the deployment of the contract, therefore testing has to be done on the test environment</li>
+                    </ul>
+                    <p class="bold">New test case for sellArticle() function</p>
+                    <ul>
+                        <li>define variables to be added to the function</li>
+                        <li>create new test case</li>
+                        <li>call the <u>sellArticle()</u> function with all the params</li>
+                        <li>this will create a transaction that is mined in a block</li>
+                        <li>now you can call <u>getArticle()</u> to see if it was updated</li>
+                        <li>call another function to check for assertions</li>
+                    </ul>
                  </div>
             </div>
          
             <div class="content-title">
-                 <h3 class="empty">Sell an article: frontend preparation (1/2)</h3>
-                 <div class="content-details">                
+                 <h3>Sell an article: frontend preparation</h3>
+                 <div class="content-details">   
+                     <p></p>             
                  </div>
             </div>
-            <div class="content-title">
-                 <h3 class="empty">Sell an article: frontend preparation (2/2)</h3>
-                 <div class="content-details">                
-                 </div>
-            </div>
+
             <div class="content-title">
                  <h3 class="empty">Sell an article: display article in the frontend (1/3)</h3>
                  <div class="content-details">                
