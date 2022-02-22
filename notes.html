@@ -1165,6 +1165,19 @@
                          <li>One of the things that the <u>chainlist box</u> did is initialize npm packages in <u>package.json</u> file describing some dependencies</li>
                          <li>Install all the npm dependencies <u>npm install</u></li>
                      </ul> 
+                     <p class="bold">Project structure</p>
+                     <ul>
+                         <li><u>contracts</u> all contract source files. Migration contract should be kept </li>
+                         <li><u>migrations</u> logic for the deployment process</li>
+                         <li><u>node_modules</u> used by npm to store the packages required by the applications, such as <u>lightserver</u> - http server that will serve our web app when we will run <u>npm run dev</u></li>
+                         <li><u>src</u> source code of our web application (includes <u>bootstrap</u>, <u>web3</u> and <u>truffle-contract</u> JavaScript libraries</li>
+                         <li><u>test</u> contains test scripts for the contracts</li>
+                         <li><u>truffle.js</u> configures our environment (more specifically the instances where we want to deploy our contracts). By default, it specifies Ganache environment </li>
+                     </ul>
+                     <p class="bold">Run sample application</p>
+                     <ul>
+                         <li></li>
+                     </ul>
                  </div>
             </div>
 
