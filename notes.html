@@ -1157,7 +1157,31 @@
             <div class="content-title">
                  <h3>Sell an article: frontend preparation</h3>
                  <div class="content-details">   
-                     <p></p>             
+                     <p>Typing commands in the console is a quick way to interact with the smart contracts, but end users will not interact with your Dapp, using console. In this lecture we will add the frontend part of Chainlist</p>    
+                     <p>Truffle boxes offer application skeletons with a set of boilerplate elements already written for you</p>  
+                     <p>In this course we use <u>Chainskills box</u> as a starting point for our Chainlist Dapp. This skeleton uses jQuery and Bootstrap</p>  
+                     <p class="bold">Prepare for frontend</p>    
+                     <ul>
+                         <li>One of the things that the <u>chainlist box</u> did is initialize npm packages in <u>package.json</u> file describing some dependencies</li>
+                         <li>Install all the npm dependencies <u>npm install</u></li>
+                     </ul> 
+                     <p class="bold">Project structure</p>
+                     <ul>
+                         <li><u>contracts</u> all contract source files. Migration contract should be kept </li>
+                         <li><u>migrations</u> logic for the deployment process</li>
+                         <li><u>node_modules</u> used by npm to store the packages required by the applications, such as <u>lightserver</u> - http server that will serve our web app when we will run <u>npm run dev</u></li>
+                         <li><u>src</u> source code of our web application (includes <u>bootstrap</u>, <u>web3</u> and <u>truffle-contract</u> JavaScript libraries</li>
+                         <li><u>test</u> contains test scripts for the contracts</li>
+                         <li><u>truffle.js</u> configures our environment (more specifically the instances where we want to deploy our contracts). By default, it specifies Ganache environment </li>
+                     </ul>
+                     <p class="bold">Run sample application</p>
+                     <ul>
+                         <li><u>npm run dev</u> starts the LightServer and opens the browser </li>
+                     </ul>
+                     <p class="bold">Transform boilerplate to ChainList user interface</p>
+                     <ul>
+                         <li></li>
+                     </ul>
                  </div>
             </div>
 
