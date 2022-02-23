@@ -19,7 +19,9 @@ App = {
                     "http://localhost:7545"
                )
           }
-          web3 = new Web3(App.web3Provider)
+          web3 = new Web3(App.web3Provider);
+
+          App.displayAccountInfo();
 
           return App.initContract();
      },
