@@ -1232,8 +1232,11 @@
                      <ul>
                          <li>Implement the <u>initContract()</u> function</li>
                          <li><u>$.getJSON("Chainlist.json"</u> load the contract JSON</li>
-                         <li>Use the file to instantiate a truffle contract abstraction</li>
+                         <li>Use the file to instantiate a truffle contract abstraction <u>TruffleContract(chainListArtifact)</u></li>
+                         <li>Set the provider for contract <u>App.contracts.ChainList.setProvider(App.web3Provider)</u></li>
+                         <li>Retreive the article from the contract <u> return App.reloadArticles()</u></li>
                      </ul>
+                   
                  </div>
             </div>
            

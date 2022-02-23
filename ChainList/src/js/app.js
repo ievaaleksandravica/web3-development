@@ -43,9 +43,18 @@ App = {
 
      initContract: function() {
           $.getJSON("Chainlist.json", function(chainListArtifact) {
-               //Use the file to instantiate a truffle contract abstraction
-          })
+               // Use the file to instantiate a truffle contract abstraction
+               App.contracts.ChainList = TruffleContract(chainListArtifact);
+               // Set the provider for contract
+               App.contracts.ChainList.setProvider(App.web3Provider)
+               // Retreive the article from the contract
+               return App.reloadArticles();
+          });
      },
+
+     reloadArticles: function() {
+          
+     }
 };
 
 $(function() {
