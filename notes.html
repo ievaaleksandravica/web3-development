@@ -1218,6 +1218,34 @@
                          <li>Work on the <u>displayAcccountInfo()</u> function and call it</li>
                          <li>Initialize the connection to the contract by calling <u>initContract()</u> function</li>
                      </ul>
+                     <p class="bold">Display Account Information - function </p>
+                     <ul>
+                        <li>define <u>App.account</u> variable, initialize it with 0x0</li>
+                        <li>create <u>displayAccountInfo</u> function</li>
+                        <li>call the <u>getCoinbase</u> asynchronous function to retreive the information about the current account selected by web3. This returns the account in a callback function</li>
+                        <li>We store it in the <u>App</u> and display it on the page</li>
+                        <li>Then we use this accounts address to retrieve its balance with the <u>getBalance()</u> asynchonous function, so we get the balance in the callback function again </li>
+                        <li>We can display the account balance in the placeholder we defined in the HTML file after converting into the Ether</li>
+                        <li>This code does not depend on the Chainlist contract initialization, so it can be done in parallel</li>
+                     </ul>
+                     <p class="bold">Create an instance of the contract and attach it to frontend</p>
+                     <ul>
+                         <li>Implement the <u>initContract()</u> function</li>
+                         <li><u>$.getJSON("Chainlist.json"</u> load the contract JSON</li>
+                         <li>Use the file to instantiate a truffle contract abstraction <u>TruffleContract(chainListArtifact)</u></li>
+                         <li>Set the provider for contract <u>App.contracts.ChainList.setProvider(App.web3Provider)</u></li>
+                         <li>Retreive the article from the contract <u> return App.reloadArticles()</u></li>
+                     </ul>
+                     <p class="bold">Adjust frontend</p>
+                     <ul>
+                         <li>work with <u>index.html</u> to remove the hard coded values for account and balance as they are coming from app.js</li>
+                     </ul>
+                     <p class="bold">Retrieve the article stored in our contract</p>
+                     <ul>
+                         <li>Function exposed by the ChainList contract is called <u>getArticle()</u></li>
+                         <li>Set up function <u>reloadArticles()</u></li>
+                     </ul>
+                   
                  </div>
             </div>
            

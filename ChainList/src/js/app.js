@@ -1,6 +1,7 @@
 App = {
      web3Provider: null,
      contracts: {},
+     account: 0x0,
 
      init: function() {
       
@@ -26,11 +27,34 @@ App = {
           return App.initContract();
      },
 
-     initContract: function() {
-          /*
-           * Replace me...
-           */
+     displayAccountInfo: function() {
+          web3.eth.getCoinbase(function(err, account) {
+               if(err === null) {
+                    App.account = account;
+                    $("#account").text(account);
+                    web3.eth.getBalance(account, function(err, balance) {
+                         if(err === null) {
+                              $("#accountBalance").text(web3.fromWei(balance, "ether") + " ETH" );
+                         }
+                    })
+               }
+          })
      },
+
+     initContract: function() {
+          $.getJSON("Chainlist.json", function(chainListArtifact) {
+               // Use the file to instantiate a truffle contract abstraction
+               App.contracts.ChainList = TruffleContract(chainListArtifact);
+               // Set the provider for contract
+               App.contracts.ChainList.setProvider(App.web3Provider)
+               // Retreive the article from the contract
+               return App.reloadArticles();
+          });
+     },
+
+     reloadArticles: function() {
+
+     }
 };
 
 $(function() {
