@@ -1,6 +1,7 @@
 App = {
      web3Provider: null,
      contracts: {},
+     account: 0x0,
 
      init: function() {
       
@@ -24,6 +25,20 @@ App = {
           App.displayAccountInfo();
 
           return App.initContract();
+     },
+
+     displayAccountInfo: function() {
+          web3.eth.getCoinbase(function(err, account) {
+               if(err === null) {
+                    App.account = account;
+                    $("#account").text(account);
+                    web3.eth.getBalance(account, function(err, balance) {
+                         if(err === null) {
+                              $("#accountBalance").text(web3.fromWei(balance, "ether") + "ETH" );
+                         }
+                    })
+               }
+          })
      },
 
      initContract: function() {
