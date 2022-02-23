@@ -1222,8 +1222,10 @@
                      <ul>
                         <li>define <u>App.account</u> variable, initialize it with 0x0</li>
                         <li>create <u>displayAccountInfo</u> function</li>
-                        <li>call the <u>getCoinbase</u> asynchronous function to retreive the information about the current account selected by web3</li>
-                        <li></li>
+                        <li>call the <u>getCoinbase</u> asynchronous function to retreive the information about the current account selected by web3. This returns the account in a callback function</li>
+                        <li>We store it in the <u>App</u> and display it on the page</li>
+                        <li>Then we use this accounts address to retrieve its balance with the <u>getBalance()</u> asynchonous function, so we get the balance in the callback function again </li>
+                        <li>We can display the account balance in the placeholder we defined in the HTML file after converting into the Ether</li>
                      </ul>
                  </div>
             </div>
