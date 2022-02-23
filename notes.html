@@ -1192,7 +1192,32 @@
             <div class="content-title">
                  <h3 class>Sell an article: display article in the frontend</h3>
                  <div class="content-details">    
-                     <p></p>            
+                     <p>We are going to connect the web frontend to the contract backend in order to display the articles stored in the contract state. We will initialize our smart contract with default article that will be displayed in the frontend application  </p>         
+                     <p class="bold">Prepare the environment</p>   
+                     <ul>
+                         <li>Start Ganache</li>
+                         <li>If needed, run <u>npm install</u>to install all the dependencies</li>
+                         <li>If needed, set the node version <u>nvm use 10.16</u></li>
+                         <li>Open the project in the code editor</li>
+                         <li>Run unit tests <u>truffle test --network ganache</u></li>
+                         <li>Compile and deploy contracts to Ganache <u>truffle migrate --compile-all --reset --network ganache</u></li>
+                         <li>Disable Metamask extension, because we will connect directly to the node without going through MetaMask</li>
+                         <li><u>npm run dev</u> start the server on localhost:3000</li>
+                     </ul>
+                     <p class="bold">Web3 JavaScript usage</p>
+                     <ul>
+                         <li>We will use <u>web3</u> - javascript library used as a connector between the frontend and ethereum node</li>
+                         <li>To establish this link, it is required to bind web3 to provider </li>
+                         <li>If you would open it with the MetaMask extension enabled, an instance of web3 will be injected into the window object of your web page</li>
+                         <li>In all the situations you will need to provide the address of the http provider hosting your ethereum node </li>
+                     </ul>
+                     <p class="bold">Adapt app.js to create an instance of web3 or to reuse an existing one</p>
+                     <ul>
+                         <li>Remove all the hardcoded calls</li>
+                         <li>Work on the <u>initWeb3()</u> function: Initialize web3 - either reuse the provider of web3 object injected by Metamask (if already set) or create a new provider and plug it directly into our local node. Then can initalize new web3 object</li>
+                         <li>Work on the <u>displayAcccountInfo()</u> function and call it</li>
+                         <li>Initialize the connection to the contract by calling <u>initContract()</u> function</li>
+                     </ul>
                  </div>
             </div>
            
