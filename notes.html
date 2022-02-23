@@ -1244,6 +1244,23 @@
                      <ul>
                          <li>Function exposed by the ChainList contract is called <u>getArticle()</u></li>
                          <li>Set up function <u>reloadArticles()</u></li>
+                         <li>Refresh account information because balance might have changed <u>App.displayAccountInfo()</u></li>
+                         <li>Retreive the article placeholder and clear it <u>$("#articlesRow").empty</u></li>
+                         <li>Call the <u>getArticle</u> contractt function <u>return instance.getArticle()</u> </li>
+                         <li>Retreive article template and fill with data</li>
+                         <li>Add article to <u>articlesRow</u></li>
+                     </ul>
+                     <p class="bold">Error handling</p>
+                     <ul>
+                         <li><u>catch(function(error) {}</u> and then <u>console.log</u> the error message</li>
+                     </ul>
+                     <p class="bold">Modify contract itself</p>
+                     <ul>
+                         <li><u>chainlist.sol</u> sourcefile</li>
+                         <li>Define new constructor to initialize defult article <u>function Chainlist() public {}</u></li>
+                         <li>Insert dummy data <u> sellArticle(.., .., ..);</u></li>
+                         <li>Recompile and redeploy the contract <u>truffle migrate --compile-all --reset --network ganache
+                        </u></li>
                      </ul>
                    
                  </div>
