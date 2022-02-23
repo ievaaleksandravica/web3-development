@@ -1226,6 +1226,13 @@
                         <li>We store it in the <u>App</u> and display it on the page</li>
                         <li>Then we use this accounts address to retrieve its balance with the <u>getBalance()</u> asynchonous function, so we get the balance in the callback function again </li>
                         <li>We can display the account balance in the placeholder we defined in the HTML file after converting into the Ether</li>
+                        <li>This code does not depend on the Chainlist contract initialization, so it can be done in parallel</li>
+                     </ul>
+                     <p class="bold">Create an instance of the contract and attach it to frontend</p>
+                     <ul>
+                         <li>Implement the <u>initContract()</u> function</li>
+                         <li><u>$.getJSON("Chainlist.json"</u> load the contract JSON</li>
+                         <li>Use the file to instantiate a truffle contract abstraction</li>
                      </ul>
                  </div>
             </div>

@@ -42,9 +42,9 @@ App = {
      },
 
      initContract: function() {
-          /*
-           * Replace me...
-           */
+          $.getJSON("Chainlist.json", function(chainListArtifact) {
+               //Use the file to instantiate a truffle contract abstraction
+          })
      },
 };
 
