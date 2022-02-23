@@ -81,6 +81,8 @@ App = {
                     // add this article
                     $("#articlesRow").append(articleTemplate.html())
                }
+          }).catch(function(error) {
+               console.log(error.message)
           })
      }
 };
