@@ -1204,9 +1204,12 @@
                          <li>Disable Metamask extension, because we will connect directly to the node without going through MetaMask</li>
                          <li><u>npm run dev</u> start the server on localhost:3000</li>
                      </ul>
-                     <p class="bold">Replace hardcoded values with info from smart contract using Web3.</p>
+                     <p class="bold">Web3 JavaScript usage</p>
                      <ul>
-                         <li>We will use <u>web3.js</u></li>
+                         <li>We will use <u>web3</u> - javascript library used as a connector between the frontend and ethereum node</li>
+                         <li>To establish this link, it is required to bind web3 to provider </li>
+                         <li>If you would open it with the MetaMask extension enabled, an instance of web3 will be injected into the window object of your web page</li>
+                         <li>In all the situations you will need to provide the address of the http provider hosting your ethereum node </li>
                      </ul>
                  </div>
             </div>
