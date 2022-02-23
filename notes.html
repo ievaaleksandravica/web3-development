@@ -1211,6 +1211,12 @@
                          <li>If you would open it with the MetaMask extension enabled, an instance of web3 will be injected into the window object of your web page</li>
                          <li>In all the situations you will need to provide the address of the http provider hosting your ethereum node </li>
                      </ul>
+                     <p class="bold">Adapt app.js to create an instance of web3 or to reuse an existing one</p>
+                     <ul>
+                         <li>Remove all the hardcoded calls</li>
+                         <li>Work on the <u>initWeb3</u> function</li>
+                         <li>Initialize web3 - either reuse the provider of web3 object injected by Metamask (if already set) or create a new provider and plug it directly into our local node. Then can initalize new web3 object</li>
+                     </ul>
                  </div>
             </div>
            
