@@ -4,8 +4,6 @@ App = {
      account: 0x0,
 
      init: function() {
-      
-
           return App.initWeb3();
      },
 
@@ -56,17 +54,17 @@ App = {
           // Refresh account information because balance might have changed
           App.displayAccountInfo();
           // Retreive the article placeholder and clear it
-          $("#articlesRow").empty
+          $("#articlesRow").empty;
 
           App.contracts.ChainList.deployed().then(function(instance) {
                return instance.getArticle();
           }).then(function(article) {
                if(article[0] == 0x0) {
                     // no article to display;
-                    return
+                    return;
                } else {
                     // retreive article template and fill with data
-                    var articleTemplate = $("articleTemplate");
+                    var articleTemplate = $("#articleTemplate");
                     articleTemplate.find(".panel-title").text(article[1]);
                     articleTemplate.find(".panel-desciption").text(article[2]);
                     articleTemplate.find(".article-price").text(web3.fromWei(article[3], "ether"));
