@@ -1285,7 +1285,24 @@
                          <li>Then call <u>instance.sellArticle(..)</u> function</li>
                          <li>After that call <u>App.reloadArticles()</u> to refresh articles</li>
                          <li>Handle the error with <u>catch</u></li>
-                     </ul>     
+                     </ul>   
+                     <p class="bold">Connect the webpage to the new function</p>  
+                     <ul>
+                         <li>Work in <u>index.html</u></li>
+                         <li>Change the onlick event for the button <u>onclick="App.sellArticle(); return false;"</u></li>
+                     </ul>
+                     <p class="bold">Test the application</p>
+                     <ul>
+                         <li>Run the web application <u>npm run dev</u></li>
+                         <li>Create a dummy article</li>
+                     </ul>
+                     <p class="bold">Inspect the transaction</p>
+                     <ul>
+                         <li>Now <u>Block 5</u> should contain the transaction triggered by the <u>sellArticle()</u> function</li>
+                         <li>You can see the <u>Gas Limit</u> determined by <u>sellArticle()</u> function, <u>Gas Used</u>, <u>Value</u> and <u>TX Data</u></li>
+                         <li><u>TX Data</u> can be converted using <a href="https://codebeautify.org/hex-string-converter"> HEX String Converter</a></li>
+                         <li>As you convert it you will get all the data sent along with the transaction</li>
+                     </ul>
                  </div>
             </div>
 
