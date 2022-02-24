@@ -1281,6 +1281,10 @@
                          <li>Work in <u>app.js</u> and add it to the <u>App</u> object</li>
                          <li>Retreive the details of the article (based on <u>model-dialog</u> in <u>index.html</u>. Do it based on jQuery</li>
                          <li>If <u>_article_name</u> is empty or <u>_price</u> is 0, then there is nothing to sell, so simply <u>return false</u></li>
+                         <li>Else call the <u>App.contracts.ChainList.deployed()</u> to get an instance of the deployed contract</li>
+                         <li>Then call <u>instance.sellArticle(..)</u> function</li>
+                         <li>After that call <u>App.reloadArticles()</u> to refresh articles</li>
+                         <li>Handle the error with <u>catch</u></li>
                      </ul>     
                  </div>
             </div>

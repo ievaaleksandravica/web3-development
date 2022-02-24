@@ -92,7 +92,18 @@ App = {
 
           if(_article_name.trim() == "" || _price == 0) {
                return false;
-          } 
+          } else {
+               App.contracts.ChainList.deployed().then(function(instance) {
+                    return instance.sellArticle(_article_name, _description, _price, {
+                         from: App.account,
+                         gas: 500000
+                    })
+               }).then(function(result) {
+                    App.reloadArticles()
+               }).catch(function(error) {
+                    console.log(error.message)
+               });
+          }
 
      }
 };
