@@ -82,6 +82,18 @@ App = {
           }).catch(function(error) {
                console.log(error.message)
           })
+     },
+
+     sellArticle: function() {
+          // retreive the details of the article
+          var _article_name = $("#article-name").val();
+          var _description = $("#article-description").val();
+          var _price = web3.toWei(parseFloat($("#article-price").val() || 0), "ether");
+
+          if(_article_name.trim() == "" || _price == 0) {
+               return false;
+          } 
+
      }
 };
 
