@@ -1270,7 +1270,13 @@
             <div class="content-title">
                  <h3>Sell an article: from the frontend</h3>
                  <div class="content-details">    
-                     <p></p>            
+                     <p class="bold">Prepare the environment</p> 
+                     <ul>
+                         <li>Start Ganache</li>
+                         <li>In this lesson we will prepare to sell the article from the frontend, so we do not need the constructor that initializes default article anymore, so you can remove it from <u>chainlist.sol</u></li>
+                         <li>From terminal, deploy the contract <u>truffle migrate --compile-all --reset --network ganache</u></li>
+                     </ul>   
+                     <p class="bold">Call <u>sellArticle()</u> function on the contract</p>        
                  </div>
             </div>
 

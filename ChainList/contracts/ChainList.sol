@@ -8,13 +8,13 @@ contract Chainlist {
     uint256 price;
 
     // constructor
-    function Chainlist() public {
-        sellArticle(
-            "Default article",
-            "This is an article set by default",
-            1000000000000000000
-        );
-    }
+    // function Chainlist() public {
+    //     sellArticle(
+    //         "Default article",
+    //         "This is an article set by default",
+    //         1000000000000000000
+    //     );
+    // }
 
     // function to sell an article
     function sellArticle(
