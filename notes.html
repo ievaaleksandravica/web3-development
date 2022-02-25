@@ -1326,7 +1326,13 @@
                         <li>If connection did not work, then navigate to the three dots option and select <u>Connected Sites</u></li>
                         <li>Connect manually</li>
                     </ul>
-                    <p class="bold">    </p>
+                    <p class="bold">Metamask and frontend connection</p>
+                    <ul>
+                        <li>In <u>app.js</u> we checked with <u>initWeb3</u> function if <u>web3</u> is already defined or not</li>
+                        <li>When we enable Metamask, we are in the situation where <u>web3</u> is already defined, so in this case we use a provider already initialized by MetaMask</li>
+                        <li>As we used the network <u>7545</u> the running provider is already connected to the Ganache instance</li>
+                        <li>Now we can use the frontend and Metamask to switch between accounts</li>
+                    </ul>
                 </div>
            </div>
 
