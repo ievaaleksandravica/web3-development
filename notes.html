@@ -1332,6 +1332,18 @@
                         <li>When we enable Metamask, we are in the situation where <u>web3</u> is already defined, so in this case we use a provider already initialized by MetaMask</li>
                         <li>As we used the network <u>7545</u> the running provider is already connected to the Ganache instance</li>
                         <li>Now we can use the frontend and Metamask to switch between accounts</li>
+                        <li>The account will be retreived vi the <u>web3.eth.getCoibnbase</u> call in the <u>displayAccountInfo</u>< function/li>
+                    </ul>
+                    <p class="bold">Sell an article</p>
+                    <ul>
+                        <li>Enter the account details</li>
+                        <li>MetaMask intercepts the transaction that we want to submit to the blockchain and display dialog box to let us confirm this transaction</li>
+                        <li>In this dialog you can change the gas limit and gas price</li>
+                    </ul>
+                    <p class="bold">Fixing network issue bug</p>
+                    <ul>
+                        <li>You might see a bug with an error from Metamask</li>
+                        <li>To address it, you need to change the <u>NetworkID</u> of Ganache</li>
                     </ul>
                 </div>
            </div>
