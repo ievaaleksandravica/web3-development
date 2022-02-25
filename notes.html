@@ -1307,8 +1307,48 @@
             </div>
 
             <div class="content-title">
-                <h3 class="empty">Sell an article: through MetaMask</h3>
-                <div class="content-details">                
+                <h3>Sell an article: through MetaMask</h3>
+                <div class="content-details">            
+                    <p>In this lesson we are going to use Metamask Chrome extension</p>
+                    <p>Thanks to Metamask we will have the ability to switch between different accounts to interact with our contract</p>   
+                    <p class="bold">Prepare the environment</p> 
+                    <ul>
+                        <li>Naviate to <u>chainlist</u> directory</li>
+                        <li>If needed, run <u>npm install</u></li>
+                        <li>Start Ganache</li>
+                        <li>Migrate the contract <u>truffle migrate --compile-all --reset --network ganache</u></li>
+                        <li>Go to the Chrome Extensions and enable <u>Metamask</u> </li>
+                        
+                    </ul>
+                    <p class="bold">Connect to Metamask</p>
+                    <ul>
+                        <li>Click Metamask and switch to private network, running on <u>http://localhost:7545</u> which is our Ganache node</li>
+                        <li>If connection did not work, then navigate to the three dots option and select <u>Connected Sites</u></li>
+                        <li>Connect manually</li>
+                    </ul>
+                    <p class="bold">Metamask and frontend connection</p>
+                    <ul>
+                        <li>In <u>app.js</u> we checked with <u>initWeb3</u> function if <u>web3</u> is already defined or not</li>
+                        <li>When we enable Metamask, we are in the situation where <u>web3</u> is already defined, so in this case we use a provider already initialized by MetaMask</li>
+                        <li>As we used the network <u>7545</u> the running provider is already connected to the Ganache instance</li>
+                        <li>Now we can use the frontend and Metamask to switch between accounts</li>
+                        <li>The account will be retreived vi the <u>web3.eth.getCoibnbase</u> call in the <u>displayAccountInfo</u>< function/li>
+                    </ul>
+                    <p class="bold">Sell an article</p>
+                    <ul>
+                        <li>Enter the account details</li>
+                        <li>MetaMask intercepts the transaction that we want to submit to the blockchain and display dialog box to let us confirm this transaction</li>
+                        <li>In this dialog you can change the gas limit and gas price</li>
+                    </ul>
+                    <p class="bold">Fixing network issue bug</p>
+                    <ul>
+                        <li>You might see a bug with an error from Metamask</li>
+                        <li>To address it, you need to change the <u>NetworkID</u> of Ganache</li>
+                        <li>in Ganache setting, increase the Network ID to <u>5778</u></li>
+                        <li>If your restart Ganache, you need to migrate again</li>
+                        <li>Switch the networks in metamask back and forth</li>
+                    </ul>
+                    <p>Metamask is quite unstable and some workaround might be needed</p>
                 </div>
            </div>
 
@@ -1328,6 +1368,23 @@
             <h3 class="empty">Deploy chainlist to private network</h3>
                 <div class="content-details">                
                 </div>
+            </div>
+
+            <div class="content-title">
+                <h3 class="empty">Buy an article: smart contract</h3>
+                    <div class="content-details">                
+                    </div>
+            </div>
+            <div class="content-title">
+                <h3 class="empty">Buy an article: tests</h3>
+                    <div class="content-details">                
+                    </div>
+            </div>
+
+            <div class="content-title">
+                <h3 class="empty">Buy an article: frontend</h3>
+                    <div class="content-details">                
+                    </div>
             </div>
         </div>
      </section>
