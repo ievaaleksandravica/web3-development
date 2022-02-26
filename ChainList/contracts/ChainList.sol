@@ -8,11 +8,7 @@ contract Chainlist {
     uint256 price;
 
     // events
-    event LogSellArticle(
-        address index _seller,
-        string _name,
-        uint256 _price
-    );
+    event LogSellArticle(address indexed _seller, string _name, uint256 _price);
 
     // constructor
     // function Chainlist() public {

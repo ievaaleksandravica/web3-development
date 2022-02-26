@@ -1374,6 +1374,16 @@
                          <li>Create new event <u> event LogSellArticle(..)</u></li>
                          <li>Trigger the event at the end of <u>sellArticle()</u> function by calling it <u>LogSellArticle(seller, name, price)</u></li>
                      </ul>
+                     <p class="bold">Prepare the console</p>
+                     <ul>
+                         <li>Redeploy <u>migrate --compile-all --reset</u></li>
+                         <li>Get an instance of the deployed contract <u>Chainlist.deployed().then(function(instance){app = instance;})</u></li>
+                         <li>Use the <u>app</u> variable to interact with the contract</li>
+                     </ul>
+                     <p class="bold">Watch the event</p>
+                     <ul>
+                         <li></li>
+                     </ul>
                  </div>
             </div>
 
