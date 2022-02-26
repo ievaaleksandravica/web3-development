@@ -1401,7 +1401,19 @@
                          <li>go to <u>ChainListHappyPast.js</u> suite</li>
                          <li>add a new test case</li>
                          <li>call the <u>sellArticle(..)</u></li>
-                         <li></li>
+                         <li>test for the length of <u>receipt.logs.length</u></li>
+                         <li>test for all the arguments <u>receipt.logs[0].args._seller</u></li>
+                         <li>in the truffle console run <u>test</u> again</li>
+                     </ul>
+                     <p class="bold">Improve which blocks you are watching</p>
+                     <ul>
+                         <li>Dont watch from block zero to block last (not good practice)</li>
+                         <li>For our app we are only interested for watching the latest event triggered</li>
+                         <li>First, stop watching events <u>sellEvent.stopWatching()</u></li>
+                         <li>Redeploy the contract <u>migrate --compile-all --reset</u></li>
+                         <li>Get a new instance <u>Chainlist.deployed().then(function(instance){app = instance;})</u></li>
+                         <li>Watch only last event <u>var sellEvent = app.LogSellArticle({},{}).watch(function(error, event) {console.log(event);})</u> - it is there by default to watch the latest</li>
+                         <li>Sell article <u>app.sellArticle("article 1", "Description of article 1", web3.toWei(10, "ether"), {from: web3.eth.accounts[1]})</u></li>
                      </ul>
                  </div>
             </div>
