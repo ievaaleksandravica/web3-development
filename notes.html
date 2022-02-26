@@ -1389,6 +1389,11 @@
                          <li> <u>app.sellArticle("article 1", "Description of article 1", web3.toWei(10, "ether"), {from: web3.eth.accounts[1]})</u></li>
                          <li>Immediately we see a transaction reciept as before. It contains <u>logs</u> field with all events triggered by that transaction</li>
                          <li>We also see the console log produced by the call to the callback function we defined in the <u>watch</u>. This has details about the event </li>
+                         <li><u>args</u> contain the arguments passed in the <u>LogSellArticle</u> function</li>
+                     </ul>
+                     <p class="bold">Stop watching events</p>
+                     <ul>
+                         <li>Need to call <u>sellEvent.stopWatching()</u> </li>
                      </ul>
                  </div>
             </div>
