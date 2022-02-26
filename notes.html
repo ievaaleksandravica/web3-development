@@ -1364,9 +1364,15 @@
                      <ul>
                          <li>run <u>npm install</u> if needed</li>
                          <li>start Ganache</li>
-                         <li>redeploy <u>truffle migrate --compile-all --reset --network ganache
-                        </u></li>
+                         <li>redeploy <u>truffle migrate --compile-all --reset --network </u></li>
                          <li>open Truffle console <u> truffle console --network ganache</u></li>
+                         <li>run unit tests <u>test</u></li>
+                     </ul>
+                     <p class="bold">Trigger event when an article is ready for sale </p>
+                     <ul>
+                         <li>Update the <u>chainlist.sol</u> contract</li>
+                         <li>Create new event <u> event LogSellArticle(..)</u></li>
+                         <li>Trigger the event at the end of <u>sellArticle()</u> function by calling it <u>LogSellArticle(seller, name, price)</u></li>
                      </ul>
                  </div>
             </div>

@@ -7,6 +7,13 @@ contract Chainlist {
     string description;
     uint256 price;
 
+    // events
+    event LogSellArticle(
+        address index _seller,
+        string _name,
+        uint256 _price
+    );
+
     // constructor
     // function Chainlist() public {
     //     sellArticle(
@@ -26,6 +33,8 @@ contract Chainlist {
         name = _name;
         description = _description;
         price = _price;
+
+        LogSellArticle(seller, name, price);
     }
 
     // function to get an article
