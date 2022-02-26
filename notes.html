@@ -1353,8 +1353,37 @@
            </div>
 
            <div class="content-title">
-                 <h3 class="empty">Sell an article: smart contract with event</h3>
-                 <div class="content-details">                
+                 <h3>Sell an article: smart contract with event</h3>
+                 <div class="content-details">    
+                     <p>In the previous lesson after we posted a new article for sale, we reloaded data from the contract to show the new article. That does not help other users connected to the same contract, who will not see the new article until they reload the page</p>   
+                     <p>We should get notified whenever a new information is available, so the article appears automatically</p>   
+                     <p>Ethereum provides a feature <u>events</u>, that are made exactly for this purpose. These events are informative messages stored in each Ethereum blocks transaction log</p>      
+                     <p>Each event is associated to the address of the contract that triggered it</p>
+                     <p>In this lecture, we will improve the chainlist contract by adding an event that will notify watchers that new article is available for sales. Then we will watch this event from the Truffle console</p>
+                     <p class="bold">Prepare the environmment</p>
+                     <ul>
+                         <li>run <u>npm install</u> if needed</li>
+                         <li>start Ganache</li>
+                         <li>redeploy <u>truffle migrate --compile-all --reset --network </u></li>
+                         <li>open Truffle console <u> truffle console --network ganache</u></li>
+                         <li>run unit tests <u>test</u></li>
+                     </ul>
+                     <p class="bold">Trigger event when an article is ready for sale </p>
+                     <ul>
+                         <li>Update the <u>chainlist.sol</u> contract</li>
+                         <li>Create new event <u> event LogSellArticle(..)</u></li>
+                         <li>Trigger the event at the end of <u>sellArticle()</u> function by calling it <u>LogSellArticle(seller, name, price)</u></li>
+                     </ul>
+                     <p class="bold">Prepare the console</p>
+                     <ul>
+                         <li>Redeploy <u>migrate --compile-all --reset</u></li>
+                         <li>Get an instance of the deployed contract <u>Chainlist.deployed().then(function(instance){app = instance;})</u></li>
+                         <li>Use the <u>app</u> variable to interact with the contract</li>
+                     </ul>
+                     <p class="bold">Watch the event</p>
+                     <ul>
+                         <li>Define new sellEvent variable <u>var sellEvent = app.LogSellArticle({},{fromBlock: 0, toBlock:"latest"}).watch(function(error, event) {console.log(event);})</u></li>
+                     </ul>
                  </div>
             </div>
 
