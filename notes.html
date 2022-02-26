@@ -1358,6 +1358,16 @@
                      <p>In the previous lesson after we posted a new article for sale, we reloaded data from the contract to show the new article. That does not help other users connected to the same contract, who will not see the new article until they reload the page</p>   
                      <p>We should get notified whenever a new information is available, so the article appears automatically</p>   
                      <p>Ethereum provides a feature <u>events</u>, that are made exactly for this purpose. These events are informative messages stored in each Ethereum blocks transaction log</p>      
+                     <p>Each event is associated to the address of the contract that triggered it</p>
+                     <p>In this lecture, we will improve the chainlist contract by adding an event that will notify watchers that new article is available for sales. Then we will watch this event from the Truffle console</p>
+                     <p class="bold">Prepare the environmment</p>
+                     <ul>
+                         <li>run <u>npm install</u> if needed</li>
+                         <li>start Ganache</li>
+                         <li>redeploy <u>truffle migrate --compile-all --reset --network ganache
+                        </u></li>
+                         <li>open Truffle console <u> truffle console --network ganache</u></li>
+                     </ul>
                  </div>
             </div>
 
