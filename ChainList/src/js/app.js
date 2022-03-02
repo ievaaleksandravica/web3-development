@@ -68,7 +68,7 @@ App = {
                     // retreive article template and fill with data
                     var articleTemplate = $("#articleTemplate");
                     articleTemplate.find(".panel-title").text(article[1]);
-                    articleTemplate.find(".panel-desciption").text(article[2]);
+                    articleTemplate.find(".article-description").text(article[2]);
                     articleTemplate.find(".article-price").text(web3.fromWei(article[3], "ether"));
 
                     var seller = article[0];
