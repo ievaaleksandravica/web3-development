@@ -1432,6 +1432,15 @@
                         <li>run unit tests <u>truffle test --network ganache</u></li>
                         <li>deploy the smart contract <u>truffle migrate --compile-all --reset --network ganache</u></li>
                     </ul>
+                    <p class="bold">Listen to events triggered by the contract</p>
+                    <ul>
+                        <li><u>src/js/app.js</u></li>
+                        <li><u>listenToEvents()</u> function</li>
+                        <li>call the <u>instance.LogSellArticle()</u> function</li>
+                        <li>after that call the <u>App.reloadArticles()</u> function to refresh articles</li>
+                        <li>if we do not have any error, then we add the events that we get to list of events that will be displayed in the page <u> $("#events").append('li...')</li...></u></li>
+                        <li>call this function in the <u>initContract()</u> function <u>App.listenToEvents()</u></li>
+                    </ul>
                 </div>
            </div>
 
