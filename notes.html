@@ -1419,8 +1419,28 @@
             </div>
 
             <div class="content-title">
-                <h3 class="empty">Sell an article: events in the frontend</h3>
-                <div class="content-details">                
+                <h3>Sell an article: events in the frontend</h3>
+                <div class="content-details">     
+                    <p>In the previous lesson we declared and triggered an event in our contract and improved our test suite to ensure that we are able to watch this event. We saw how to watch this event in the truffle console as well.</p>  
+                    <p>In this lecture we are going to watch this event from the frontend application. When the <u>logSellArticle</u> is triggered, we retreive the article from the contract and display it </p>     
+                    <p>We will also show the events themselves in the page</p>  
+                    <p class="bold">Prepare the environment</p>  
+                    <ul>
+                        <li>make sure you are in the <u>chainlist</u> directory</li>
+                        <li>run <u>npm install</u> in case we need it</li>
+                        <li>start <u>ganache</u> to get a fresh node</li>
+                        <li>run unit tests <u>truffle test --network ganache</u></li>
+                        <li>deploy the smart contract <u>truffle migrate --compile-all --reset --network ganache</u></li>
+                    </ul>
+                    <p class="bold">Listen to events triggered by the contract</p>
+                    <ul>
+                        <li><u>src/js/app.js</u></li>
+                        <li><u>listenToEvents()</u> function</li>
+                        <li>call the <u>instance.LogSellArticle()</u> function</li>
+                        <li>after that call the <u>App.reloadArticles()</u> function to refresh articles</li>
+                        <li>if we do not have any error, then we add the events that we get to list of events that will be displayed in the page <u> $("#events").append('li...')</li...></u></li>
+                        <li>call this function in the <u>initContract()</u> function <u>App.listenToEvents()</u></li>
+                    </ul>
                 </div>
            </div>
 
@@ -1443,6 +1463,24 @@
 
             <div class="content-title">
                 <h3 class="empty">Buy an article: frontend</h3>
+                    <div class="content-details">                
+                    </div>
+            </div>
+
+            <div class="content-title">
+                <h3 class="empty">List of articles: smart contract</h3>
+                    <div class="content-details">                
+                    </div>
+            </div>
+
+            <div class="content-title">
+                <h3 class="empty">List of articles: tests</h3>
+                    <div class="content-details">                
+                    </div>
+            </div>
+
+            <div class="content-title">
+                <h3 class="empty">List of articles: frontend</h3>
                     <div class="content-details">                
                     </div>
             </div>
