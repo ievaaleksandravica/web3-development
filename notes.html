@@ -1480,6 +1480,33 @@
                         <li>it takes longer than in memory node, because Geth has to actually mine the blocks containing the transactions and in our case it has to wait for each transaction to be mined before it can send the next one</li>
                         <li>we are deploying contracts to our private node, so we are creating transactions, but we said that accounts are supposed to be locked in a geth node</li>
                     </ul>
+                    <p class="bold">Check the connection</p>
+                    <ul>
+                        <li>open console <u>truffle console --network chainskills</u> connected to the chainskills network</li>
+                        <li>call <u>web3.eth.accounts</u> to list the accounts on this node and we see 3 accounts that we defined when we created our private node</li>
+                    </ul>
+                    <p class="bold">Customize the account for deployment and understand unlocking</p>
+                    <ul>
+                        <li>copy the second account</li>
+                        <li>in <u>truffle.js</u> customize the account from which contracts are deployed</li>
+                        <li>redeploy the contract <u>truffle migrate --compile-all --reset --network chainskills
+                        </u> - you will get an error: <u>Error: authentication needed: password or unlock </u></li>
+                        <li>when there is no <u>from</u> address mentioned anywhere, the coinbase account (the first account on the node) is used to deploy contracts by default</li>
+                        <li>in our startnode script we are unlocking the account 0 in the password stored in a file <u>--unlock 0 --password ~/code/ievaaleksandravica/web3-development/ChainSkills/private/password.sec</u></li>
+                        <li>this is needed because we are using this account to mine new blocks and it needs to be unlocked in order to mine</li>
+                        <li>that is why we could deploy the contracts from the private node</li>
+                    </ul>
+                    <p class="bold">Unlock the second account</p>
+                    <ul>
+                        <li>in <u>startnode.sh</u> script we are making <u>--http.api eth,web3,personal,net</u> available</li>
+                        <li>the <u>personal</u> module contains the function we need to unlock the account</li>
+                        <li>open <u>truffle console --network chainskills</u> where truffle is connecting to the private node via the rpc endpoint</li>
+                        <li>unlock the account <u>web3.personal.unlockAccount(web3.eth.accounts[1], password, duration)</u></li>
+                        <li>migrate the conract again <u>migrate --compile-all --reset</u></li>
+                        <li>if you still get an error  for insufficient funds, transfer some <u>web3.fromWei(web3.eth.getBalance(web3.eth.accounts[1]),"ether")</u></li>
+                        <li>quit truffle console <u>.exit</u></li>
+                        <li>remove the <u>from</u> field from <u>truffle.js</u></li>
+                    </ul>
                 </div>
             </div>
 
