@@ -1496,6 +1496,15 @@
                         <li>this is needed because we are using this account to mine new blocks and it needs to be unlocked in order to mine</li>
                         <li>that is why we could deploy the contracts from the private node</li>
                     </ul>
+                    <p class="bold">Unlock the second account</p>
+                    <ul>
+                        <li>in <u>startnode.sh</u> script we are making <u>--http.api eth,web3,personal,net</u> available</li>
+                        <li>the <u>personal</u> module contains the function we need to unlock the account</li>
+                        <li>open <u>truffle console --network chainskills</u> where truffle is connecting to the private node via the rpc endpoint</li>
+                        <li>unlock the account <u>web3.personal.unlockAccount(web3.eth.accounts[1], password, duration)</u></li>
+                        <li>migrate the conract again <u>migrate --compile-all --reset</u></li>
+                        <li>if you still get an error  for insufficient funds, transfer some <u>web3.fromWei(web3.eth.getBalance(web3.eth.accounts[1]),"ether")</u></li>
+                    </ul>
                 </div>
             </div>
 
