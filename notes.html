@@ -1475,7 +1475,10 @@
                     <p class="bold">Deploy the chainlist contract to private network</p>
                     <ul>
                         <li>open the project in your code editor, because we need to customize the configuration a little bit</li>
-                        <li>add a new network configuration to <u>truffle.js</u></li>
+                        <li>add a new network configuration to <u>truffle.js</u>: "chainskills"</li>
+                        <li>in terminal run <u>truffle migrate --compile-all --reset --network chainskills</u></li>
+                        <li>it takes longer than in memory node, because Geth has to actually mine the blocks containing the transactions and in our case it has to wait for each transaction to be mined before it can send the next one</li>
+                        <li>we are deploying contracts to our private node, so we are creating transactions, but we said that accounts are supposed to be locked in a geth node</li>
                     </ul>
                 </div>
             </div>
