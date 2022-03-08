@@ -1464,12 +1464,21 @@
                     <p>In this lesson, we will deploy our chainlist contract to <u>Geth</u> private node that we configured earlier in this course.</p>
                     <p class="bold">Prepare the environment</p>
                     <ul>
-                        <li>open terminal and go to <u>ChainSkills/private</u> dirctory</li>
+                        <li>open terminal and go to <u>ChainSkills/private</u> directory</li>
                         <li>run the startnode script <u>./startnode.sh</u></li>
                         <li>every time you start your private node, check the first lines of the logs</li>
                         <li>in new terminal go to the <u>chainlist</u> project, run <u>npm install</u></li>
                         <li>run tests <u>truffle test</u> without specifying the network</li>
-                        
+                        <li>unit tests use virtual node - a <u>Ganache</u> core node that is started specifically for running tests and shut down when tests are complete. This way, tests are run against contracts that are deployed on their own dedicated node and they do not interfere with the contract instance that you deploy with <u>truffle migrate</u></li>
+                        <li>note, that if you define a network called <u>development</u> in <u>truffle.js</u> it will be used as a default network for <u>truffle test</u></li>
+                    </ul>
+                    <p class="bold">Deploy the chainlist contract to private network</p>
+                    <ul>
+                        <li>open the project in your code editor, because we need to customize the configuration a little bit</li>
+                        <li>add a new network configuration to <u>truffle.js</u>: "chainskills"</li>
+                        <li>in terminal run <u>truffle migrate --compile-all --reset --network chainskills</u></li>
+                        <li>it takes longer than in memory node, because Geth has to actually mine the blocks containing the transactions and in our case it has to wait for each transaction to be mined before it can send the next one</li>
+                        <li>we are deploying contracts to our private node, so we are creating transactions, but we said that accounts are supposed to be locked in a geth node</li>
                     </ul>
                 </div>
             </div>
