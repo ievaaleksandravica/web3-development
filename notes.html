@@ -1480,6 +1480,12 @@
                         <li>it takes longer than in memory node, because Geth has to actually mine the blocks containing the transactions and in our case it has to wait for each transaction to be mined before it can send the next one</li>
                         <li>we are deploying contracts to our private node, so we are creating transactions, but we said that accounts are supposed to be locked in a geth node</li>
                     </ul>
+                    <p class="bold">Check the connection</p>
+                    <ul>
+                        <li>open console <u>truffle console --network chainskills</u> connected to the chainskills network</li>
+                        <li>call <u>web3.eth.accounts</u> to list the accounts on this node and we see 3 accounts that we defined when we created our private node</li>
+                        <li>copy the second account</li>
+                    </ul>
                 </div>
             </div>
 
