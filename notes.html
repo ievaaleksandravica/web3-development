@@ -1484,7 +1484,17 @@
                     <ul>
                         <li>open console <u>truffle console --network chainskills</u> connected to the chainskills network</li>
                         <li>call <u>web3.eth.accounts</u> to list the accounts on this node and we see 3 accounts that we defined when we created our private node</li>
+                    </ul>
+                    <p class="bold">Customize the account for deployment and understand unlocking</p>
+                    <ul>
                         <li>copy the second account</li>
+                        <li>in <u>truffle.js</u> customize the account from which contracts are deployed</li>
+                        <li>redeploy the contract <u>truffle migrate --compile-all --reset --network chainskills
+                        </u> - you will get an error: <u>Error: authentication needed: password or unlock </u></li>
+                        <li>when there is no <u>from</u> address mentioned anywhere, the coinbase account (the first account on the node) is used to deploy contracts by default</li>
+                        <li>in our startnode script we are unlocking the account 0 in the password stored in a file <u>--unlock 0 --password ~/code/ievaaleksandravica/web3-development/ChainSkills/private/password.sec</u></li>
+                        <li>this is needed because we are using this account to mine new blocks and it needs to be unlocked in order to mine</li>
+                        <li>that is why we could deploy the contracts from the private node</li>
                     </ul>
                 </div>
             </div>
