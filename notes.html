@@ -1550,7 +1550,7 @@
                             <li>declare a new event <u>event LogBuyArticle()</u></li>
                             <li>both <u>seller</u> and <u>buyer</u> are <u>indexed</u> which will make it possible for both the buyer and the seller to watch only the events that are specific to them </li>
                             <li>add a function to <u>buyArticle()</u> with qualifier <u>payable</u> - means this function may receive ether from its caller</li>
-                    </ul>
+                        </ul>
                         <p class="bold">Feature verification</p>
                         <ul>
                             <li>check if there is an article for sale bu checking <u>require(seller != 0x0)</u></li>
@@ -1591,7 +1591,43 @@
                             <li>when you attach <u>value</u> to a contract, you are effectively transferring balance from the sender to the balance of the corresponding contract</li>
                             <li>then the contract can spend this balance by sendingor transferring it to other account</li>
                         </ul>
-                          
+                        <p class="bold">Retrieve address of the buyer</p>
+                        <ul>
+                            <li>adjust <u>getArticle()</u> function <u> address _buyer</u></li>
+                        </ul> 
+                        <p class="bold">Test the current setup</p>
+                        <ul>
+                            <li>in terminal <u>truffle console</u> migrate <u>migrate --compile-all --reset</u></li>
+                            <li>get an instance of the deployed contract <u>Chainlist.deployed().then(function(instance) {app = instance;})</u></li>
+                            <li>check balances <u>web3.fromWei(web3.eth.getBalance(web3.eth.accounts[0]), "ether").toNumber()</u></li>
+                            <li>call <u>app.getArticle()</u> function - everything is initialized to zero</li>
+                            <li>sell an article <u>app.sellArticle("article 1", "description for article 1", web3.toWei(10, "ether"), {from: web3.eth.accounts[1]})</u></li>
+                            <li>check the data stored in the contract <u>app.getArticle()</u> - buyer is zero (there is none yet) </li>
+                        </ul> 
+                        <p class="bold">Buy an article</p>
+                        <ul>
+                            <li>Buy article from account with index <u>2</u></li>
+                            <li>Watch the buy article event <u>var buyEvent = app.LogBuyArticle({_seller: web3.eth.accounts[1]}, {}).watch(function(error, event){ console.og(event); })</u></li>
+                            <li>buy the article <u>app.buyArticle({from: web3.eth.accounts[2], value: web3.toWei(10, "ether")})</u></li>
+                        </ul>
+                        <p class="bold">Interrupted <u>buyArticle</u> function</p>
+                        <ul>
+                            <li>in terminal <u>truffle console</u> migrate <u>migrate --compile-all --reset</u></li>
+                            <li>get an instance of the deployed contract <u>Chainlist.deployed().then(function(instance) {app = instance;})</u></li>
+                            <li>sell an article <u>app.sellArticle("article 1", "description for article 1", web3.toWei(10, "ether"), {from: web3.eth.accounts[1]})</u></li>
+                            <li>call <u>app.getArticle()</u> function</li>
+                            <li>buy the article <u>app.buyArticle({from: web3.eth.accounts[2], value: web3.toWei(5, "ether")})</u></li>
+                        </ul>
+                        <p class="bold">Truffle debugger</p>
+                        <ul>
+                            <li>let's you inspect step by step to see what happened exactly - where was the exception was thrown</li>
+                            <li>in <u>ganache</u> transactions you can see that last transaction has a <u>value</u></li>
+                            <li>copy transaction path of the failing transaction</li>
+                            <li>in console type <u>debug "tx hash"</u></li>
+                            <li>it will switch the prompt to <u>debug(ganache: ...)</u></li>
+                            <li>you can navigate it step by step by typing "enter" to get to your needed function</li>
+                            <li>once you get to the error, it will be displayed to you.</li>
+                        </ul>
                     </div>
             </div>
             <div class="content-title">
