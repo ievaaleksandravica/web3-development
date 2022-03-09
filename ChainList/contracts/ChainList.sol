@@ -60,7 +60,17 @@ contract Chainlist {
         payable
         public
         {
-            
+            // check if the article is for sale
+            require(seller != 0x0);
+
+            // check that the article has not been sold yet
+            require(buyer == 0X0);
+
+            // do not allow seller to buy its own article
+            require(msg.sender != seller);
+
+            // check that the value sent corresponds to the price of article
+            require(msg.value == price);
         }
 
 }
