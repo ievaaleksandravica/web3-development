@@ -1595,9 +1595,14 @@
                         <ul>
                             <li>adjust <u>getArticle()</u> function <u> address _buyer</u></li>
                         </ul> 
-                        <p class="bold"></p>
+                        <p class="bold">Test the current setup</p>
                         <ul>
                             <li>in terminal <u>truffle console</u> migrate <u>migrate --compile-all --reset</u></li>
+                            <li>get an instance of the deployed contract <u>Chainlist.deployed().then(function(instance) {app = instance;})</u></li>
+                            <li>check balances <u>web3.fromWei(web3.eth.getBalance(web3.eth.accounts[0]), "ether").toNumber()</u></li>
+                            <li>call <u>app.getArticle()</u> function - everything is initialized to zero</li>
+                            <li>sell an article <u>app.sellArticle("article 1", "description for article 1", web3.toWei(10, "ether"), {from: web3.eth.accounts[1]})</u></li>
+                            <li>check the data stored in the contract <u>app.getArticle()</u> </li>
                         </ul> 
                     </div>
             </div>
