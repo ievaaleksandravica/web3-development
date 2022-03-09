@@ -1612,6 +1612,14 @@
                         </ul>
                         <p class="bold">Interrupted <u>buyArticle</u> function</p>
                         <ul>
+                            <li>in terminal <u>truffle console</u> migrate <u>migrate --compile-all --reset</u></li>
+                            <li>get an instance of the deployed contract <u>Chainlist.deployed().then(function(instance) {app = instance;})</u></li>
+                            <li>sell an article <u>app.sellArticle("article 1", "description for article 1", web3.toWei(10, "ether"), {from: web3.eth.accounts[1]})</u></li>
+                            <li>call <u>app.getArticle()</u> function</li>
+                            <li>buy the article <u>app.buyArticle({from: web3.eth.accounts[2], value: web3.toWei(5, "ether")})</u></li>
+                        </ul>
+                        <p class="bold">Truffle debugger</p>
+                        <ul>
                             <li></li>
                         </ul>
                     </div>
