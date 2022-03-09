@@ -1550,7 +1550,7 @@
                             <li>declare a new event <u>event LogBuyArticle()</u></li>
                             <li>both <u>seller</u> and <u>buyer</u> are <u>indexed</u> which will make it possible for both the buyer and the seller to watch only the events that are specific to them </li>
                             <li>add a function to <u>buyArticle()</u> with qualifier <u>payable</u> - means this function may receive ether from its caller</li>
-                    </ul>
+                        </ul>
                         <p class="bold">Feature verification</p>
                         <ul>
                             <li>check if there is an article for sale bu checking <u>require(seller != 0x0)</u></li>
@@ -1591,7 +1591,14 @@
                             <li>when you attach <u>value</u> to a contract, you are effectively transferring balance from the sender to the balance of the corresponding contract</li>
                             <li>then the contract can spend this balance by sendingor transferring it to other account</li>
                         </ul>
-                          
+                        <p class="bold">Retrieve address of the buyer</p>
+                        <ul>
+                            <li>adjust <u>getArticle()</u> function <u> address _buyer</u></li>
+                        </ul> 
+                        <p class="bold"></p>
+                        <ul>
+                            <li>in terminal <u>truffle console</u> migrate <u>migrate --compile-all --reset</u></li>
+                        </ul> 
                     </div>
             </div>
             <div class="content-title">
