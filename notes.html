@@ -1522,8 +1522,76 @@
             </div>
 
             <div class="content-title">
-                <h3 class="empty">Buy an article: smart contract</h3>
-                    <div class="content-details">                
+                <h3>Buy an article: smart contract</h3>
+                    <div class="content-details">
+                        <p>In this lesson, we will add the possibility for user to buy an article from Chainlist and pay from his wallet</p>   
+                        <p class="bold">Prepare the environment</p>  
+                        <ul>
+                            <li>open terminal and navigate to <u>chainlist project</u></li>
+                            <li>run <u>npm install</u> if needed</li>
+                            <li>open project in code editor</li>
+                            <li>start <u>ganache</u></li>
+                            <li>open truffle console <u>truffle console --network ganache</u></li>
+                            <li>run tests <u>test</u></li>
+                        </ul> 
+                        <p class="bold">Buy feature description</p>     
+                        <ul>
+                            <li>ensure there is an article to buy</li>
+                            <li>allowing somebody to buy it</li>
+                            <li>make sure that article is still available for purchase</li>
+                            <li>the buyer cannot be the seller</li>
+                            <li>value passed to the function must be the same as the article price</li>
+                            <li>only then the buyer pays the seller and once the purchase have been made, we trigger an event to inform watchers that the article was purchased</li>
+                        </ul> 
+                        <p class="bold">Implement the buy feature</p>  
+                        <ul>
+                            <li>work with <u>chainlist.sol</u></li>
+                            <li>add new state variable to store the address of the  buyer <u>address buyer</u></li>
+                            <li>declare a new event <u>event LogBuyArticle()</u></li>
+                            <li>both <u>seller</u> and <u>buyer</u> are <u>indexed</u> which will make it possible for both the buyer and the seller to watch only the events that are specific to them </li>
+                            <li>add a function to <u>buyArticle()</u> with qualifier <u>payable</u> - means this function may receive ether from its caller</li>
+                    </ul>
+                        <p class="bold">Feature verification</p>
+                        <ul>
+                            <li>check if there is an article for sale bu checking <u>require(seller != 0x0)</u></li>
+                            <li>check that the article has not been sold yet <u> require(buyer == 0X0)</u></li>
+                            <li>do not allow seller to buy its own article <u>require(msg.sender != seller)</u></li>
+                            <li>check that the value sent corresponds to the price of article <u>require(msg.value == price)</u></li>
+                        </ul>
+                        <p class="bold">Proceed with the transaction</p>
+                        <ul>
+                            <li>keep buyers information <u>buyer = msg.sender</u></li>
+                            <li>the buyer can pay the seller <u>seller.transfer(msg.value)</u></li>
+                            <li>trigger the event <u>LogBuyArticle(seller, buyer, name, price)</u></li>
+                        </ul>
+                        <p class="bold">Some notes about the above code</p>
+                        <ul>
+                            <li>There are several ways to interupt the contract execution <u>throw</u>, <u>assert</u>, <u>require</u>, <u>revert</u></li>
+                            <li>They all have the same consequences when condition fails
+                                <ul>
+                                    <li>value gets refunded</li>
+                                    <li>state changes reverted</li>
+                                    <li>function execution is interrupted</li>
+                                    <li>gas spent up to to that point is not refunded</li>
+                                    <li><u>revert</u> opcode returned</li>
+                                </ul>
+                            </li>
+                            <li>However, each of them have different purposes
+                                <ul>
+                                    <li><u>throw</u> legacy</li>
+                                    <li><u>assert</u> internal errors</li>
+                                    <li><u>require</u> test preconditions</li>
+                                    <li><u>revert</u> imperative exceptions</li>
+                                </ul>
+                            </li>
+                            <li><u>address</u> type has two methods to send value to an account: <u>send</u> and <u>transfer</u>. <u>send</u> returns to returns true or false, so you have to check it. <u>transfer</u> automatically throws a <u>revert</u> error, if the transaction fails</li>
+                            <li>when you try to divide by zero or access array with out of bounds index it will trigger an <u>assert</u> style exception</li>
+                            <li>any smart contract has its own crypto currency balance just like any other account</li>
+                            <li>in ethereum, there are two kinds of accounts: external accounts, which have a key pair and can be used by human users and contract accounts, which are linked to deployed contracts </li>
+                            <li>when you attach <u>value</u> to a contract, you are effectively transferring balance from the sender to the balance of the corresponding contract</li>
+                            <li>then the contract can spend this balance by sendingor transferring it to other account</li>
+                        </ul>
+                          
                     </div>
             </div>
             <div class="content-title">
@@ -1576,6 +1644,21 @@
 
             <div class="content-title">
                 <h3 class="empty">Deploying the frontend</h3>
+                    <div class="content-details">                
+                    </div>
+            </div>
+            <div class="content-title">
+                <h3 class="empty">Deploying smart contracts to the Rinkeby test net</h3>
+                    <div class="content-details">                
+                    </div>
+            </div>
+            <div class="content-title">
+                <h3 class="empty">Deploying smart contracts to the main net</h3>
+                    <div class="content-details">                
+                    </div>
+            </div>
+            <div class="content-title">
+                <h3 class="empty">Deploying to a test node with an Infure remote node</h3>
                     <div class="content-details">                
                     </div>
             </div>
