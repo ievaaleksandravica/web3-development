@@ -1,6 +1,6 @@
 pragma solidity ^0.4.18;
 
-contract Chainlist {
+contract ChainList {
     // state variables
     address seller;
     address buyer;
@@ -10,7 +10,6 @@ contract Chainlist {
 
     // events
     event LogSellArticle(address indexed _seller, string _name, uint256 _price);
-
     event LogBuyArticle(
         address indexed _seller,
         address indexed _buyer,
@@ -18,16 +17,7 @@ contract Chainlist {
         uint256 _price
     );
 
-    // constructor
-    // function Chainlist() public {
-    //     sellArticle(
-    //         "Default article",
-    //         "This is an article set by default",
-    //         1000000000000000000
-    //     );
-    // }
-
-    // function to sell an article
+    // sell an article
     function sellArticle(
         string _name,
         string _description,
@@ -41,7 +31,7 @@ contract Chainlist {
         LogSellArticle(seller, name, price);
     }
 
-    // function to get an article
+    // get an article
     function getArticle()
         public
         view
@@ -56,21 +46,21 @@ contract Chainlist {
         return (seller, buyer, name, description, price);
     }
 
-    // function to buy an article
+    // buy an article
     function buyArticle() public payable {
-        // check if the article is for sale
+        // we check whether there is an article for sale
         require(seller != 0x0);
 
-        // check that the article has not been sold yet
+        // we check that the article has not been sold yet
         require(buyer == 0X0);
 
-        // do not allow seller to buy its own article
+        // we don't allow the seller to buy his own article
         require(msg.sender != seller);
 
-        // check that the value sent corresponds to the price of article
+        // we check that the value sent corresponds to the price of the article
         require(msg.value == price);
 
-        // keep buyers information
+        // keep buyer's information
         buyer = msg.sender;
 
         // the buyer can pay the seller
