@@ -16,7 +16,7 @@ contract Chainlist {
         address indexed _buyer,
         string _name,
         uint256 _price
-    )
+    );
 
     // constructor
     // function Chainlist() public {
@@ -57,30 +57,26 @@ contract Chainlist {
     }
 
     // function to buy an article
-    function buyArticle()
-        payable
-        public
-        {
-            // check if the article is for sale
-            require(seller != 0x0);
+    function buyArticle() public payable {
+        // check if the article is for sale
+        require(seller != 0x0);
 
-            // check that the article has not been sold yet
-            require(buyer == 0X0);
+        // check that the article has not been sold yet
+        require(buyer == 0X0);
 
-            // do not allow seller to buy its own article
-            require(msg.sender != seller);
+        // do not allow seller to buy its own article
+        require(msg.sender != seller);
 
-            // check that the value sent corresponds to the price of article
-            require(msg.value == price);
+        // check that the value sent corresponds to the price of article
+        require(msg.value == price);
 
-            // keep buyers information
-            buyer = msg.sender
+        // keep buyers information
+        buyer = msg.sender;
 
-            // the buyer can pay the seller
-            seller.transfer(msg.value);
+        // the buyer can pay the seller
+        seller.transfer(msg.value);
 
-            // trigger the event
-            LogBuyArticle(seller, buyer, name, price)
-        }
-
+        // trigger the event
+        LogBuyArticle(seller, buyer, name, price);
+    }
 }
