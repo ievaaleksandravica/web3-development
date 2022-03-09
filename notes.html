@@ -1584,6 +1584,12 @@
                                     <li><u>revert</u> imperative exceptions</li>
                                 </ul>
                             </li>
+                            <li><u>address</u> type has two methods to send value to an account: <u>send</u> and <u>transfer</u>. <u>send</u> returns to returns true or false, so you have to check it. <u>transfer</u> automatically throws a <u>revert</u> error, if the transaction fails</li>
+                            <li>when you try to divide by zero or access array with out of bounds index it will trigger an <u>assert</u> style exception</li>
+                            <li>any smart contract has its own crypto currency balance just like any other account</li>
+                            <li>in ethereum, there are two kinds of accounts: external accounts, which have a key pair and can be used by human users and contract accounts, which are linked to deployed contracts </li>
+                            <li>when you attach <u>value</u> to a contract, you are effectively transferring balance from the sender to the balance of the corresponding contract</li>
+                            <li>then the contract can spend this balance by sendingor transferring it to other account</li>
                         </ul>
                           
                     </div>
