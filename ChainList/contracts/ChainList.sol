@@ -71,6 +71,15 @@ contract Chainlist {
 
             // check that the value sent corresponds to the price of article
             require(msg.value == price);
+
+            // keep buyers information
+            buyer = msg.sender
+
+            // the buyer can pay the seller
+            seller.transfer(msg.value);
+
+            // trigger the event
+            LogBuyArticle(seller, buyer, name, price)
         }
 
 }

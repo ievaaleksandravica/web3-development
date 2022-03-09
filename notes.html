@@ -1544,17 +1544,27 @@
                             <li>only then the buyer pays the seller and once the purchase have been made, we trigger an event to inform watchers that the article was purchased</li>
                         </ul> 
                         <p class="bold">Implement the buy feature</p>  
-                        <ul>
+                        <>
                             <li>work with <u>chainlist.sol</u></li>
                             <li>add new state variable to store the address of the  buyer <u>address buyer</u></li>
                             <li>declare a new event <u>event LogBuyArticle()</u></li>
                             <li>both <u>seller</u> and <u>buyer</u> are <u>indexed</u> which will make it possible for both the buyer and the seller to watch only the events that are specific to them </li>
                             <li>add a function to <u>buyArticle()</u> with qualifier <u>payable</u></li>
+                    </ul>
+                        <p class="bold">Feature verification</p>
+                        <ul>
                             <li>check if there is an article for sale bu checking <u>require(seller != 0x0)</u></li>
                             <li>check that the article has not been sold yet <u> require(buyer == 0X0)</u></li>
                             <li>do not allow seller to buy its own article <u>require(msg.sender != seller)</u></li>
                             <li>check that the value sent corresponds to the price of article <u>require(msg.value == price)</u></li>
-                        </ul>  
+                        </ul>
+                        <p class="bold">Proceed with the transaction</p>
+                        <ul>
+                            <li>keep buyers information <u>buyer = msg.sender</u></li>
+                            <li>the buyer can pay the seller <u>seller.transfer(msg.value)</u></li>
+                            <li>trigger the event <u>LogBuyArticle(seller, buyer, name, price)</u></li>
+                        </ul>
+                          
                     </div>
             </div>
             <div class="content-title">
