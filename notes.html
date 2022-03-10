@@ -1662,6 +1662,34 @@
                             <li>return <u>return chainListInstance.getArticle()</u> to chain another promise on that</li>
                             <li>check that now we have a   <u>buyer</u></li>
                         </ul>
+                        <p class="bold">Description of above implemented test case</p>
+                        <ul>
+                            <li>Tests that the <u>buyArticle()</u> function triggers the right event with the right data</li>
+                            <li>Tests the effects that the call to <u>buyArticle</u> has on the balances for the buyer and seller, accounting for the gas</li>
+                            <li>Tests the modification that the <u>buyArticle</u> makes on the contract state</li>
+                            <li>Test case will only pass if it is run after <u>should sell an article</u></li> 
+    
+                        </ul>
+                        <p class="bold">Run tests</p>
+                        <ul>
+                            <li>run <u>test</u> from the console and fix any issues</li>
+                        </ul>
+                        <p class="bold">Add new test suite to test exceptions</p>
+                        <ul>
+                            <li>new file <u>ChainListExceptions.js</u></li>
+                            <li>this test suite will test the exceptions thrown by the <u>buyArticle</u> function when the requirements are not fulfilled</li>
+                            <li>Basis of the test suite will be very similar to the <u>happyPath</u> test suite</li>
+                        </ul>
+                        <p class="bold">Configure the test suite</p>
+                        <ul>
+                            <li>load the contract to be tested</li>
+                            <li>setup the test suite</li>
+                            <li>start with defining the variables you will need in the test cases</li>
+                            <li>add test cases to ensure that our <u>buy article</u> implementation throws the right exceptions </li>
+                            <li>to make sure that something fails, chain a promise and use <u>assert.fail</u> to test that it fails and then chain a <u>catch(function(error){assert(true);})</u>. After that call the <u>getArticle()</u> function to make sure that it was not affected</li>
+                            <li>1. Buyer tries to buy an article, when there is no article for sale yet: <u>should throw an exception if you try to buy an article when there is no article for sale yet</u></li>
+                            <li>run seperate test file <u>test test/ChainListExceptions.js</u></li>
+                        </ul>
                     </div>
             </div>
 

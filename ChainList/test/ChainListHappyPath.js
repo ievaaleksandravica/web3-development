@@ -6,7 +6,7 @@ contract("ChainList", function(accounts) {
     var chainListInstance;
     var seller = accounts[1];
     var buyer = accounts[2];
-    var articleName = "article1";
+    var articleName = "article 1";
     var articleDescription = "Description for Article 1";
     var articlePrice = 10;
     var sellerBalanceBeforeBuy, sellerBalanceAfterBuy;
@@ -33,7 +33,7 @@ contract("ChainList", function(accounts) {
             return chainListInstance.getArticle();
         }).then(function(data) {
             assert.equal(data[0], seller, "seller must be  " + seller);
-            assert.equal(data[1], Ox0, "buyer must be empty");
+            assert.equal(data[1], 0x0, "buyer must be empty");
             assert.equal(data[2], articleName, "article name must be " + articleName);
             assert.equal(data[3], articleDescription, "article description must be " + articleDescription);
             assert.equal(data[4].toNumber(), web3.toWei(articlePrice, "ether"), "article price must be " + web3.toWei(articlePrice, "ether"));
@@ -63,8 +63,8 @@ contract("ChainList", function(accounts) {
                 buyerBalanceAfterBuy = web3.fromWei(web3.eth.getBalance(buyer), "ether").toNumber(); ;
 
                 // check the effect of the buy on balances of buyer and seller, accounting for gas
-                assert.equal(sellerBalanceAfterBuy == sellerBalanceBeforeBuy + articlePrice, "seller should have earned " + articlePrice + " ETH");
-                assert.equal(buyerBalanceAfterBuy <= buyerBalanceBeforeBuy - articlePrice, "buyer should have spent " + articlePrice + " ETH");
+                assert(sellerBalanceAfterBuy == sellerBalanceBeforeBuy + articlePrice, "true", "seller should have earned " + articlePrice + " ETH");
+                assert(buyerBalanceAfterBuy <= buyerBalanceBeforeBuy - articlePrice, "buyer should have spent " + articlePrice + " ETH");
 
                 return chainListInstance.getArticle();
         }).then(function(data) {
