@@ -18,9 +18,10 @@ contract("ChainList", function(accounts) {
             return instance.getArticle();
         }).then(function(data) {
             assert.equal(data[0], 0x0, "seller must be empty");
-            assert.equal(data[1], "", "article name must be empty");
-            assert.equal(data[2], "", "article description must be empty");
-            assert.equal(data[3].toNumber(), 0, "article price must be zero");
+            assert.equal(data[1], 0x0, "buyer must be empty");
+            assert.equal(data[2], "", "article name must be empty");
+            assert.equal(data[3], "", "article description must be empty");
+            assert.equal(data[4].toNumber(), 0, "article price must be zero");
         })
     });
 
