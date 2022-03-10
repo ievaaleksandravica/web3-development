@@ -11,7 +11,17 @@ contract("Chainlist", function(accounts) {
 
     // no article for sale yet
     it("should throw an exception if you try to buy an article when there is no article for sale yet", function() {
-        
+        return ChainList.deployed().then(function(instance) {
+            chainListInstance = instance;
+            return chainListInstance.buyArticle({
+                from: buyer,
+                value: web3.toWei(articlePrice, "ether")
+            })
+            .then(assert.fail)
+            .catch(function(error) {
+                assert(true)
+            })
+        })
     })
 
 
