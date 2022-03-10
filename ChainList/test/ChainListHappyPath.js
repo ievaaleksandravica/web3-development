@@ -40,6 +40,26 @@ contract("ChainList", function(accounts) {
         })
     });
 
+    it("should buy an article", function() {
+        return ChainList.deployed().then(function(instance){
+            chainListInstance = instance;
+            sellerBalanceBeforeBuy = web3.fromWei(web3.eth.getBalance(seller), "ether").toNumber();
+            buyerBalanceBeforeBuy = web3.fromWei(web3.eth.getBalance(buyer), "ether").toNumber(); ;
+            return chainListInstance.buyArticle({
+                from: buyer,
+                value: web3.toWei(articlePrice, "ether")
+            })
+        }).then(function(receipt) {
+            assert.equal(receipt.logs.length, 1, "one event should have been triggered");
+                assert.equal(receipt.logs[0].event, "LogBuyArticle", "event should be LogBuyArticle");
+                assert.equal(receipt.logs[0].args._seller, seller, "event seller must be " + seller);
+                assert.equal(receipt.logs[0].args._buyer, buyer, "event seller must be " + buyer);
+                assert.equal(receipt.logs[0].args._name, articleName, "event seller must be " + articleName);
+                assert.equal(receipt.logs[0].args._price.toNumber(), web3.toWei(articlePrice, "ether"), "event seller must be " + web3.toWei(articlePrice, "ether"));
+                assert.equal(receipt.logs[0].args._seller, seller, "event seller must be " + seller);
+        })
+    });
+
     it("should trigger an event when a new article is sold", function() {
         return ChainList.deployed().then(function(instance) {
             chainListInstance = instance;

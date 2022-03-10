@@ -1650,7 +1650,15 @@
                             <li>declare new variables to identify the buyer and balances before and after buying the article: buyer, sellerBalanceBeforeBuy, sellerBalanceAfterBuy, buyerBalanceBeforeBuy, buyerBalanceAfterBuy</li>
                             <li>update test case <u>should be initialized with empty values</u> - shift the data elements and add a new one for: buyer must be empty</li>
                             <li>update test case <u>should sell an article</u> - shift the data elements and add a new one for: buyer must be empty</li>
-                        </ul>     
+                        </ul>  
+                        <p class="bold">Add new test case for <u>should buy an article</u></p>   
+                        <ul>
+                            <li>setup the test case and first retreive the <u>chainListInstance</u> as in all other test cases</li>
+                            <li>keep track of balances before selling the articles</li>
+                            <li>call <u>chainListInstance.buyArticle()</u> to buy the article</li>
+                            <li>use a <u>reciept</u> from the callback function and use <u>assert</u>  test similar cases as for <u>sellArticle</u> test case</li>
+                            <li>add additional <u>assert</u> for checkoing the balances</li>
+                        </ul>
                     </div>
             </div>
 
