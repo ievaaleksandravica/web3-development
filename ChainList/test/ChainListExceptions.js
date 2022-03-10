@@ -33,15 +33,15 @@ contract("Chainlist", function(accounts) {
                 assert.equal(data[4].toNumber(), 0, "article price must be zero");
             })
         })
-    })
+    });
 
     // buying an article you are selling
     it("should throw an exception if you try to buy your own article", function() {
-        return chainListInstance.deployed().then(function(instance) {
+        return ChainList.deployed().then(function(instance) {
             chainListInstance = instance;
             return chainListInstance.sellArticle(articleName, articleDescription, web3.toWei(articlePrice, "ether"), {from: seller});
-        });
-    })
+        })
+    
     .then(function(receipt) {
         return chainListInstance.buyArticle({
             from: seller,
@@ -61,7 +61,7 @@ contract("Chainlist", function(accounts) {
         assert.equal(data[2], articleName, "article name must be " + articleName);
         assert.equal(data[3], articleDescription, "article description must be " + articleDescription);
         assert.equal(data[4].toNumber(), web3.toWei(articlePrice, "ether"), "article price must be " + web3.toWei(articlePrice, "ether"));
-    })
+    });
 
-
+})
 });
