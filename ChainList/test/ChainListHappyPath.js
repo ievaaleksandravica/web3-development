@@ -5,9 +5,12 @@ var ChainList = artifacts.require("./ChainList.sol");
 contract("ChainList", function(accounts) {
     var chainListInstance;
     var seller = accounts[1];
+    var buyer = accounts[2];
     var articleName = "article1";
     var articleDescription = "Description for Article 1";
     var articlePrice = 10;
+    var sellerBalanceBeforeBuy, sellerBalanceAfterBuy;
+    var buyerBalanceBeforeBuy, buyerBalanceAfterBuy;
 
 
     it("should be initialized with empty values", function(){
