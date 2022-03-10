@@ -1657,7 +1657,10 @@
                             <li>keep track of balances before selling the articles</li>
                             <li>call <u>chainListInstance.buyArticle()</u> to buy the article</li>
                             <li>use a <u>reciept</u> from the callback function and use <u>assert</u>  test similar cases as for <u>sellArticle</u> test case</li>
-                            <li>add additional <u>assert</u> for checkoing the balances</li>
+                            <li>record balances of buyer and seller after the buy</li>
+                            <li>check the effect with <u>assert</u> of the buy on balances of buyer and seller, accounting for gas</li>
+                            <li>return <u>return chainListInstance.getArticle()</u> to chain another promise on that</li>
+                            <li>check that now we have a   <u>buyer</u></li>
                         </ul>
                     </div>
             </div>
