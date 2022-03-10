@@ -1694,7 +1694,8 @@
                         <ul>
                             <li><u>should throw an exception if you try to buy your own article</u></li>
                             <li>in the <u>chainlist</u> contract implementation, buyer cannot be the same as seller </li>
-                            <li>first call the <u>sellArticle</u> function</li>
+                            <li>first call the <u>chainListInstance.sellArticle()</u> function</li>
+                            <li>then try to buy it from the sellers account <u>chainListInstance.buyArticle({from: seller})</u></li>
                         </ul>
                     </div>
             </div>
