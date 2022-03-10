@@ -35,5 +35,12 @@ contract("Chainlist", function(accounts) {
         })
     })
 
+    // buying an article you are selling
+    it("should throw an exception if you try to buy your own article", function() {
+        return chainListInstance.deployed().then(function(instance) {
+            chainListInstance = instance;
+            return chainListInstance.sellArticle(articleName, articleDescription, web3.toWei(articlePrice, "ether"), {from: seller});
+        })
+    })
 
 });

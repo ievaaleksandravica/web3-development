@@ -1687,8 +1687,14 @@
                             <li>start with defining the variables you will need in the test cases</li>
                             <li>add test cases to ensure that our <u>buy article</u> implementation throws the right exceptions </li>
                             <li>to make sure that something fails, chain a promise and use <u>assert.fail</u> to test that it fails and then chain a <u>catch(function(error){assert(true);})</u>. After that call the <u>getArticle()</u> function to make sure that it was not affected</li>
-                            <li>1. Buyer tries to buy an article, when there is no article for sale yet: <u>should throw an exception if you try to buy an article when there is no article for sale yet</u></li>
+                            <li>Buyer tries to buy an article, when there is no article for sale yet: <u>should throw an exception if you try to buy an article when there is no article for sale yet</u></li>
                             <li>run seperate test file <u>test test/ChainListExceptions.js</u></li>
+                        </ul>
+                        <p class="bold">Test what happens when you are trying to buy your own article</p>
+                        <ul>
+                            <li><u>should throw an exception if you try to buy your own article</u></li>
+                            <li>in the <u>chainlist</u> contract implementation, buyer cannot be the same as seller </li>
+                            <li>first call the <u>sellArticle</u> function</li>
                         </ul>
                     </div>
             </div>
