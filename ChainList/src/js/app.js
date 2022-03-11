@@ -140,8 +140,14 @@ App = {
                     App.reloadArticles();
                })
           })
+     },
+
+     buyArticle: function() {
+          
      }
 };
+
+
 
 $(function() {
      $(window).load(function() {
