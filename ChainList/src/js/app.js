@@ -64,23 +64,37 @@ App = {
                if(article[0] == 0x0) {
                     // no article to display;
                     return;
-               } else {
-                    // retreive article template and fill with data
-                    var articleTemplate = $("#articleTemplate");
-                    articleTemplate.find(".panel-title").text(article[1]);
-                    articleTemplate.find(".article-description").text(article[2]);
-                    articleTemplate.find(".article-price").text(web3.fromWei(article[3], "ether"));
+               } 
 
-                    var seller = article[0];
-                    if (seller == App.account) {
-                         seller = "You"
-                    }
+               var price = web3.fromWei(article[4], "ether")
 
-                    articleTemplate.find(".article-seller").text(seller);
+               // retreive article template and fill with data
+               var articleTemplate = $("#articleTemplate");
+               articleTemplate.find(".panel-title").text(article[2]);
+               articleTemplate.find(".article-description").text(article[3]);
+               articleTemplate.find(".article-price").text(price);
+               articleTemplate.find(".btn-buy").attr('data-value', price);
 
-                    // add this article
-                    $("#articlesRow").append(articleTemplate.html())
+               var seller = article[0];
+               if (seller == App.account) {
+                    seller = "You"
                }
+
+               articleTemplate.find(".article-seller").text(seller);
+
+               // display the buyer
+               var buyer = article[1];
+               if(buyer == App.account) {
+                    buyer = "You"
+               } else if (buyer = 0x0) {
+                    buyer = "Noone yet"
+               } 
+
+               articleTemplate.find(".article-buyer").text(buyer)
+
+               // add this article
+               $("#articlesRow").append(articleTemplate.html())
+               
           }).catch(function(error) {
                console.log(error.message)
           })
