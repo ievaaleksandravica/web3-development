@@ -92,6 +92,12 @@ App = {
 
                articleTemplate.find(".article-buyer").text(buyer)
 
+               if(article[0] == App.account || article[1] != 0x0) {
+                    articleTemplate.find(".btn-buy").hide();
+               } else {
+                    articleTemplate.find(".btn-buy").show();
+               }
+
                // add this article
                $("#articlesRow").append(articleTemplate.html())
                
