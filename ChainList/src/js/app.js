@@ -143,7 +143,20 @@ App = {
      },
 
      buyArticle: function() {
-          
+          event.preventDefault();
+
+          // retreive article price
+          var _price = parseFloat($(event.target).data("value"))
+
+          App.contracts.ChainList.deployed().then(function(instance){
+               return instance.buyArticle({
+                    from: App.account,
+                    value: web3.toWei(_price, "ether"),
+                    gas: 50000
+               });
+          }).catch(function(error) {
+               console.error(error)
+          })
      }
 };
 

@@ -1748,7 +1748,9 @@
                         <p class="bold">Add a new function for <u>buyArticle()</u></p>
                         <ul>
                             <li>this function will be called when we hit the <u>buy</u> button - it will retreive the article prices stored as a data attribute on the button and call <u>buyArticle</u> function exposed by the contract </li>
-                            <li></li>
+                            <li>retreive price <u> var _price = parseFloat($(event.target).data("value"))</u></li>
+                            <li>call the <u>buyArticle()</u> function</li>
+                            <li>catch if there are any errors <u>console.error(error)</u></li>
                         </ul>
                     </div>
             </div>
