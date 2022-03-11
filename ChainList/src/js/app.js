@@ -138,7 +138,16 @@ App = {
                          console.error(error);
                     }
                     App.reloadArticles();
-               })
+               });
+
+               instance.LogBuyArticle({}, {}).watch(function(error, event) {
+                    if(!error) {
+                         $("#events").append('<li class=""list-group-item>' + event.args._buyer + 'bought ' +  event.args._name)
+                    } else {
+                         console.error(error);
+                    }
+                    App.reloadArticles();
+               });
           })
      },
 
