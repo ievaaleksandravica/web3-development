@@ -1766,8 +1766,52 @@
             </div>
 
             <div class="content-title">
-                <h3 class="empty">List of articles: smart contract</h3>
-                    <div class="content-details">                
+                <h3>List of articles: smart contract</h3>
+                    <div class="content-details">      
+                        <p>Right now our chainlist contract is a little bit artificial, because it allows to sell and buy only one article at the time</p>
+                        <p>Improve our dApp to let users sell and buy multiple articles</p>  
+                        <p>To implement this feature, we will introduce to concepts in Solidity: structure types and mappings. These concepts will help to organize the data first by grouping all the fields in an article together into a structured type and then by storing an associated array of those structures. </p>        
+                        <p class="bold">Prepare the environment</p>
+                        <ul>
+                            <li>open terminal and navigate to <u>chainlist</u> directory</li>
+                            <li>open project in code editor</li>
+                        </ul>
+                        <p class="bold">Background of structure types</p>
+                        <ul>
+                            <li>solidity structure types are similar to what you can find in languages like <u>C</u> </li>
+                            <li>goal is to physically group certain variables, belonging to the same concept</li>
+                            <li>first, need to declare the article structure type, which will not store anything in the contract state until we instantiate a variable of this type and store it in the state</li>
+                        </ul>
+                        <p class="bold">Chain the chainlist contract to group all the article fields</p>
+                        <ul>
+                            <li>work in <u>chainlist.sol</u> file and before state variables, declare a new section for custom types</li>
+                            <li>declare article structure <u>struct Article {}</u></li>
+                            <li>same fields as in our contract, so you can just move them from the state variables</li>
+                            <li>add just one new field <u>uint: id;</u></li>
+                            <li>right now <u>Article</u> will have the same fields as before plus the <u>property</u> that will make possible for us to identify each article in the associative array</li>
+                            <li>to declare variable of type <u>Article</u>, you can use the article structure as any other data type</li>
+                            <li>to access a specific field of a structure type, you can the <u>.</u> notation </li>
+                        </ul>
+                        <p class="bold">We want to store more than one article, so we need to use mapping</p>
+                        <ul>
+                            <li>mappings are associative arrays, whose values are set to zero for all possible keys by default</li>
+                            <li>values can be any data types, including custom structure data types, like our <u>Article</u></li>
+                            <li>mappings cannot be itterated over, because they are not stored as such in the contract state</li>
+                            <li>because of that, there is no way to know the size of the mapping or to determine if a key exists or not</li>
+                            <li>the only things we can do with <u>mappings</u> are: change the value associated to a key & retreiving the value associated to a known key</li>
+                        </ul>
+                        <p class="bold">Declare list of articles</p>
+                        <ul>
+                            <li>in state variables section, declare new mapping <u>mapping (uint => Article) public articles;</u> - this will store a list of articles and each article will be accessable via assigned integer key.</li>
+                            <li>since the mapping cannot be iterated over and there is no way to know which keys are set or not, the article counter variable will help us to keep track of the size of the mapping, as well as which keys should have an associated value. Store it as state variable <u>uint ArticleCounter;</u></li>
+                            <li>since articles are declared as public, this means that the compiler will have to automatically generate a <u>getter</u> for this variable</li>
+                            <li>like mappings, structs are just syntactic sugar and the assembly language of EVM is not aware of them</li>
+                            <li>in additions we define in our contract, the compiler will generate a function, called <u>articles(uint_id)</u>. This function will not return an article but six values, one for each field of the article structure type </li>
+                        </ul>
+                        <p class="bold">Allow to sell more than one article</p>
+                        <ul>
+                            <li>have to update the <u>sellArticle</u> function to store the new article and its seller into the mapping</li>
+                        </ul>
                     </div>
             </div>
 

@@ -1,12 +1,19 @@
 pragma solidity ^0.4.18;
 
 contract ChainList {
+    // custom types
+    struct Article {
+        uint: id;
+        address seller;
+        address buyer;
+        string name;
+        string description;
+        uint256 price;
+    }
+
     // state variables
-    address seller;
-    address buyer;
-    string name;
-    string description;
-    uint256 price;
+   mapping (uint => Article) public articles;
+   uint ArticleCounter;
 
     // events
     event LogSellArticle(address indexed _seller, string _name, uint256 _price);
