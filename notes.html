@@ -1806,6 +1806,11 @@
                             <li>since the mapping cannot be iterated over and there is no way to know which keys are set or not, the article counter variable will help us to keep track of the size of the mapping, as well as which keys should have an associated value. Store it as state variable <u>uint ArticleCounter;</u></li>
                             <li>since articles are declared as public, this means that the compiler will have to automatically generate a <u>getter</u> for this variable</li>
                             <li>like mappings, structs are just syntactic sugar and the assembly language of EVM is not aware of them</li>
+                            <li>in additions we define in our contract, the compiler will generate a function, called <u>articles(uint_id)</u>. This function will not return an article but six values, one for each field of the article structure type </li>
+                        </ul>
+                        <p class="bold">Allow to sell more than one article</p>
+                        <ul>
+                            <li>have to update the <u>sellArticle</u> function to store the new article and its seller into the mapping</li>
                         </ul>
                     </div>
             </div>
