@@ -12,7 +12,8 @@ contract ChainList {
     }
 
     // state variables
-   
+   mapping (uint => Article) public articles;
+   uint ArticleCounter;
 
     // events
     event LogSellArticle(address indexed _seller, string _name, uint256 _price);
