@@ -30,10 +30,14 @@ contract ChainList {
         string _description,
         uint256 _price
     ) public {
-        seller = msg.sender;
-        name = _name;
-        description = _description;
-        price = _price;
+        // a new article
+        articleCounter++;
+
+        // store a new article inside the articles mapping
+        articles[articleCounter] = Article(
+            
+        )
+
 
         LogSellArticle(seller, name, price);
     }
