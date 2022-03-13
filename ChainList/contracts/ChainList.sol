@@ -16,8 +16,9 @@ contract ChainList {
    uint ArticleCounter;
 
     // events
-    event LogSellArticle(address indexed _seller, string _name, uint256 _price);
+    event LogSellArticle(uint indexed _id, address indexed _seller, string _name, uint256 _price);
     event LogBuyArticle(
+        
         address indexed _seller,
         address indexed _buyer,
         string _name,
@@ -33,13 +34,18 @@ contract ChainList {
         // a new article
         articleCounter++;
 
-        // store a new article inside the articles mapping
+        // store the new article inside the articles mapping
         articles[articleCounter] = Article(
-            
+            articleCounter,
+            msg.sender,
+            0x0,
+            _name,
+            _description,
+            _price
         )
 
 
-        LogSellArticle(seller, name, price);
+        LogSellArticle(articleCounter, seller, name, price);
     }
 
     // get an article
