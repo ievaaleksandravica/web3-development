@@ -54,6 +54,11 @@ contract ChainList {
         return articleCounter;
     }
 
+    // fetch and return all article IDs for articles still for sale 
+    function getArticlesForSale() public view returns (uint[]) {
+        // prepare output array
+        uint[] memory articleIds = new uint[](articleCounter);
+    }
 
     // buy an article
     function buyArticle(uint _id) public payable {
