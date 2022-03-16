@@ -17,8 +17,9 @@ contract ChainList {
 
     // events
     event LogSellArticle(uint indexed _id, address indexed _seller, string _name, uint256 _price);
+
     event LogBuyArticle(
-        
+        uint indexed _id,
         address indexed _seller,
         address indexed _buyer,
         string _name,
@@ -48,42 +49,39 @@ contract ChainList {
         LogSellArticle(articleCounter, seller, name, price);
     }
 
-    // get an article
-    function getArticle()
-        public
-        view
-        returns (
-            address _seller,
-            address _buyer,
-            string _name,
-            string _description,
-            uint256 _price
-        )
-    {
-        return (seller, buyer, name, description, price);
+    // fetch the number of articles in the contract
+    function getNumberOfArticles() public view returns (uint) {
+        return articleCounter;
     }
 
+
     // buy an article
-    function buyArticle() public payable {
+    function buyArticle(uint _id) public payable {
         // we check whether there is an article for sale
-        require(seller != 0x0);
+        require(articleCounter > 0);
+
+        // we check that the article exists
+        require(_id > 0 && _id <= articleCounter);
+
+        // retreive the article from the mapping
+        Article storage article = articles[_id];
 
         // we check that the article has not been sold yet
-        require(buyer == 0X0);
+        require(article.buyer == 0X0);
 
         // we don't allow the seller to buy his own article
-        require(msg.sender != seller);
+        require(msg.sender != article.seller);
 
         // we check that the value sent corresponds to the price of the article
-        require(msg.value == price);
+        require(msg.value == article.price);
 
         // keep buyer's information
-        buyer = msg.sender;
+        article.buyer = msg.sender;
 
         // the buyer can pay the seller
-        seller.transfer(msg.value);
+        article.seller.transfer(msg.value);
 
         // trigger the event
-        LogBuyArticle(seller, buyer, name, price);
+        LogBuyArticle(_id, article.seller, article.buyer, article.name, article.price);
     }
 }

@@ -1816,6 +1816,26 @@
                             <li>store a new article inside the articles mapping <u>articles[articleCounter] = Article()</u> it is a constructor that takes all the fields in the same order as they are declared</li>
                             <li>add <u>id</u> to <u>LogSellArticle()</u></li>
                         </ul>
+                        <p class="bold">Update <u>buyArticle</u> function</p>
+                        <ul>
+                            <li>when user buys an article, he will have to identify which one he wants to buy</li>
+                            <li>add an argument to the function to specify the identifier of the article the user wants to buy <u>buyArticle(uint _id)</u> </li>
+                            <li>check for the presence of the article for sale: change from <u>require(seller != 0x0)</u> to <u>require(articleCounter > 0)</u> </li>
+                            <li>check that the id passed in the argument corresponds to an existing article id <u>require(_id > 0 && _id <= articleCounter)</u></li>
+                            <li>retreive the article from the mapping to be able to check other conditions <u>Article storage article = articles[_id]</u></li>
+                            <li>update the other checkers with retreiving the data from article, e.g. change from <u>buyer</u> to <u>article.buyer</u></li>
+                        </ul>
+                        <p class="bold">Update <u>LogBuyArticle</u> function</p>
+                        <ul>
+                            <li>add <u>uint indexed _id</u> to the function</li>
+                            <li>add <u>_id</u> when you trigger this event</li>
+                        </ul>
+                        <p class="bold">Modify the contract to accomodate the fact that the <u>article getter</u> is given with the mapping</p>
+                        <ul>
+                            <li>remove the <u>getArticle</u> function</li>
+                            <li>create a new <u>getter</u> that returns the total number of articles</li>
+                            <li>create a new <u>getter</u> to create a list of identifiers for articles that are still for sale</li>
+                        </ul>
                     </div>
             </div>
 
