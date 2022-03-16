@@ -3,7 +3,7 @@ pragma solidity ^0.4.18;
 contract ChainList {
     // custom types
     struct Article {
-        uint: id;
+        uint256 id;
         address seller;
         address buyer;
         string name;
@@ -12,14 +12,19 @@ contract ChainList {
     }
 
     // state variables
-   mapping (uint => Article) public articles;
-   uint ArticleCounter;
+    mapping(uint256 => Article) public articles;
+    uint256 articleCounter;
 
     // events
-    event LogSellArticle(uint indexed _id, address indexed _seller, string _name, uint256 _price);
+    event LogSellArticle(
+        uint256 indexed _id,
+        address indexed _seller,
+        string _name,
+        uint256 _price
+    );
 
     event LogBuyArticle(
-        uint indexed _id,
+        uint256 indexed _id,
         address indexed _seller,
         address indexed _buyer,
         string _name,
@@ -43,36 +48,35 @@ contract ChainList {
             _name,
             _description,
             _price
-        )
-
+        );
 
         LogSellArticle(articleCounter, seller, name, price);
     }
 
     // fetch the number of articles in the contract
-    function getNumberOfArticles() public view returns (uint) {
+    function getNumberOfArticles() public view returns (uint256) {
         return articleCounter;
     }
 
-    // fetch and return all article IDs for articles still for sale 
-    function getArticlesForSale() public view returns (uint[]) {
+    // fetch and return all article IDs for articles still for sale
+    function getArticlesForSale() public view returns (uint256[]) {
         // prepare output array
-        uint[] memory articleIds = new uint[](articleCounter);
+        uint256[] memory articleIds = new uint256[](articleCounter);
 
-        uint numberOfArticlesForSale = 0;
+        uint256 numberOfArticlesForSale = 0;
 
         // iterate over articles
-        for(uint i = 1; i <= articleCounter; i++) {
+        for (uint256 i = 1; i <= articleCounter; i++) {
             // keep the ID is if the article is still for sale
-            if(articles[i].buyer == 0x0) {
+            if (articles[i].buyer == 0x0) {
                 articleIds[numberOfArticlesForSale] = articles[i].id;
                 numberOfArticlesForSale++;
             }
         }
 
         // copy the articleIds array into smaller forSale array
-        uint[] memory forSale = new uint[](numberForArticlesForSale);
-        for(uint j = 0,  < numberOfArticlesForSale; j++) {
+        uint256[] memory forSale = new uint256[](numberOfArticlesForSale);
+        for (uint256 j = 0; j < numberOfArticlesForSale; j++) {
             forSale[j] = articleIds[j];
         }
 
@@ -80,7 +84,7 @@ contract ChainList {
     }
 
     // buy an article
-    function buyArticle(uint _id) public payable {
+    function buyArticle(uint256 _id) public payable {
         // we check whether there is an article for sale
         require(articleCounter > 0);
 
@@ -106,6 +110,12 @@ contract ChainList {
         article.seller.transfer(msg.value);
 
         // trigger the event
-        LogBuyArticle(_id, article.seller, article.buyer, article.name, article.price);
+        LogBuyArticle(
+            _id,
+            article.seller,
+            article.buyer,
+            article.name,
+            article.price
+        );
     }
 }
