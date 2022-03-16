@@ -1849,7 +1849,8 @@
                             <li>sell an article <u>app.sellArticle("iPhone 7", "selling in order to buy iphone 8", web3.toWei(10,"ether"), {from: web3.eth.accounts[1]})
                             </u>add another article for sale</li>
                             <li>retreive articles for sale: you will see an array with two values</li>
-                            <li>get the details of articles using the <u>getter</u> that the compiler has generated</li>
+                            <li>get the details of articles using the <u>getter</u> that the compiler has generated <u>app.articles(1)</u></li>
+                            <li>buy article with id of 1 <u>app.buyArticle(1, {from: web3.eth.accounts[2], value: web3.toWei(10, "ether")})</u></li>
                         </ul>
                     </div>
             </div>
