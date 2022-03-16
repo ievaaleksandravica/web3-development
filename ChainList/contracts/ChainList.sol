@@ -64,9 +64,12 @@ contract ChainList {
     }
 
     // buy an article
-    function buyArticle() public payable {
+    function buyArticle(uint _id) public payable {
         // we check whether there is an article for sale
-        require(seller != 0x0);
+        require(articleCounter > 0);
+
+        // we check that the article exists
+        require(_id > 0 && _id <= articleCounter);
 
         // we check that the article has not been sold yet
         require(buyer == 0X0);
