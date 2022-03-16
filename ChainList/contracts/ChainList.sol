@@ -71,22 +71,25 @@ contract ChainList {
         // we check that the article exists
         require(_id > 0 && _id <= articleCounter);
 
+        // retreive the article from the mapping
+        Article storage article = articles[_id];
+
         // we check that the article has not been sold yet
-        require(buyer == 0X0);
+        require(article.buyer == 0X0);
 
         // we don't allow the seller to buy his own article
-        require(msg.sender != seller);
+        require(msg.sender != article.seller);
 
         // we check that the value sent corresponds to the price of the article
-        require(msg.value == price);
+        require(msg.value == article.price);
 
         // keep buyer's information
-        buyer = msg.sender;
+        article.buyer = msg.sender;
 
         // the buyer can pay the seller
-        seller.transfer(msg.value);
+        article.seller.transfer(msg.value);
 
         // trigger the event
-        LogBuyArticle(seller, buyer, name, price);
+        LogBuyArticle(article.seller, article.buyer, article.name, article.price);
     }
 }

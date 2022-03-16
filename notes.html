@@ -1822,6 +1822,8 @@
                             <li>add an argument to the function to specify the identifier of the article the user wants to buy <u>buyArticle(uint _id)</u> </li>
                             <li>check for the presence of the article for sale: change from <u>require(seller != 0x0)</u> to <u>require(articleCounter > 0)</u> </li>
                             <li>check that the id passed in the argument corresponds to an existing article id <u>require(_id > 0 && _id <= articleCounter)</u></li>
+                            <li>retreive the article from the mapping to be able to check other conditions <u>Article storage article = articles[_id]</u></li>
+                            <li>update the other checkers with retreiving the data from article, e.g. change from <u>buyer</u> to <u>article.buyer</u></li>
                         </ul>
                     </div>
             </div>
