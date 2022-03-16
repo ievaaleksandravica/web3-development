@@ -17,8 +17,9 @@ contract ChainList {
 
     // events
     event LogSellArticle(uint indexed _id, address indexed _seller, string _name, uint256 _price);
+
     event LogBuyArticle(
-        
+        uint indexed _id,
         address indexed _seller,
         address indexed _buyer,
         string _name,
@@ -90,6 +91,6 @@ contract ChainList {
         article.seller.transfer(msg.value);
 
         // trigger the event
-        LogBuyArticle(article.seller, article.buyer, article.name, article.price);
+        LogBuyArticle(_id, article.seller, article.buyer, article.name, article.price);
     }
 }
