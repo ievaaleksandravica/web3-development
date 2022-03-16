@@ -69,6 +69,14 @@ contract ChainList {
                 numberOfArticlesForSale++;
             }
         }
+
+        // copy the articleIds array into smaller forSale array
+        uint[] memory forSale = new uint[](numberForArticlesForSale);
+        for(uint j = 0,  < numberOfArticlesForSale; j++) {
+            forSale[j] = articleIds[j];
+        }
+
+        return forSale;
     }
 
     // buy an article
