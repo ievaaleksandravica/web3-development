@@ -58,6 +58,17 @@ contract ChainList {
     function getArticlesForSale() public view returns (uint[]) {
         // prepare output array
         uint[] memory articleIds = new uint[](articleCounter);
+
+        uint numberOfArticlesForSale = 0;
+
+        // iterate over articles
+        for(uint i = 1; i <= articleCounter; i++) {
+            // keep the ID is if the article is still for sale
+            if(articles[i].buyer == 0x0) {
+                articleIds[numberOfArticlesForSale] = articles[i].id;
+                numberOfArticlesForSale++;
+            }
+        }
     }
 
     // buy an article
