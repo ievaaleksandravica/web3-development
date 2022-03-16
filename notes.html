@@ -1846,6 +1846,10 @@
                             <li>check the initial state of the contract <u>app.getArticlesForSale()</u> - this will return an empty array</li>
                             <li>check the available article count <u>app.getNumberOfArticles()</u></li>
                             <li>watch the events of sale and purchase <u>var sellEvent = app.LogSellArticle({},{}).watch(function(error, event) {console.log(event);})</u></li>
+                            <li>sell an article <u>app.sellArticle("iPhone 7", "selling in order to buy iphone 8", web3.toWei(10,"ether"), {from: web3.eth.accounts[1]})
+                            </u>add another article for sale</li>
+                            <li>retreive articles for sale: you will see an array with two values</li>
+                            <li>get the details of articles using the <u>getter</u> that the compiler has generated</li>
                         </ul>
                     </div>
             </div>
