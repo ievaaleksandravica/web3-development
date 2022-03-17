@@ -56,7 +56,14 @@ contract("ChainList", function(accounts) {
             assert.equal(data.length, 1, "there should be one article for sale");
             assert.equal(data[0].toNumber(), 1, "id of article for sale should be one");
 
-            return chainListInstance.articles()
+            return chainListInstance.articles(data[0])
+        }).then(function(data) {
+            assert.equal(data[0].toNumber(), 1, "article id must be 1" );
+            assert.equal(data[1], seller, "seller must be " + seller );
+            assert.equal(data[2], 0x0, "buyer must be empty" );
+            assert.equal(data[3], articleName1, "article name must be " + articleName1 );
+            assert.equal(data[4], articleDescription1, "article description must be " + articleDescription1 );
+            assert.equal(data[5].toNumber(), web3.toWei(articlePrice1, "ether"), "article price must be " + web3.toWei(articlePrice1, "ether"));
         })
     })
 
