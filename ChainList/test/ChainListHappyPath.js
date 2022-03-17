@@ -32,7 +32,19 @@ contract("ChainList", function(accounts) {
     it("should let us sell a first article", function() {
         return ChainList.deployed().then(function(instance) {
             chainListInstance = instance;
-            return chainListInstance.sellArticle(articleName1, articleDescription1. web3.toWei(articlePrice1, "ether"))
+            return chainListInstance.sellArticle(      
+                articleName1, 
+                articleDescription1,
+                web3.toWei(articlePrice1, "ether"), 
+                {from: seller});
+        }).then(function(receipt) {
+            // checking the event
+            assert.equal(receipt.logs.length, 1, "one event should have been triggered");
+                assert.equal(receipt.logs[0].event, "LogSellArticle", "event should be LogSellArticle");
+                assert.equal(receipt.logs[0].args._seller, seller, "event seller must be " + seller);
+                assert.equal(receipt.logs[0].args._name, articleName1, "event seller must be " + articleName1);
+                assert.equal(receipt.logs[0].args._price.toNumber(), web3.toWei(articlePrice1, "ether"), "event seller must be " + web3.toWei(articlePrice1, "ether"));
+                assert.equal(receipt.logs[0].args._seller, seller, "event seller must be " + seller);
         })
     })
 
