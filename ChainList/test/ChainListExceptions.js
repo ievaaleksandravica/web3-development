@@ -89,7 +89,7 @@ contract("Chainlist", function(accounts) {
         })
     
     .then(function(receipt) {
-        return chainListInstance.buyArticle({
+        return chainListInstance.buyArticle(1, {
             from: buyer,
             value: web3.toWei(articlePrice + 1, "ether")
         })
@@ -99,14 +99,15 @@ contract("Chainlist", function(accounts) {
         assert(true);
     })
     .then(function() {
-        return chainListInstance.getArticle();
+        return chainListInstance.articles(1);
     })
     .then(function(data) {
-        assert.equal(data[0], seller, "seller must be  " + seller);
-        assert.equal(data[1], 0x0, "buyer must be empty");
-        assert.equal(data[2], articleName, "article name must be " + articleName);
-        assert.equal(data[3], articleDescription, "article description must be " + articleDescription);
-        assert.equal(data[4].toNumber(), web3.toWei(articlePrice, "ether"), "article price must be " + web3.toWei(articlePrice, "ether"));
+        assert.equal(data[0].toNumber(), 1, "article id must be one");
+        assert.equal(data[1], seller, "seller must be  " + seller);
+        assert.equal(data[2], 0x0, "buyer must be empty");
+        assert.equal(data[3], articleName, "article name must be " + articleName);
+        assert.equal(data[4], articleDescription, "article description must be " + articleDescription);
+        assert.equal(data[5].toNumber(), web3.toWei(articlePrice, "ether"), "article price must be " + web3.toWei(articlePrice, "ether"));
     });
 
     });
@@ -116,8 +117,7 @@ contract("Chainlist", function(accounts) {
         return ChainList.deployed().then(function(instance) {
             chainListInstance = instance;
         })
-    
-    .then(function(receipt) {
+        .then(function(receipt) {
         return chainListInstance.buyArticle({
             from: buyer,
             value: web3.toWei(articlePrice, "ether")
