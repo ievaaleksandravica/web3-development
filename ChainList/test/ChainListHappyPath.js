@@ -11,7 +11,7 @@ contract("ChainList", function(accounts) {
     var articlePrice1 = 10;
     var articleName2 = "article 2";
     var articleDescription2 = "Description for Article 2";
-    var articlePrice1 = 20;
+    var articlePrice2 = 20;
     var sellerBalanceBeforeBuy, sellerBalanceAfterBuy;
     var buyerBalanceBeforeBuy, buyerBalanceAfterBuy;
 
@@ -24,7 +24,7 @@ contract("ChainList", function(accounts) {
             assert.equal(data.toNumber(), 0, "number of articles must be zero");
             return chainListInstance.getArticlesForSale();
         }).then(function(data) {
-            asser.equal(data.length, 0, "there shouldn't be any article for sale")
+            assert.equal(data.length, 0, "there shouldn't be any article for sale")
         })
     });
 
@@ -119,7 +119,7 @@ contract("ChainList", function(accounts) {
         }).then(function(receipt) {
                 assert.equal(receipt.logs.length, 1, "one event should have been triggered");
                 assert.equal(receipt.logs[0].event, "LogBuyArticle", "event should be LogBuyArticle");
-                assert.equal(receipt.logs._id.toNumber(), 1, "article id must be one");
+                assert.equal(receipt.logs[0].args._id, 1, "article id must be one");
                 assert.equal(receipt.logs[0].args._seller, seller, "article seller must be " + seller);
                 assert.equal(receipt.logs[0].args._buyer, buyer, "article buyer must be " + buyer);
                 assert.equal(receipt.logs[0].args._name, articleName1, "article name must be " + articleName1);
@@ -131,7 +131,7 @@ contract("ChainList", function(accounts) {
                 buyerBalanceAfterBuy = web3.fromWei(web3.eth.getBalance(buyer), "ether").toNumber(); ;
 
                 // check the effect of the buy on balances of buyer and seller, accounting for gas
-                assert(sellerBalanceAfterBuy == sellerBalanceBeforeBuy + articlePrice, "true", "seller should have earned " + articlePrice1 + " ETH");
+                assert(sellerBalanceAfterBuy == sellerBalanceBeforeBuy + articlePrice1, "true", "seller should have earned " + articlePrice1 + " ETH");
                 assert(buyerBalanceAfterBuy <= buyerBalanceBeforeBuy - articlePrice1, "buyer should have spent " + articlePrice1 + " ETH");
 
                 return chainListInstance.getArticlesForSale();
