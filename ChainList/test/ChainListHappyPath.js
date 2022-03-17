@@ -42,6 +42,7 @@ contract("ChainList", function(accounts) {
             assert.equal(receipt.logs.length, 1, "one event should have been triggered");
                 assert.equal(receipt.logs[0].event, "LogSellArticle", "event should be LogSellArticle");
                 assert.equal(receipt.logs[0].args._seller, seller, "event seller must be " + seller);
+                assert.equal(receipt.logs[0].args._id.toNumber(), 1, "id must be 1");
                 assert.equal(receipt.logs[0].args._name, articleName1, "event seller must be " + articleName1);
                 assert.equal(receipt.logs[0].args._price.toNumber(), web3.toWei(articlePrice1, "ether"), "event seller must be " + web3.toWei(articlePrice1, "ether"));
                 assert.equal(receipt.logs[0].args._seller, seller, "event seller must be " + seller);
