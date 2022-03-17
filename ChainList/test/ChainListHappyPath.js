@@ -106,22 +106,24 @@ contract("ChainList", function(accounts) {
         })
     })
 
+    // buy the first article
     it("should buy an article", function() {
         return ChainList.deployed().then(function(instance){
             chainListInstance = instance;
             sellerBalanceBeforeBuy = web3.fromWei(web3.eth.getBalance(seller), "ether").toNumber();
             buyerBalanceBeforeBuy = web3.fromWei(web3.eth.getBalance(buyer), "ether").toNumber(); ;
-            return chainListInstance.buyArticle({
+            return chainListInstance.buyArticle(1, {
                 from: buyer,
-                value: web3.toWei(articlePrice, "ether")
+                value: web3.toWei(articlePrice1, "ether")
             })
         }).then(function(receipt) {
-            assert.equal(receipt.logs.length, 1, "one event should have been triggered");
+                assert.equal(receipt.logs.length, 1, "one event should have been triggered");
                 assert.equal(receipt.logs[0].event, "LogBuyArticle", "event should be LogBuyArticle");
-                assert.equal(receipt.logs[0].args._seller, seller, "event seller must be " + seller);
-                assert.equal(receipt.logs[0].args._buyer, buyer, "event seller must be " + buyer);
-                assert.equal(receipt.logs[0].args._name, articleName, "event seller must be " + articleName);
-                assert.equal(receipt.logs[0].args._price.toNumber(), web3.toWei(articlePrice, "ether"), "event seller must be " + web3.toWei(articlePrice, "ether"));
+                assert.equal(receipt.logs._id.toNumber(), 1, "article id must be one");
+                assert.equal(receipt.logs[0].args._seller, seller, "article seller must be " + seller);
+                assert.equal(receipt.logs[0].args._buyer, buyer, "article buyer must be " + buyer);
+                assert.equal(receipt.logs[0].args._name, articleName1, "article name must be " + articleName1);
+                assert.equal(receipt.logs[0].args._price.toNumber(), web3.toWei(articlePrice1, "ether"), "article price must be " + web3.toWei(articlePrice1, "ether"));
                 assert.equal(receipt.logs[0].args._seller, seller, "event seller must be " + seller);
 
                 // record balances of buyer and seller after the buy
@@ -129,8 +131,8 @@ contract("ChainList", function(accounts) {
                 buyerBalanceAfterBuy = web3.fromWei(web3.eth.getBalance(buyer), "ether").toNumber(); ;
 
                 // check the effect of the buy on balances of buyer and seller, accounting for gas
-                assert(sellerBalanceAfterBuy == sellerBalanceBeforeBuy + articlePrice, "true", "seller should have earned " + articlePrice + " ETH");
-                assert(buyerBalanceAfterBuy <= buyerBalanceBeforeBuy - articlePrice, "buyer should have spent " + articlePrice + " ETH");
+                assert(sellerBalanceAfterBuy == sellerBalanceBeforeBuy + articlePrice, "true", "seller should have earned " + articlePrice1 + " ETH");
+                assert(buyerBalanceAfterBuy <= buyerBalanceBeforeBuy - articlePrice1, "buyer should have spent " + articlePrice1 + " ETH");
 
                 return chainListInstance.getArticle();
         }).then(function(data) {
