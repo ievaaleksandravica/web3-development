@@ -1856,8 +1856,37 @@
             </div>
 
             <div class="content-title">
-                <h3 class="empty">List of articles: tests</h3>
-                    <div class="content-details">                
+                <h3>List of articles: tests</h3>
+                    <div class="content-details">   
+                        <p>In this lesson we will improve our tests, botu <u>happyPath</u> and <u>exceptions</u> to make sure we can properly manage list of articles</p>       
+                        <p class="bold">Prepare the environment</p>
+                        <ul>
+                            <li>navigate to <u>chainlist</u> directory in terminal</li>
+                            <li>run <u>npm install</u></li>
+                            <li>verify node version <u>node -v</u> and change is necessary <u>nvm use 10</u></li>
+                            <li>open project in code editor</li>
+                            <li>start <u>Ganache</u></li>
+                            <li>open truffle console <u>truffle console --network ganache</u></li>
+                            <li>run tests <u>test</u> - multiple tests will fail</li>
+                        </ul> 
+                        <p class="bold">Update <u>happyPath</u> test suite</p>
+                        <ul>
+                            <li>open <u>ChainListHappyPath.js</u></li>
+                            <li>in this test suite, we will now sell several articles, so add more variables, e.g. <u>articleName2</u></li>
+                        </ul>     
+                        <p class="bold">Update <u>should be initialized with empty values</u> test case</p>
+                        <ul>
+                            <li><u>getArticle</u> function does not exist anymore</li>
+                            <li>check that number of articles is initialized to zero, so call <u>chainListInstance.getNumberOfArticles()</u></li>
+                            <li>in the callback, check only that the number of articles is zero</li>
+                            <li>also call <u>chainListInstance.getArticlesForSale()</u> to check that it returns an empty array</li>
+                        </ul>
+                        <p class="bold">Update <u>should sell an article</u> test case</p>
+                        <ul>
+                            <li>validate that we can sell a first article</li>
+                            <li>we sell the first article and check the logs, count the number of articles, get the ids and details</li>
+                            <li></li>
+                        </ul>
                     </div>
             </div>
 

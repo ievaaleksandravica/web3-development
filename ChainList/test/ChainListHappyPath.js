@@ -6,22 +6,25 @@ contract("ChainList", function(accounts) {
     var chainListInstance;
     var seller = accounts[1];
     var buyer = accounts[2];
-    var articleName = "article 1";
-    var articleDescription = "Description for Article 1";
-    var articlePrice = 10;
+    var articleName1 = "article 1";
+    var articleDescription1 = "Description for Article 1";
+    var articlePrice1 = 10;
+    var articleName2 = "article 2";
+    var articleDescription2 = "Description for Article 2";
+    var articlePrice1 = 20;
     var sellerBalanceBeforeBuy, sellerBalanceAfterBuy;
     var buyerBalanceBeforeBuy, buyerBalanceAfterBuy;
 
 
     it("should be initialized with empty values", function(){
         return ChainList.deployed().then(function(instance) {
-            return instance.getArticle();
+            chainListInstance = instance;
+            return chainListInstance.getNumberOfArticles();
         }).then(function(data) {
-            assert.equal(data[0], 0x0, "seller must be empty");
-            assert.equal(data[1], 0x0, "buyer must be empty");
-            assert.equal(data[2], "", "article name must be empty");
-            assert.equal(data[3], "", "article description must be empty");
-            assert.equal(data[4].toNumber(), 0, "article price must be zero");
+            assert.equal(data.toNumber(), 0, "number of articles must be zero");
+            return chainListInstance.getArticlesForSale();
+        }).then(function(data) {
+            asser.equal(data.length, 0, "there shouldn't be any article for sale")
         })
     });
 
