@@ -134,14 +134,15 @@ contract("ChainList", function(accounts) {
                 assert(sellerBalanceAfterBuy == sellerBalanceBeforeBuy + articlePrice, "true", "seller should have earned " + articlePrice1 + " ETH");
                 assert(buyerBalanceAfterBuy <= buyerBalanceBeforeBuy - articlePrice1, "buyer should have spent " + articlePrice1 + " ETH");
 
-                return chainListInstance.getArticle();
+                return chainListInstance.getArticlesForSale();
         }).then(function(data) {
-            assert.equal(data[0], seller, "seller must be  " + seller);
-            assert.equal(data[1], buyer, "buyer must be " + + buyer);
-            assert.equal(data[2], articleName, "article name must be " + articleName);
-            assert.equal(data[3], articleDescription, "article description must be " + articleDescription);
-            assert.equal(data[4].toNumber(), web3.toWei(articlePrice, "ether"), "article price must be " + web3.toWei(articlePrice, "ether"));
-        });
+            assert.equal(data.length, 1, "there should now be only one article left for sale");
+            assert.equal(data[0].toNumber(), 2, "article 2 should be the only article for sale")
+
+            return chainListInstance.getNumberOfArticles()
+        }).then(function (data) {
+            assert.equal(data, 2, "there should still be two articles in total");
+        })
     });
 
     it("should trigger an event when a new article is sold", function() {
