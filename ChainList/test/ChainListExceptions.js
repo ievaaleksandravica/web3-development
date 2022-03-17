@@ -31,6 +31,29 @@ contract("Chainlist", function(accounts) {
         })
     });
 
+    // buying an article that does not exist
+    it("should throw an exception if you try to buy an article that does not exist", function() {
+        ChainList.deployed().then(function(instance) {
+           chainListInstance = instance;
+           return chainListInstance.sellArticle(articleName, articleDescription, web3.toWei(articlePrice, "ether"), {from: seller});
+        }).then(function(receipt) {
+            return chainListInstance.buyArticle(2, {from: seller, value: web3.toWei(articlePrice, "ether")})
+        })
+            .then(assert.fail)
+            .catch(function(error) {
+                assert(true);
+        }).then(function() {
+            chainListInstance.articles[1];
+        }).then(function(data) {
+            assert.equal(data[0].toNumber(), 1, "article id must be 1" );
+            assert.equal(data[1], seller, "seller must be " + seller );
+            assert.equal(data[2], 0x0, "buyer must be empty" );
+            assert.equal(data[3], articleName, "article name must be " + articleName);
+            assert.equal(data[4], articleDescription, "article description must be " + articleDescription );
+            assert.equal(data[5].toNumber(), web3.toWei(articlePrice, "ether"), "article price must be " + web3.toWei(articlePrice, "ether"));
+        })
+    })
+
     // buying an article you are selling
     it("should throw an exception if you try to buy your own article", function() {
         return ChainList.deployed().then(function(instance) {

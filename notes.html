@@ -1924,9 +1924,13 @@
                             <li>change from <u>getArticle</u> to <u>getNumberOfArticles</u></li>
                             <li>remove all the associated assertions and have just one for checking that there are no articles for sale</li>
                         </ul>
-                        <p class="bold">Create <u></u> test case</p>
+                        <p class="bold">Create <u>should throw an exception if you try to buy an article that does not exist</u> test case</p>
                         <ul>
-                            <li></li>
+                            <li>as usual, reteive the instance of the contract</li>
+                            <li>sell an article <u>chainListInstance.sellArticle</u></li>
+                            <li>attempt to buy an article with id that does not exist <u>chainListInstance.buyArticle(2)</u></li>
+                            <li>use <u>then(assert.fail)</u> to catch an error</li>
+                            <li>verify that the state of the article have not changed </li>
                         </ul>
                     </div>
             </div>
