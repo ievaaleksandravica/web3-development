@@ -43,7 +43,7 @@ contract("Chainlist", function(accounts) {
             .catch(function(error) {
                 assert(true);
         }).then(function() {
-            chainListInstance.articles[1];
+            return chainListInstance.articles(1);
         }).then(function(data) {
             assert.equal(data[0].toNumber(), 1, "article id must be 1" );
             assert.equal(data[1], seller, "seller must be " + seller );
