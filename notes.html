@@ -1932,6 +1932,28 @@
                             <li>use <u>then(assert.fail)</u> to catch an error</li>
                             <li>verify that the state of the article have not changed </li>
                         </ul>
+                        <p class="bold">Update <u>should throw an exception if you try to buy your own article</u> test case</p>
+                        <ul>
+                            <li>no need to sell an article (already called before)</li>
+                            <li>instead, call  <u>buyArticle</u> immediately</li>
+                            <li>instead of <u>getArticle</u>, call <u>chainListInstance.articles(1)</u></li>
+                            <li>adjust all the assertions to incorporate id</li>
+                        </ul>
+                        <p class="bold">Update <u>should throw an exception if you try to buy an article for wrong value</u> test case</p>
+                        <ul>
+                            <li>add id to <u>buyArticle</u></li>
+                            <li>call <u>articles(1)</u></li>
+                            <li>adjust all the assertions to incorporate id</li>
+                        </ul>
+                        <p class="bold">Update <u>should throw an exception if you try to buy an article that was already sold</u> test case</p>
+                        <ul>
+                            <li>attempt to buy article 1 two times in a row, first will pass, second should fail</li>
+                        </ul>
+                        <p class="bold">Run tests and fix issues</p>
+                        <ul>
+                            <li>in terminal, run <u>test test/ChainListExceptions.js</u></li>
+                            <li>fix issues if any</li>
+                        </ul>
                     </div>
             </div>
 
