@@ -6,9 +6,12 @@ contract("ChainList", function(accounts) {
     var chainListInstance;
     var seller = accounts[1];
     var buyer = accounts[2];
-    var articleName = "article 1";
-    var articleDescription = "Description for Article 1";
-    var articlePrice = 10;
+    var articleName1 = "article 1";
+    var articleDescription1 = "Description for Article 1";
+    var articlePrice1 = 10;
+    var articleName2 = "article 2";
+    var articleDescription2 = "Description for Article 2";
+    var articlePrice1 = 20;
     var sellerBalanceBeforeBuy, sellerBalanceAfterBuy;
     var buyerBalanceBeforeBuy, buyerBalanceAfterBuy;
 
