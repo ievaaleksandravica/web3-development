@@ -1888,6 +1888,9 @@
                             <li>as there are so many differences, create complete new test case <u>should let us sell a first article</u></li>
                             <li>create an instance and call <u>chainListInstance.sellArticle</u> with details of the first article</li>
                             <li>check the event in a callback function - you can use the same assertions that were used in "should trigger an event when a new article is sold" case, just add one for checking the id</li>
+                            <li>chain <u>chainListInstance.getNumberOfArticles</u> and check that it returns one</li>
+                            <li>chain <u>chainListInstance.getArticlesForSale()</u> and check that it returns array with one element. Also check that the id of the element is one</li>
+                            <li>chain <u>chainListInstance.articles()</u> and check that it was added to the mapping</li>
                         </ul>
                     </div>
             </div>

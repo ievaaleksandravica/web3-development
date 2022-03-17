@@ -46,6 +46,17 @@ contract("ChainList", function(accounts) {
                 assert.equal(receipt.logs[0].args._name, articleName1, "event seller must be " + articleName1);
                 assert.equal(receipt.logs[0].args._price.toNumber(), web3.toWei(articlePrice1, "ether"), "event seller must be " + web3.toWei(articlePrice1, "ether"));
                 assert.equal(receipt.logs[0].args._seller, seller, "event seller must be " + seller);
+
+                return chainListInstance.getNumberOfArticles();
+        }).then(function(data) {
+            assert.equal(data.toNumber(), 1, "number of articles must be one");
+
+            return chainListInstance.getArticlesForSale();
+        }).then(function(data) {
+            assert.equal(data.length, 1, "there should be one article for sale");
+            assert.equal(data[0].toNumber(), 1, "id of article for sale should be one");
+
+            return chainListInstance.articles()
         })
     })
 
