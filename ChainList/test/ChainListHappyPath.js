@@ -28,20 +28,13 @@ contract("ChainList", function(accounts) {
         })
     });
 
-    it("should sell an article", function() {
+    // sell a first article
+    it("should let us sell a first article", function() {
         return ChainList.deployed().then(function(instance) {
             chainListInstance = instance;
-            return chainListInstance.sellArticle(articleName, articleDescription, web3.toWei(articlePrice, "ether"), {from: seller})
-        }).then(function() {
-            return chainListInstance.getArticle();
-        }).then(function(data) {
-            assert.equal(data[0], seller, "seller must be  " + seller);
-            assert.equal(data[1], 0x0, "buyer must be empty");
-            assert.equal(data[2], articleName, "article name must be " + articleName);
-            assert.equal(data[3], articleDescription, "article description must be " + articleDescription);
-            assert.equal(data[4].toNumber(), web3.toWei(articlePrice, "ether"), "article price must be " + web3.toWei(articlePrice, "ether"));
+            return chainListInstance.sellArticle(articleName1, articleDescription1. web3.toWei(articlePrice1, "ether"))
         })
-    });
+    })
 
     it("should buy an article", function() {
         return ChainList.deployed().then(function(instance){
