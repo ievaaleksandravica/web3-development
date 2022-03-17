@@ -1893,6 +1893,22 @@
                             <li>chain <u>chainListInstance.articles()</u> and check that it was added to the mapping</li>
                             <li>add assertions to check that article data is correct</li>
                         </ul>
+
+                        <p class="bold">Create <u>should let us sell a second article</u> test case</p>
+                        <ul>
+                            <li>base it on the <u>should sell an article</u> test case</li>
+                            <li>adapt all assertions and calls for article number 2</li>
+                        </ul>
+                        <p class="bold">Update <u>should buy an article</u> test case</p>
+                        <ul>
+                            <li>add the id of article you buy in <u>chainListInstance.buyArticle</u> call</li>
+                            <li>adapt the assertions to check for <u>article1</u> and add assertion for <u>_id</u></li>
+                            <li>check the state of the article after the buy by calling <u>getArticlesForSale</u></li>
+                            <li>check that now there is only one article for sale</li>
+                            <li>check that the article 2 is the only article for sale</li>
+                            <li>check that there are still two articles by calling <u>chainListInstance.getNumberOfArticles</u> </li>
+                        </ul>
+                        <p class="bold">Remove <u>should trigger an event when a new article is sold</u> case</p>
                     </div>
             </div>
 
