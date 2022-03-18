@@ -106,6 +106,8 @@ App = {
           articleTemplate.find('.article-seller').text(seller);
           articleTemplate.find('.btn-buy').show();
         }
+
+        articlesRow.append(articleTemplate.html());
      },
    
      sellArticle: function() {
