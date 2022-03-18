@@ -1983,7 +1983,11 @@
                             <li>take precautions of the <u>relaodArticles</u> function to be called multiple times at once</li>
                             <li>at the very beginning of the <u>App</u> object, add another variable <u>loading</u> </li>
                             <li>avoid reentry by using <u>if(App.loading)</u> in the <u>reloadArticles</u></li>
-                            <li></li>
+                            <li>local variable to store the instance of the chainlist contract <u>var chainListInstance</u></li>
+                            <li>change from calling <u>getArticle</u> to <u>getArticlesForSale</u></li>
+                            <li>no need to check anymore, if the articles have sellers</li>
+                            <li>move clearing of articles <u>$('#articlesRow').empty();</u> there instead</li>
+                            <li>iterate over the array of article ids and call a new function <u>displayArticle</u> to display the data</li>
                         </ul>  
                     </div>
             </div>

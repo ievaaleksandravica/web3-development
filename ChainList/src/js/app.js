@@ -56,21 +56,27 @@ App = {
        if(App.loading) {
          return;
        }
+
        App.loading = true;
 
        // refresh account information because the balance might have changed
        App.displayAccountInfo();
    
-       // retrieve the article placeholder and clear it
-       $('#articlesRow').empty();
-   
+       // local variable to store the instance of the chainlist contract
+       var chainListInstance;
+
        App.contracts.ChainList.deployed().then(function(instance) {
-         return instance.getArticle();
-       }).then(function(article) {
-         if(article[0] == 0x0) {
-           // no article
-           return;
-         }
+         chainListInstance = instance
+         return chainListInstance.getArticlesForSale();
+       }).then(function(articleIds) {
+        $('#articlesRow').empty();
+
+        for(var i = 0; i < articleIds.length; i++) {
+          var articleId = articleIds[i];
+          chainListInstance.articles(articleIds.toNumber()).then(function(article) {
+            App.displayArticle(article[0], article[1], article[3], article[4], article[5])
+          })
+        }
    
          var price = web3.fromWei(article[4], "ether");
    
