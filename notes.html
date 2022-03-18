@@ -1988,7 +1988,14 @@
                             <li>no need to check anymore, if the articles have sellers</li>
                             <li>move clearing of articles <u>$('#articlesRow').empty();</u> there instead</li>
                             <li>iterate over the array of article ids and call a new function <u>displayArticle</u> to display the data</li>
+                            <li>call <u>App.loading = false;</u> to sto the loading process</li>
+                            <li>remove remaining code from <u>relaodArticles</u></li>
+                            <li>in case of the error, unlock the <u>relaodArticles</u> by using <u>App.loading = false;</u></li>
                         </ul>  
+                        <p class="bold">Create <u>displayArticles</u> function</p>
+                        <ul>
+                           
+                        </ul>
                     </div>
             </div>
 

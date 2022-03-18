@@ -77,41 +77,12 @@ App = {
             App.displayArticle(article[0], article[1], article[3], article[4], article[5])
           })
         }
+
+        App.loading = false;
    
-         var price = web3.fromWei(article[4], "ether");
-   
-         // retrieve the article template and fill it
-         var articleTemplate = $('#articleTemplate');
-         articleTemplate.find('.panel-title').text(article[2]);
-         articleTemplate.find('.article-description').text(article[3]);
-         articleTemplate.find('.article-price').text(price);
-         articleTemplate.find('.btn-buy').attr('data-value', price);
-   
-         var seller = article[0];
-         if (seller == App.account) {
-           seller = "You";
-         }
-         articleTemplate.find('.article-seller').text(seller);
-   
-         // buyer
-         var buyer = article[1];
-         if(buyer == App.account){
-           buyer = "You";
-         } else if(buyer == 0X0) {
-           buyer = "No one yet";
-         }
-         articleTemplate.find('.article-buyer').text(buyer);
-   
-         if(article[0] == App.account || article[1] != 0X0) {
-           articleTemplate.find('.btn-buy').hide();
-         } else {
-           articleTemplate.find('.btn-buy').show();
-         }
-   
-         // add this article
-         $('#articlesRow').append(articleTemplate.html());
        }).catch(function(err) {
          console.error(err.message);
+         App.loading = false;
        });
      },
    
