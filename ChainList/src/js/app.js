@@ -98,6 +98,14 @@ App = {
         articleTemplate.find('.article-price').text(etherPrice + " ETH");
         articleTemplate.find('.btn-buy').attr("data-id", id);
         articleTemplate.find('.btn-buy').attr("data-value", etherPrice);
+
+        if (seller == App.account) {
+          articleTemplate.find('.article-seller').text("You");
+          articleTemplate.find('.btn-buy').hide();
+        } else {
+          articleTemplate.find('.article-seller').text(seller);
+          articleTemplate.find('.btn-buy').show();
+        }
      },
    
      sellArticle: function() {
