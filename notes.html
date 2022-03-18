@@ -1958,8 +1958,44 @@
             </div>
 
             <div class="content-title">
-                <h3 class="empty">List of articles: frontend</h3>
-                    <div class="content-details">                
+                <h3>List of articles: frontend</h3>
+                    <div class="content-details"> 
+                        <p>In this lesson, we will continue our implementation of the Chainlist dApp and add the frontend to buy and sell several articles</p> 
+                        <p class="bold">Prepare the environment</p>    
+                        <ul>
+                            <li>navigate to <u>chainlist</u> directory in terminal</li>
+                            <li>make sure we use the right node version <u>node -v</u></li>
+                            <li>if needed, install npm dependencies <u>npm install</u></li>
+                            <li>start <u>ganache</u> and increase the <u>network id</u> to <u>5779</u></li>
+                            <li>run all tests <u>truffle test</u></li>
+                            <li>deploy the contracts <u>truffle migrate --compile-all --reset --network ganache</u></li>
+                            <li>open the project in your code editor</li>
+                        </ul>   
+                        <p class="bold">Remove <u>buyer</u> field from the frontend, because sold articles won't be displayed</p> 
+                        <ul>
+                            <li>remove the <u>buyer</u> section from <u>articleTemplate</u> in <u>index.html</u></li>
+                            <li>in <u>app.js</u> update the display of the article</li>
+                        </ul>   
+                        <p class="bold">Change the implementation of <u>reloadArticles</u> function</p> 
+                        <ul>
+                            <li>load the list of <u>ids</u> of articles for sale</li>
+                            <li>for each <u>id</u> load the details of the corresponding article and display them</li>
+                            <li>take precautions of the <u>relaodArticles</u> function to be called multiple times at once</li>
+                            <li>at the very beginning of the <u>App</u> object, add another variable <u>loading</u> </li>
+                            <li>avoid reentry by using <u>if(App.loading)</u> in the <u>reloadArticles</u></li>
+                            <li>local variable to store the instance of the chainlist contract <u>var chainListInstance</u></li>
+                            <li>change from calling <u>getArticle</u> to <u>getArticlesForSale</u></li>
+                            <li>no need to check anymore, if the articles have sellers</li>
+                            <li>move clearing of articles <u>$('#articlesRow').empty();</u> there instead</li>
+                            <li>iterate over the array of article ids and call a new function <u>displayArticle</u> to display the data</li>
+                            <li>call <u>App.loading = false;</u> to sto the loading process</li>
+                            <li>remove remaining code from <u>relaodArticles</u></li>
+                            <li>in case of the error, unlock the <u>relaodArticles</u> by using <u>App.loading = false;</u></li>
+                        </ul>  
+                        <p class="bold">Create <u>displayArticles</u> function</p>
+                        <ul>
+                           
+                        </ul>
                     </div>
             </div>
 
