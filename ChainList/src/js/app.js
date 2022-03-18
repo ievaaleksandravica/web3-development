@@ -85,6 +85,12 @@ App = {
          App.loading = false;
        });
      },
+
+     displayArticle: function(id, seller, name, description, price) {
+        var articlesRow = $('#articlesRow');
+
+        var etherPrice = web3.fromWei(price, "ether")
+     },
    
      sellArticle: function() {
        // retrieve the detail of the article
