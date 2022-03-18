@@ -2,6 +2,7 @@ App = {
      web3Provider: null,
      contracts: {},
      account: 0x0,
+     loading: false,
    
      init: function() {
        return App.initWeb3();
@@ -51,6 +52,12 @@ App = {
      },
    
      reloadArticles: function() {
+       // avoid reentry 
+       if(App.loading) {
+         return;
+       }
+       App.loading = true;
+
        // refresh account information because the balance might have changed
        App.displayAccountInfo();
    

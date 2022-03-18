@@ -1979,7 +1979,11 @@
                         <p class="bold">Change the implementation of <u>reloadArticles</u> function</p> 
                         <ul>
                             <li>load the list of <u>ids</u> of articles for sale</li>
-                            <li>for each <u>id</u> load the details of the corresponding article</li>
+                            <li>for each <u>id</u> load the details of the corresponding article and display them</li>
+                            <li>take precautions of the <u>relaodArticles</u> function to be called multiple times at once</li>
+                            <li>at the very beginning of the <u>App</u> object, add another variable <u>loading</u> </li>
+                            <li>avoid reentry by using <u>if(App.loading)</u> in the <u>reloadArticles</u></li>
+                            <li></li>
                         </ul>  
                     </div>
             </div>
