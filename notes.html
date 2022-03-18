@@ -1970,7 +1970,17 @@
                             <li>run all tests <u>truffle test</u></li>
                             <li>deploy the contracts <u>truffle migrate --compile-all --reset --network ganache</u></li>
                             <li>open the project in your code editor</li>
-                        </ul>          
+                        </ul>   
+                        <p class="bold">Remove <u>buyer</u> field from the frontend, because sold articles won't be displayed</p> 
+                        <ul>
+                            <li>remove the <u>buyer</u> section from <u>articleTemplate</u> in <u>index.html</u></li>
+                            <li>in <u>app.js</u> update the display of the article</li>
+                        </ul>   
+                        <p class="bold">Change the implementation of <u>reloadArticles</u> function</p> 
+                        <ul>
+                            <li>load the list of <u>ids</u> of articles for sale</li>
+                            <li>for each <u>id</u> load the details of the corresponding article</li>
+                        </ul>  
                     </div>
             </div>
 
