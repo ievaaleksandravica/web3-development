@@ -73,7 +73,7 @@ App = {
 
         for(var i = 0; i < articleIds.length; i++) {
           var articleId = articleIds[i];
-          chainListInstance.articles(articleIds.toNumber()).then(function(article) {
+          chainListInstance.articles(articleId.toNumber()).then(function(article) {
             App.displayArticle(article[0], article[1], article[3], article[4], article[5])
           })
         }
@@ -160,10 +160,11 @@ App = {
        event.preventDefault();
    
        // retrieve the article price
+       var _articleId = $(event.target).data("id");
        var _price = parseFloat($(event.target).data('value'));
    
        App.contracts.ChainList.deployed().then(function(instance){
-         return instance.buyArticle({
+         return instance.buyArticle(_articleId, {
            from: App.account,
            value: web3.toWei(_price, "ether"),
            gas: 500000
