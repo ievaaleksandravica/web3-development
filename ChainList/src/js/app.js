@@ -85,6 +85,30 @@ App = {
          App.loading = false;
        });
      },
+
+     displayArticle: function(id, seller, name, description, price) {
+        var articlesRow = $('#articlesRow');
+
+        var etherPrice = web3.fromWei(price, "ether")
+
+        var articleTemplate = $('#articleTemplate');
+
+        articleTemplate.find('.panel-title').text(name);
+        articleTemplate.find('.article-description').text(description);
+        articleTemplate.find('.article-price').text(etherPrice + " ETH");
+        articleTemplate.find('.btn-buy').attr("data-id", id);
+        articleTemplate.find('.btn-buy').attr("data-value", etherPrice);
+
+        if (seller == App.account) {
+          articleTemplate.find('.article-seller').text("You");
+          articleTemplate.find('.btn-buy').hide();
+        } else {
+          articleTemplate.find('.article-seller').text(seller);
+          articleTemplate.find('.btn-buy').show();
+        }
+
+        articlesRow.append(articleTemplate.html());
+     },
    
      sellArticle: function() {
        // retrieve the detail of the article
