@@ -2074,6 +2074,22 @@
                             <li>run <u>npm run dev</u> and check that the metamask is working properly</li>
                             <li>attempt to buy and sell some articles</li>
                         </ul>
+                        <p class="bold">Prepare the console</p>
+                        <ul>
+                            <li>Of course, there won't be any frontend interface for the <u>kill</u> function, so we have to do it from the console</li>
+                            <li>open new terminal tab, navigate to <u>chainlist</u> directory and determine your node version <u>nvm use 10</u></li>
+                            <li>open truffle console <u>truffle console --network ganache</u></li>
+                            <li>get instance of the contract <u>ChainList.deployed().then(function(instance) {app = instance;})</u></li>
+                            <li>check that we see articles for sale <u>app.getArticlesForSale()</u></li>
+                        </ul>
+                        <p class="bold">Attempt to <u>kill</u> the contract</p>
+                        <ul>
+                            <li>attempt from different address <u>app.kill({from: web3.eth.accounts[1]})</u> - we are gonna get an exception as expected</li>
+                            <li>attempt from the right address <u>app.kill({from: web3.eth.accounts[0]})</u> - now we get transaction receipt</li>
+                            <li><u>app.getArticlesForSale()</u> will now be empty, same as in the frontend</li>
+                            <li>attempt to sell an article - no errors will be thrown, but also nothing is trigered. However, the gas price was still deducted because we had to pay for transaction</li>
+                            <li>attempt to buy an article from console <u>app.buyArticle(1)</u> - the transaction was processed, but actually nothing happened</li>
+                        </ul>
                     </div>
             </div>
 
