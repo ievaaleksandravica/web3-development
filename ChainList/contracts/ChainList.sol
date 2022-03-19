@@ -37,6 +37,14 @@ contract ChainList {
         owner = msg.sender;
     }
 
+    // deactivate the contract
+    function kill() public {
+        // only allow the contract owner
+        require(msg.sender == owner);
+
+        selfdestruct(owner);
+    }
+
     // sell an article
     function sellArticle(
         string _name,
