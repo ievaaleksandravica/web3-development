@@ -2054,9 +2054,16 @@
                             <li>open project in code editor</li>
                             <li>start <u>ganache</u> and increase network id</li>
                         </ul>
-                        <p class="bold">Implement the code: adjust the contract</p>
+                        <p class="bold">Implement the code: <u>selfDestruct</u> function</p>
                         <ul>
-                            <li>will need to call a function, called <u>selfDestruct</u></li>
+                            <li>will need to call a function, called <u>selfDestruct</u> which takes one argument - address</li>
+                            <li>work in <u>ChainList.sol</u></li>
+                            <li>when you call this function, all the funds stored in the contracts account, are sent to the address passed as a parameter. after that, all state variables and functions are rendered as unavailable for future calls and transations</li>
+                            <li>therefore, make sure that it cannot be called by anyone - best practice, only allow the contracts owner to call the self destruct function (the account that deployed the contract)</li>
+                        </ul>
+                        <p class="bold">Implement the code: changes to the contract</p>
+                        <ul>
+                            <li></li>
                         </ul>
                     </div>
             </div>
