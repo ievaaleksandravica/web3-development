@@ -2074,6 +2074,14 @@
                             <li>run <u>npm run dev</u> and check that the metamask is working properly</li>
                             <li>attempt to buy and sell some articles</li>
                         </ul>
+                        <p class="bold">Run <u>kill</u> function</p>
+                        <ul>
+                            <li>Of course, there won't be any frontend interface for the <u>kill</u> function, so we have to do it from the console</li>
+                            <li>open new terminal tab, navigate to <u>chainlist</u> directory and determine your node version <u>nvm use 10</u></li>
+                            <li>open truffle console <u>truffle console --network ganache</u></li>
+                            <li>get instance of the contract <u>ChainList.deployed().then(function(instance) {app = instance;})</u></li>
+                            <li>check that we see articles for sale <u>app.getArticlesForSale()</u></li>
+                        </ul>
                     </div>
             </div>
 
