@@ -2167,6 +2167,13 @@
                             <li>extend the contract <u>contract ChainList is Ownable</u></li>
                             <li>remove the repetitive code parts, like state variable <u>owner</u>, <u>onlyOwner</u> and <u>function ChainList()</u> constructor</li>
                         </ul>
+                        <p class="bold">Test your work</p>
+                        <ul>
+                            <li>in truffle console <u>migrate --compile-all --reset</u></li>
+                            <li>now in <u>build/contracts</u> you will also see <u>ownable.json</u> - it does not have network id, because only chainlist contract was deployed</li>
+                            <li>attempt to sell and buy articles from frontend</li>
+                            <li>from console, attempt to kill contract from the right and wrong account</li>
+                        </ul>
                     </div>
             </div>
 
