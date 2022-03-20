@@ -2105,8 +2105,21 @@
                         <p class="bold">Use function modifiers to implement basic authorization logic in your contract</p>  
                         <p class="bold">Prepare the environment</p> 
                         <ul>
-                            <li></li>
-                        </ul>       
+                            <li>navigate to <u>chainlist</u> directory</li>
+                            <li>check your node version <u>node -v</u></li>
+                            <li>install dependencies <u>npm install</u></li>
+                            <li>open project in your code editor</li>
+                            <li>start <u>ganache</u> and increase <u>network id</u></li>
+                        </ul> 
+                        <p class="bold">Create function modifier to force certain functions to be allowed only to the contracts owner</p>  
+                        <ul>
+                            <li>work in <u>chainlist.sol</u></li>
+                            <li>declare a modifier <u>modifier onlyOwner() {}</u></li>
+                            <li>in the modifier set <u>require(msg.sender == owner);</u></li>
+                            <li>in addition, set <u>_;</u> - it is a placeholder that represents the code of the function that the modifier is applied to</li>
+                            <li>function modifiers can also take arguments</li>
+                        </ul>    
+                        <p class="bold">Update <u>kill function</u></p>
                     </div>
             </div>
 
