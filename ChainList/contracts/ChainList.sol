@@ -14,7 +14,6 @@ contract ChainList is Ownable {
     }
 
     // state variables
-    address owner;
     mapping(uint256 => Article) public articles;
     uint256 articleCounter;
 
@@ -33,17 +32,6 @@ contract ChainList is Ownable {
         string _name,
         uint256 _price
     );
-
-    // modifiers
-    modifier onlyOwner() {
-        require(msg.sender == owner);
-        _;
-    }
-
-    // constructor
-    function ChainList() public {
-        owner = msg.sender;
-    }
 
     // deactivate the contract
     function kill() public onlyOwner {
