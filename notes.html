@@ -2094,14 +2094,56 @@
             </div>
 
             <div class="content-title">
-                <h3 class="empty">Function modifiers</h3>
-                    <div class="content-details">                
+                <h3>Function modifiers</h3>
+                    <div class="content-details"> 
+                        <p>In this lecture, we will introduce the notion of <u>function modifiers</u> in Solidity</p>   
+                        <p class=bold>What are function modifiers?</p>
+                        <ul>
+                            <li>function modifiers is a portion of reusable code, that can be called prior to execution of any function</li>
+                            <li>function modifier helps to simplify your code by factoring out some verifications you might want to do before several functions in the contract</li>
+                        </ul>  
+                        <p class="bold">Use function modifiers to implement basic authorization logic in your contract</p>  
+                        <p class="bold">Prepare the environment</p> 
+                        <ul>
+                            <li>navigate to <u>chainlist</u> directory</li>
+                            <li>check your node version <u>node -v</u></li>
+                            <li>install dependencies <u>npm install</u></li>
+                            <li>open project in your code editor</li>
+                            <li>start <u>ganache</u> and increase <u>network id</u></li>
+                        </ul> 
+                        <p class="bold">Create function modifier to force certain functions to be allowed only to the contracts owner</p>  
+                        <ul>
+                            <li>work in <u>chainlist.sol</u></li>
+                            <li>declare a modifier <u>modifier onlyOwner() {}</u></li>
+                            <li>in the modifier set <u>require(msg.sender == owner);</u></li>
+                            <li>in addition, set <u>_;</u> - it is a placeholder that represents the code of the function that the modifier is applied to</li>
+                            <li>function modifiers can also take arguments</li>
+                        </ul>    
+                        <p class="bold">Update <u>kill</u> function</p>
+                        <ul>
+                            <li>apply the modifier <u> function kill() public onlyOwner</u></li>
+                            <li>remove the line where you were setting up the validation</li>
+                            <li>now it will combine the code of the function and the modifier</li>
+                        </ul>
+                        <p class="bold">Test the implementation</p>
+                        <ul>
+                            <li>in terminal <u>truffle migrate --compile-all --reset --network ganache</u></li>
+                            <li>run <u>npm run dev</u></li>
+                            <li>fix <u>metamask</u> issues</li>
+                            <li>sell and buy some articles</li>
+                            <li>open new terminal tab and open truffle console <u>truffle console --network ganache</u></li>
+                            <li>get instance of the contract <u>ChainList.deployed().then(function(instance) {app = instance;})</u></li>
+                            <li>kill the contract from wrong and then right account <u>app.kill({from: web3.eth.accounts[1]})</u></li>
+                            <li><u>migrate --compile-all --reset</u> will refresh and redeploy the contract (it will be another contract)</li>
+                        </ul>
+
                     </div>
             </div>
 
             <div class="content-title">
-                <h3 class="empty">Smart contract inheritance</h3>
-                    <div class="content-details">                
+                <h3>Smart contract inheritance</h3>
+                    <div class="content-details">    
+                        <p></p>            
                     </div>
             </div>
 
