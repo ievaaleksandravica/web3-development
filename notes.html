@@ -2143,13 +2143,44 @@
             <div class="content-title">
                 <h3>Smart contract inheritance</h3>
                     <div class="content-details">    
-                        <p></p>            
+                        <p>In this lesson, we will refactor our smart contract to use <u>inheritance</u> - an object oriented programming concept</p>   
+                        <p class="bold">Prepare the environment</p> 
+                        <ul>
+                            <li>steps are exactly the same as in previous lecture</li>
+                        </ul>  
+                        <p class="bold">Externalize the logic that can be extended to other contracts</p> 
+                        <ul>
+                            <li>the parent contract will contain the elements we added in the previous lesson - variable to store the address, constructor to store the address and modifier to change the behavior of the <u>kill</u> function</li>
+                        </ul>
+                        <p class="bold">Setup new contract</p>    
+                        <ul>
+                            <li>open your code editor</li>
+                            <li>in contracts directory, add a new file <u>Ownable.sol</u> - this will be our parent contract</li>
+                            <li>define your contract <u>contract Ownable{}</u></li>
+                            <li>only one state variable <u>address owner;</u></li>
+                            <li>declare modifier <u>modifier onlyOwner()</u></li>
+                            <li>define contructor <u>function Ownable() public {}</u></li>
+                        </ul>
+                        <p class="bold">Extend <u>Ownable</u> to <u>ChainList</u> contract</p> 
+                        <ul>
+                            <li>import the contract in <u>Chainlist.sol</u> - <u>import "./Ownable.sol"</u></li>
+                            <li>extend the contract <u>contract ChainList is Ownable</u></li>
+                            <li>remove the repetitive code parts, like state variable <u>owner</u>, <u>onlyOwner</u> and <u>function ChainList()</u> constructor</li>
+                        </ul>
+                        <p class="bold">Test your work</p>
+                        <ul>
+                            <li>in truffle console <u>migrate --compile-all --reset</u></li>
+                            <li>now in <u>build/contracts</u> you will also see <u>ownable.json</u> - it does not have network id, because only chainlist contract was deployed</li>
+                            <li>attempt to sell and buy articles from frontend</li>
+                            <li>from console, attempt to kill contract from the right and wrong account</li>
+                        </ul>
                     </div>
             </div>
 
             <div class="content-title">
-                <h3 class="empty">Deploying the frontend</h3>
-                    <div class="content-details">                
+                <h3>Deploying the frontend</h3>
+                    <div class="content-details">  
+                        <p></p>              
                     </div>
             </div>
             <div class="content-title">
