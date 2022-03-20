@@ -44,10 +44,7 @@ contract ChainList {
     }
 
     // deactivate the contract
-    function kill() public {
-        // only allow the contract owner
-        require(msg.sender == owner);
-
+    function kill() public onlyOwner {
         selfdestruct(owner);
     }
 
