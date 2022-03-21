@@ -2213,6 +2213,17 @@
                             <li>push all the local versions to the repository <u>git push -u origin master</u></li>
                             <li>reload the github page and your deployed code is gonna be there</li>
                         </ul>
+                        <p class="bold">Prepare for frontend file deployment</p>
+                        <ul>
+                            <li>start <u>Ganache</u> so we have a development node to run against. Increase the <u>network id</u></li>
+                            <li>in GitHub pages, there are different strategies to deploy static web app, we will use the <u>docs</u> folder one</li>
+                            <li>create new directory <u>mkdir docs</u></li>
+                            <li>create new script that will help us to deploy all the frontend files to github pages <u>atom deployfrontend.sh</u></li>
+                        </ul>
+                        <p class="bold">Prepare the script</p>
+                        <ul>
+                            <li><u>rsync -r src/ docs/ </u> copy all the files from the <u>src</u> directory to the <u>docs</u> directory</li>
+                        </ul>
                     </div>
             </div>
 
