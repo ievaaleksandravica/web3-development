@@ -2257,7 +2257,48 @@
             <div class="content-title">
                 <h3>Deploying smart contracts to the Rinkeby test net</h3>
                     <div class="content-details"> 
-                        <p></p>
+                        <p>At this stage, we have web files loading for Github, interacting with our local Ganache node. </p>
+                        <p class="bold">Understand several Ethereum test networks</p>
+                        <ul>
+                            <li>if you go to <u>Metamask</u> and open the network switching dialog, you can see a list of all the available networks.</li>
+                            <li>the ones automatically created for you are public networks</li>
+                            <li>they are all public networks that anyone can access. They can be used as staging environment for your smart contracts and you can share your contracts address onn those networks to do some user testing, before going to the production chain instance (the main net)</li>
+                            <li>Ethereum has three (at the time of the lecture recording) public test networks: 
+                            <ul>
+                                <li><u>Ropsten</u> proof of work test network, that is very close to the production network in terms of consensus protocol. However, it has been subject to a lot of spam attacks lately, because it is very cheap to send bulky transactions there, as its currency is essentially a "monkey money"</li>
+                                <li><u>Kovan</u> and <u>Rinkeby</u> behave like normal Ethereum networks, except they use variants of proof of authority consensus algorithm to prevent spam attacks</li>
+                            </ul>
+                            </li>
+                            </ul>
+                            <p class="bold">Usage of <u>Rinkeby</u> test network</p>
+                            <ul>
+                                <li>in this course, we will use the <u>Rinkeby</u> test network, which is a bit more robust option</li>
+                                <li>we will connect to the Rinkeby network with Geth </li>
+                            </ul>
+                            <p class="bold">Intialize <u>Geth</u> with <u>Rinkeby</u> test network</p>
+                            <ul>
+                                <li>first, we will download the blocks of the Rinkeby chain instance, so we can create accounts on it and get some ether to deploy our contract</li>
+                                <li>easiest way to set up Rinkeby test node, is to use <u>Geth</u></li>
+                                <li>Geth provides a paramater, that allows you to start a public test net that will be located ina  specific folder</li>
+                                <li>the Rinkeby data directory is platform specific, on Mac its under <u>~/Library/Ethereum/rinkeby</u></li>
+                                <li>to initialize your Rinkeby node, you need to start <u>Geth</u> with the <u>--rinkeby</u> parameter </li>
+                                <li>initialize <u>geth --rinkeby</u></li>
+                                <li>it will start downloading blocks</li>
+                                <li>hit <u>ctrl+c</u> to close the node for now</li>
+                            </ul>
+                            <p class="bold">Create accounts on Rinkeby test network</p>
+                            <ul>
+                                <li>same commands as on the private node, with some small differences</li>
+                                <li><u>geth --rinkeby account new</u> and you will need to set up a passwords. Repeat the process twice</li>
+                                <li>the addresses for you will be different, because the process is random</li>
+                            </ul>
+                            <p class="bold">Create script to start Rinkeby node with the right parameters</p>
+                            <ul>
+                                <li>create new file <u>atom startrinkeby-mac.sh</u></li>
+                                <li>in the script, you are activating the <u>rpc</u> endpoint, exposing certain <u>apis</u> and forcing <u>ipc</u> file to be created on the specific path</li>
+                            </ul>
+                            
+                        </ul>
                     </div>
             </div>
 
