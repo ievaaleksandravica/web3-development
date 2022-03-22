@@ -2296,6 +2296,24 @@
                             <ul>
                                 <li>create new file <u>atom startrinkeby-mac.sh</u></li>
                                 <li>in the script, you are activating the <u>rpc</u> endpoint, exposing certain <u>apis</u> and forcing <u>ipc</u> file to be created on the specific path</li>
+                                <li>make your script executable <u>chmod +x startrinkeby-mac.sh</u></li>
+                                <li>use the script to start our node <u>./startrinkeby-mac.sh</u></li>
+                                <li>it starts the node again. You can see if it opens the ipc endpoint on the right path</li>
+                                <li>again, it will start to import new blocks</li>
+                            </ul>
+                            <p class="bold">Connect to the console</p>
+                            <ul>
+                                <li>open new tab in terminal and navigate to <u>chainlist</u> directory </li>
+                                <li>run <u>geth attach</u> to attach console to your running node</li>
+                                <li>check that the <u>datadir</u> is correct</li>
+                                <li>the <u>coinbase</u> account is the first account we created</li>
+                            </ul>
+                            <p class="bold">Sync your accounts</p>
+                            <ul>
+                                <li>wait for the node to be completely in sync with the test net chain</li>
+                                <li>watch the state of the synchronization process <u>eth.syncing</u></li>
+                                <li>we have to wait to download the full state</li>
+                                <li>you will see that it synchronized when the response of <u>eth.syncing</u> will be <u>false</u> - it might take up to 1h though. </li>
                             </ul>
                             
                         </ul>
