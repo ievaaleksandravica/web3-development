@@ -2275,9 +2275,14 @@
                                 <li>in this course, we will use the <u>Rinkeby</u> test network, which is a bit more robust option</li>
                                 <li>we will connect to the Rinkeby network with Geth </li>
                             </ul>
-                            <p class="bold">Connect to <u>Rinkeby</u> test network</p>
+                            <p class="bold">Intialize <u>Geth</u> with <u>Rinkeby</u> test network</p>
                             <ul>
-                                <li></li>
+                                <li>first, we will download the blocks of the Rinkeby chain instance, so we can create accounts on it and get some ether to deploy our contract</li>
+                                <li>easiest way to set up Rinkeby test node, is to use <u>Geth</u></li>
+                                <li>Geth provides a paramater, that allows you to start a public test net that will be located ina  specific folder</li>
+                                <li>the Rinkeby data directory is platform specific, on Mac its under <u>~/Library/Ethereum/rinkeby</u></li>
+                                <li>to initialize your Rinkeby node, you need to start <u>Geth</u> with the <u>--rinkeby</u> parameter </li>
+                                <li>initialize <u>geth --rinkeby</u></li>
                             </ul>
                             
                         </ul>
