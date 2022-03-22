@@ -2300,12 +2300,18 @@
                                 <li>use the script to start our node <u>./startrinkeby-mac.sh</u></li>
                                 <li>it starts the node again. You can see if it opens the ipc endpoint on the right path</li>
                                 <li>again, it will start to import new blocks</li>
+                            </ul>
+                            <p class="bold">Connect to the console</p>
+                            <ul>
                                 <li>open new tab in terminal and navigate to <u>chainlist</u> directory </li>
                                 <li>run <u>geth attach</u> to attach console to your running node</li>
+                                <li>check that the <u>datadir</u> is correct</li>
+                                <li>the <u>coinbase</u> account is the first account we created</li>
                             </ul>
-                            <p class="bold"></p>
+                            <p class="bold">Sync your accounts</p>
                             <ul>
-                              
+                                <li>wait for the node to be completely in sync with the test net chain</li>
+                                <li>watch the state of the synchronization process <u>eth.syncing</u></li>
                             </ul>
                             
                         </ul>
