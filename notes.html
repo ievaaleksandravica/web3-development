@@ -2351,7 +2351,6 @@
                             </ul>
                             <p class="bold">Configure the project for Rinkeby deployment</p>
                             <ul>
-                                <li>navigate back to the terminal</li>
                                 <li>work in <u>truffle.js</u></li>
                                 <li>add new network configuration <u>rinkeby</u>
                                     <ul>
@@ -2359,6 +2358,11 @@
                                         <li>port: 8545</li>
                                         <li>network id: 4 - that's the official Rinkeby network id</li>
                                         <li>gas: 4700000</li>
+                                    </ul>
+                                </li>
+                                <li>go back to the terminal
+                                    <ul>
+                                        <li>unlock the first account <u>geth attach</u> and then <u>personal.unlockAccount(eth.accounts[0],"yourpassword",1200)</u></li>
                                     </ul>
                                 </li>
                                 
