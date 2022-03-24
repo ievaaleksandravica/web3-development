@@ -2331,16 +2331,66 @@
                             </ul>
                             <p class="bold">Get Ether using <u>Google Plus</u></p>
                             <ul>
-                                <li></li>
+                                <li>to request funds via Google Plus, you have to proceed as follows</li>
+                                <li>open <u>plus.google.com</u> and you will need a Google Account. (however, it is not available anymore, so you would need to do it via Twitter or Facebook)</li>
+                                <li>in Google Plus, just paste the address of your Rinkeby account into a new, blank, public post</li>
+                                <li>you can get the address, by opening MetaMask, take your account and copy the account to the clipboard</li>
+                                <li>paste it in the post and publish. Click to open the post and copy the URL</li>
+                                <li>then navigate back to the Rinkeby page and post the URL in this field</li>
+                                <li>choose the amount you want from the dropdown list</li>
+                                <li>after verification, the funds should be approved</li>
+                                <li>this process is to prevent getting Ether as many times as you want</li>
                             </ul>
+                            <p class="bold">Check the Rinkeby account and send funds</p>
+                            <ul>
+                                <li><u>rinkeby.etherescan.io</u> block explorer for the rinkeby test network</li>
+                                <li>copy the address again</li>
+                                <li>paste it in the block explorer</li>
+                                <li>now you can send some to the other account your created earlier, so you can sell and buy articles.</li>
+                                <li>you can send the money directly through <u>metamask</u> using the <u>send</u> button</li>
+                            </ul>
+                            <p class="bold">Configure the project for Rinkeby deployment</p>
+                            <ul>
+                                <li>work in <u>truffle.js</u></li>
+                                <li>add new network configuration <u>rinkeby</u>
+                                    <ul>
+                                        <li>host: localhost</li>
+                                        <li>port: 8545</li>
+                                        <li>network id: 4 - that's the official Rinkeby network id</li>
+                                        <li>gas: 4700000</li>
+                                    </ul>
+                                </li>
+                                <li>go back to the terminal
+                                    <ul>
+                                        <li>unlock the first account <u>geth attach</u> and then <u>personal.unlockAccount(eth.accounts[0],"yourpassword",1200)</u>. You will receive <u>true</u> as response</li>
+                                        <li>open another console and navigate to <u>chainlist</u> directory</li>
+                                        <li><u>truffle migrate --compile-all --reset --network rinkeby</u></li>
+                                    </ul>
+                                </li>
+                                <li>it's very similar what we did with the private node earlier, but it takes longer and costs more money</li>
+                                <li>now it will have added the address to <u>chainlist.json</u> with the new network</li>
+                            </ul>
+                            <p class="bold">Publish to Github Pages</p>
+                                <ul>
+                                    <li><u>./deployfrontend.sh</u></li>
+                                    <li>now your application will work with the <u>Rinkeby</u> accounts</li>
+                                    <li>to avoid any caching issues with Chrome, install <u>clear cache chrome extension</u> </li>
+                                    <li>in the console of chrome, there shouldn't be any errors</li>
+                                </ul>
+                            <p class="bold">Test your work</p>
+                            <ul>
+                                <li>attempt to buy and sell articles</li>
+                                <li>metamask will detect the <u>rinkeby</u> test network and select the right account</li>
+                            </ul>
+                           
                         
                     </div>
             </div>
 
 
             <div class="content-title">
-                <h3 class="empty">Deploying smart contracts to the main net</h3>
-                    <div class="content-details">                
+                <h3>Deploying smart contracts to the main net</h3>
+                    <div class="content-details">                <p class="bold"></p>
                     </div>
             </div>
             <div class="content-title">
