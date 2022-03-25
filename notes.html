@@ -2401,6 +2401,15 @@
                             <li>shut down your <u>Geth</u> console and shut down <u>Rinkeby</u></li>
                             <li>run a <u>Geth</u> node on the <u>mainNet</u> by using Geth in the terminal</li>
                         </ul>
+                        <p class="bold">Connect to the Main Net</p>
+                        <ul>
+                            <li><u>geth --rpc --rpcapi="personal,eth,network,web3,net"</u>: just need to activate the <u>rpc</u> endpoint</li>
+                            <li>this is now gonna start a new node - if you are doing it the first time, you will have to wait few hours to synchronize with the main network, because it is a huge chain</li>
+                            <li>if you already have synchronized it before, it will not take so long, because it will just synchronize the new data</li>
+                            <li>this also opens the <u>ipc</u> endpoint in the default location, which will be useful to attach a <u>Geth</u>  console</li>
+                            <li>once it is opening the endpoint, it will start downloading new blocks and synchronizing with the network in real time</li>
+                        </ul>
+                        <p class="bold"></p>
                         
                         
                     </div>
