@@ -2467,6 +2467,9 @@
                             <li>the transaction that is updating the contract only cost 2.59 dollars, because it is just calling the function</li>
                             <li>the other transaction is calling the chainlist contract, was 55 dollars</li>
                             <li>overall the deployment cost around 99 dollars, but it could be made cheaper by reducing the gas price</li>
+                            <li>we get an error in <u>console</u>, because we exceeded the delay for unlocking the account. But it was able to deploy everything beforehand, except the last transaction, which is just updating the state of the contract. It is not a big deal, however, if we would attempt to interact with the contract, it would fail for couple of reasons</li>
+                            <li><u>personal.unlockAccount(eth.accounts[0], null, 1200)</u> will unlock your first account for 20 minutes and ask for the password</li>
+                            <li>if you copy the address from the console in <u>Etherscan</u> you can also see the contract there</li>
                         </ul>
                         
                     </div>
