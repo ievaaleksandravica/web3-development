@@ -2253,7 +2253,6 @@
                     </div>
             </div>
 
-
             <div class="content-title">
                 <h3>Deploying smart contracts to the Rinkeby test net</h3>
                     <div class="content-details"> 
@@ -2387,12 +2386,114 @@
                     </div>
             </div>
 
-
             <div class="content-title">
                 <h3>Deploying smart contracts to the main net</h3>
-                    <div class="content-details">                <p class="bold"></p>
+                    <div class="content-details">  
+                        <p class="bold">Introduction</p>   
+                        <ul>
+                            <li>make sure you kill your Rinkeby network as you won't need it anymore and we will need to deploy to the main net in this lecture.</li>
+                            <li>the very last step in this course is to deploy our application to the <u>main net</u></li>
+                            <li><b>warning:</b> in this lesson, we are going to use real ether, that costs real money. This is optional. Therefore, this will be just a lecture following the video.</li>
+                            <li>process is very similar to what we just did for the Rinkeby test network</li>
+                        </ul>
+                        <p class="bold">Prepare the environment</p>
+                        <ul>
+                            <li>shut down your <u>Geth</u> console and shut down <u>Rinkeby</u></li>
+                            <li>run a <u>Geth</u> node on the <u>mainNet</u> by using Geth in the terminal</li>
+                        </ul>
+                        <p class="bold">Connect to the Main Net</p>
+                        <ul>
+                            <li><u>geth --rpc --rpcapi="personal,eth,network,web3,net"</u>: just need to activate the <u>rpc</u> endpoint</li>
+                            <li>this is now gonna start a new node - if you are doing it the first time, you will have to wait few hours to synchronize with the main network, because it is a huge chain</li>
+                            <li>if you already have synchronized it before, it will not take so long, because it will just synchronize the new data</li>
+                            <li>this also opens the <u>ipc</u> endpoint in the default location, which will be useful to attach a <u>Geth</u>  console</li>
+                            <li>once it is opening the endpoint, it will start downloading new blocks and synchronizing with the network in real time</li>
+                        </ul>
+                        <p class="bold">Interact with the node</p>
+                        <ul>
+                            <li><u>geth attach</u> attach your console to the net</li>
+                            <li>check that the <u>datadir</u> is the one used by the running node</li>
+                            <li>use <u>eth.syncing</u> command to check the synchronization status</li>
+                            <li>again, it takes a lot of time and storage to download these blocks and possibly also the states</li>
+                        </ul>
+                        <p class="bold">Get some Ether</p>
+                        <ul>
+                            <li>go to some market place and purchase some real Ethers to put in your account, because this will cost money</li>
+                            <li>once they arrived on your exchange account (e.g. coinbase), you can use their site to send some money to your own account</li>
+                            <li>you can get the addresses by <u>eth.accounts</u></li>
+                            <li><u>web3.fromWei(eth.getBalance(eth.coinbase), "ether")</u> you can check your current balance</li>
+                            <li>now, when you have some ether on your account, you can use it to deploy some contracts and pay some gas fees</li>
+                            <li><a href="https://cryptocompare.com/exchanges">Cryptocompare</a> link that lists all the exchanges you can use </li>
+                        </ul>
+                        <p class="bold">Configure Truffle project to add the network</p>
+                        <ul>
+                            <li>work in <u>chainlist.json</u></li>
+                            <li>add another network configuration <u>live</u>
+                            <ul>
+                                <li>host: "localhost"</li>
+                                <li>port: 8545</li>
+                                <li>network_id: 1 (official id for the main net)</li>
+                                <li>gas: 4700000</li>
+                                <li>gasPrice: 570000000000000 *based on time processing. can be checked at <a href="https:///ethgasstation.info">EthGasStation</a></li>
+                            </ul>
+                            </li>
+                            <li><a href="https://converter.murkin.me">Converter.Murkin</a> link helps to convert from Gwei to Wei</li>
+                            <li>If your ether is not on your first account, you can also add <u>from</u> and specify the address</li>
+                        </ul>
+                        <p class="bold">Prepare account for deployment</p>
+                        <ul>
+                            <li>make sure, that your node is still in sync</li>
+                            <li>unlock the first account <u>personal.unlockAccount(eth.accounts[0])</u></li>
+                            <li>default duration is 5 minutes</li>
+                        </ul>
+                        <p class="bold">Deploy the contract</p>
+                        <ul>
+                            <li><u>truffle migrate --compile-all --reset --network live</u></li>
+                            <li>it starts with running the first migration</li>
+                            <li>you can copy the transaction hash and go to <a href="https://etherscan.io">Etherscan</a> and check the status
+                            <ul>
+                                <li><u>from</u> the address that you deployed the contract from</li>
+                                <li><u>to</u> should be empty in this case, because we are deploying the contract</li>
+                                <li><u>value</u> is the value attached to the contract</li>
+                                <li><u>gasLimit</u> is the limit specified by us</li>
+                                <li><u>gasUsedByTransaction</u> will be calculated when transaction will be mined</li>
+                                <li><u>gasPrice</u> also set by ourselves in <u>truffle.js</u> </li>
+                                <li><u>cumulativeGasUsed</u> will be calculated after that as well</li>
+                                <li><u>nonce</u> number of transactions sent by this account to this network </li>
+                            </ul>
+                            </li>
+                            <li>the actual cost of deploying this migrations contract was 16 dollars, so it is not particularry cheap, but it was because it was set to be as fast as possible</li>
+                            <li>this was only for the first transaction, the deploy command starts with the second one straight after</li>
+                            <li>the transaction that is updating the contract only cost 2.59 dollars, because it is just calling the function</li>
+                            <li>the other transaction is calling the chainlist contract, was 55 dollars</li>
+                            <li>overall the deployment cost around 99 dollars, but it could be made cheaper by reducing the gas price</li>
+                            <li>we get an error in <u>console</u>, because we exceeded the delay for unlocking the account. But it was able to deploy everything beforehand, except the last transaction, which is just updating the state of the contract. It is not a big deal, however, if we would attempt to interact with the contract, it would fail for couple of reasons</li>
+                            <li><u>personal.unlockAccount(eth.accounts[0], null, 1200)</u> will unlock your first account for 20 minutes and ask for the password</li>
+                            <li>if you copy the address from the console in <u>Etherscan</u> you can also see the contract there</li>
+                        </ul>
+                        <p class="bold">Check the <u>chainlist.json</u> network</p>
+                        <ul>
+                            <li><u>build/contracts/chainlist.json</u></li>
+                            <li>scroll down to the bottom of the file, but there is no network</li>
+                        </ul>
+                        <p class="bold">Upload files to <u>github</u> pages</p>
+                        <ul>
+                            <li><u>./deployfrontend</u> script to push it to github</li>
+                            <li>go to settings and your page</li>
+                            <li>have a look at the artifacts page as well</li>
+                        </ul>
+                        <p class="bold">Connect to the net and attempt to buy and sell</p>
+                        <ul>
+                            <li>connect to <u>main net</u> in metamask</li>
+                            <li>switch to your main account</li>
+                            <li>attempt to <u>sell</u> or <u>buy</u> an article</li>
+                            <li>then you can check the transaction on <u>EtherScan</u> again</li>
+                        </ul>
                     </div>
             </div>
+
+
+
             <div class="content-title">
                 <h3 class="empty">Deploying to a test node with an Infure remote node</h3>
                     <div class="content-details">                
