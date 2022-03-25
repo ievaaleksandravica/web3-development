@@ -2423,10 +2423,21 @@
                             <li>you can get the addresses by <u>eth.accounts</u></li>
                             <li><u>web3.fromWei(eth.getBalance(eth.coinbase), "ether")</u> you can check your current balance</li>
                             <li>now, when you have some ether on your account, you can use it to deploy some contracts and pay some gas fees</li>
+                            <li><a href="https://cryptocompare.com/exchanges">Cryptocompare</a> link that lists all the exchanges you can use </li>
                         </ul>
-                        <p class="bold">
-                            <ul></ul>
-                        </p>
+                        <p class="bold">Configure Truffle project to add the network</p>
+                        <ul>
+                            <li>work in <u>chainlist.json</u></li>
+                            <li>add another network configuration <u>live</u>
+                            <ul>
+                                <li>host: "localhost"</li>
+                                <li>port: 8545</li>
+                                <li>network_id: 1 (official id for the main net)</li>
+                                <li>gas: 4700000</li>
+                                <li>gasPrice: *based on time processing. can be checked at <a href="https:///ethgasstation.info">EthGasStation</a></li>
+                            </ul>
+                            </li>
+                        </ul>
                         
                         
                     </div>
