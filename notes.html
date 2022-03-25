@@ -2462,9 +2462,11 @@
                                 <li><u>nonce</u> number of transactions sent by this account to this network </li>
                             </ul>
                             </li>
-                            <li></li>
-                            
-
+                            <li>the actual cost of deploying this migrations contract was 16 dollars, so it is not particularry cheap, but it was because it was set to be as fast as possible</li>
+                            <li>this was only for the first transaction, the deploy command starts with the second one straight after</li>
+                            <li>the transaction that is updating the contract only cost 2.59 dollars, because it is just calling the function</li>
+                            <li>the other transaction is calling the chainlist contract, was 55 dollars</li>
+                            <li>overall the deployment cost around 99 dollars, but it could be made cheaper by reducing the gas price</li>
                         </ul>
                         
                     </div>
