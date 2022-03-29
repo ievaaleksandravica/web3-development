@@ -2551,8 +2551,23 @@
                             </li>
                             <li>This process is only relevant for deployment to a locally running instance of Geth, but it’s not applicable when we deploy to a remote node hosted on and operated by Infura. </li>
                             <li>To avoid having unsigned transactions transit over your internet connection to Infura, it doesn’t hold or manage your private keys and we need to find a way to sign transactions before sending them. </li>
-                            <li></li>
+                            <li>Truffle offers a mechanism to sign your transactions with a HDWalletProvider, a separate package that creates a sequence of accounts based on a provided seed phrase in such a way that no private key needs to be stored anywhere.</li>
                         </ul>
+                        <p class="bold">HD Wallet</p>
+                        <ul>
+                            <li>On Ethereum or any public blockchain like Bitcoin, you are identified on the network through your public address. This public address can also be used to determine your balance. You can see the balance of anyone knowing their public address. By the way, a smart contract also has a public address with its own balance. </li>
+                            <li>But in order to sign transactions or to spend your money, you need the private key associated with the address of your account. This private key is only known by you and must be as close as at possible to you (local computer, encrypted hardware device).</li>
+                            <li>By the way, remember that your address is a hash of your public key, that in turn is derived from your private key. This means that if you know the private key, you will be able to retrieve its public key and its address, but not the other way around.</li>
+                            <li>To secure your private key, it’s better to protect it with a password. To unlock your private key, you’ll have to remember its password. If you have several accounts, you can imagine that it can be cumbersome to remember all these passwords. </li>
+                            <li>The alternative is to use a HD Wallet. To put it simply,  a HD Wallet, or Hierarchical Deterministic Wallet, is a system that lets you generate a sequence of private keys from a unique seed phrase. And the sequence of keys for a given seed phrase is always the same as the process is deterministic.</li>
+                            <li>This type of wallet is very convenient for users because all you need to back up in a safe place is the seed phrase and this allows you to keep your whole set of addresses safe, and to restore them later. </li>
+                            <li>For example, the accounts you created in Metamask are stored in a HD Wallet and generated thanks to a seed phrase of 12 words. This wallet is stored on you local computer and protected by a password. </li>
+                            <li>You can also create a HD Wallet to be used with Geth. </li>
+                            <li>Just for your information, a HD Wallet is in fact a file based on a set of standards (BIP - Bitcoin Improvement Proposal) such as the one defining the structure of the mnemonic used to create the seed phase (BIP 39), or the mechanism to derive private/public key from a seed phrase in a deterministic way (BIP 44).
+                            </li>
+                            <li>There is plenty of documentation on the web providing details about HD Wallet. Our focus is to describe how to use a HD Wallet to deploy contracts to Infura.</li>
+                        </ul>
+                        <p class="bold">Create the seed phrase</p>
                     </div>
             </div>
         </div>
