@@ -2535,6 +2535,22 @@
                             <li>Infura also lets you specify the addresses of the contracts that you want to whitelist. This will prevent a frontend application from interacting with a contract instance that has not been deployed by you.</li>
                             <li>At this stage, we have all the information we need to deploy our contract to Infura. Now, we have to prepare our DApp project to link it to Infura. </li>
                         </ul>
+                        <p class="bold">Create a HD Wallet</p>
+                        <ul>
+                            <li>In previous lessons, we ran a local instance of a Geth node to deploy our contracts to the main net or any public test network.</li>
+                            <li>To deploy a contract, we have to use a private key to sign transactions and pay for gas.</li>
+                            <li>Since our local Geth node manages our wallet, Geth can access our private keys when we unlock the corresponding accounts. </li>
+                            <li>The process we used to deploy a contract to a public network is the following:
+                                <ul>
+                                    <li>start a local Geth instance linked to a public network: main net, Ropsten or Rinkeby</li>
+                                    <li>wait for our local node to be fully synchronised with the rest of the network, which involves downloading and validating all the blocks and states that are missing locally</li>
+                                    <li>unlock the account used for deployment (by default the first one)</li>
+                                    <li>ensure we have enough ETH to pay for the gas in the transactions</li>
+                                    <li>use Truffle to deploy the contract to the local node</li>
+                                </ul>
+                            </li>
+                            <li></li>
+                        </ul>
                     </div>
             </div>
         </div>
