@@ -2492,29 +2492,151 @@
                     </div>
             </div>
 
-
-
             <div class="content-title">
-                <h3 class="empty">Deploying to a test node with an Infure remote node</h3>
-                    <div class="content-details">                
+                <h3>Deploying to a test node with an Infure remote node</h3>
+                    <div class="content-details">                <p class="bold">Deploying to a test network using an Infura remote node </p>
+                        <ul>
+                            <li>We saw how to deploy our contract to a development node (Ganache), to a private node, to a test network or to the main net.</li>
+                            <li>For the main net and the Rinkeby test net, we started Geth locally, and the local node had to be fully synchronised with the rest of the network before we could deploy our smart contracts.</li>
+                            <li>Running and managing a Geth node can be painful because you must regularly update your Geth installation, and the node database must remain synchronised too. You should also run your Geth node on a computer with enough CPU and free disk space. </li>
+                            <li>Managing such a node can be a barrier to entry into the Ethereum development world, and make your development workflow quite cumbersome.</li>
+                            <li>Thankfully, it is possible to delegate this infrastructure part to a provider that offers all the services and the power required to deploy onto and to interact with various Ethereum networks.</li>
+                            <li>Think of it as a cloud development environment. You can always host and manage your web application (frontend and backend) on your personal server, or you can deploy it to a Cloud environment to take advantage of its elastic resources and all its management tools.</li>
+                            <li>In the Ethereum world, those actors provide the infrastructure to make it easier for you to deploy your smart contracts to Ethereum, and to interact with other decentralised platforms such as IPFS (InterPlanetory File System).</li>
+                            <li>Infura is probably the most popular service, used by major actors such as Metamask, uPort or CryptoKitties. Infura is provided by Consensys, the company behind Metamask, Truffle, Ganache and many more Ethereum projects.</li>
+                            <li>In summary, Infura exposes an API that Web3 can connect to in order to interact with the Ethereum infrastructure with the same level of security as you did if you use a local node. But if you are using Infura, you don’t need to run a local node anymore for development. You can deploy your smart contracts to a remote node instead.</li>
+                            <li>It does have some impact in terms of decentralization, as you are again delegating some of your power to a third party, so you have to trust that their node implementation and database are correct. But for development purposes, it is an acceptable compromise.</li>
+                            <li>To reinforce the security of that remote setup, your private keys are not stored or managed by Infura: you have to find a way to sign your transactions before you send them to Infura.</li>
+                            <li>This way, no unsigned transaction transits over your internet connection to Infura, and there is no risk for Infura to store keys and get attacked for that. We will see how we can configure Truffle to sign your transactions before sending them to Infura thanks to a HD Wallet Provider.</li>
+                            <li>In this lesson, we will show you all the steps to deploy ChainList to Ropsten through Infura.</li>
+                        </ul>
+                        <p class="bold">Why Ropsten?</p>
+                        <ul>
+                            <li>Ropsten is a public test network (network id 3) that doesn’t have the same consensus algorithm as Rinkeby</li>
+                            <li>While Rinkeby uses a Proof-of-Authority consensus algorithm to avoid spam, Ropsten uses the same Proof of Work algorithm as the main Ethereum network.</li>
+                            <li>And since Ropsten uses Proof-of-Work with a test crypto-currency that doesn’t have any real value, it is way cheaper to bloat it with fake transactions, so it’s slower to synchronize. Good thing is if you use it with a remote node like the one offered by Infura, you don’t need to care about that.</li>
+                            <li>The other advantage of using Ropsten is that Metamask provides a faucet for Ropsten, that will make it easier for your testers to deposit ETH in their test accounts. Unfortunately this feature is not available yet for Rinkeby.</li>
+                        </ul>
+                        <p class="bold">Create your Infura account</p>
+                        <ul>
+                            <li>Creating an account on Infura is free. You can have a paid service if your company has some specific requirements, although it’s not clear what a paid membership offers in addition to the free one.</li>
+                            <li>First, go to the Infura website available at: <a href="https://infura.io/">Infura</a> </li>
+                            <li>Click the SIGN UP button and input your email address and a password. You should get the following message asking you to check for a confirmation email. Check your inbox and click the link in the message your received from Infura to confirm your email address. When you go back to Infura, you have access to the dashboard or to your account.</li>
+                            <li>When you go back to Infura, you have access to the dashboard or to your account. If you click the account icon you can check your settings. The first time, you will be able to review some basic information. Then you can change your settings  </li>
+                        </ul>
+                        <p class="bold">Create a project</p>
+                        <ul>
+                            <li>In order to deploy your contract to Infura, you have to obtain an API key to interact with the node hosted on Infura.</li>
+                            <li>For that purpose, you have to create a project. You can create as many projects as you want to link them to your contracts that will be deployed to Ethereum.</li>
+                            <li>From the main Infura page, click on the Dashboard icon. The dashboard contains several sections: the list of your projects, some news, some links to the documentation, the support or the status page for each Ethereum network, a button to create a new project</li>
+                            <li>Let’s create a new project to get our API access key.  Click “CREATE NEW PROJECT” button, and define a name for your project, eg. <u>Web3-udemy-course</u>. Now, your project appears in your dashboard. You can rename the project and review the API keys. </li>
+                            <li>If you change the endpoint, you will see that endpoint URL changes accordingly </li>
+                            <li>On top of the endpoint setting, there is your API secret key. For now, Infura reserves this secret API key for future usage. This means that only need the API Key.</li>
+                            <li>Infura also lets you specify the addresses of the contracts that you want to whitelist. This will prevent a frontend application from interacting with a contract instance that has not been deployed by you.</li>
+                            <li>At this stage, we have all the information we need to deploy our contract to Infura. Now, we have to prepare our DApp project to link it to Infura. </li>
+                        </ul>
+                        <p class="bold">Create a HD Wallet</p>
+                        <ul>
+                            <li>In previous lessons, we ran a local instance of a Geth node to deploy our contracts to the main net or any public test network.</li>
+                            <li>To deploy a contract, we have to use a private key to sign transactions and pay for gas.</li>
+                            <li>Since our local Geth node manages our wallet, Geth can access our private keys when we unlock the corresponding accounts. </li>
+                            <li>The process we used to deploy a contract to a public network is the following:
+                                <ul>
+                                    <li>start a local Geth instance linked to a public network: main net, Ropsten or Rinkeby</li>
+                                    <li>wait for our local node to be fully synchronised with the rest of the network, which involves downloading and validating all the blocks and states that are missing locally</li>
+                                    <li>unlock the account used for deployment (by default the first one)</li>
+                                    <li>ensure we have enough ETH to pay for the gas in the transactions</li>
+                                    <li>use Truffle to deploy the contract to the local node</li>
+                                </ul>
+                            </li>
+                            <li>This process is only relevant for deployment to a locally running instance of Geth, but it’s not applicable when we deploy to a remote node hosted on and operated by Infura. </li>
+                            <li>To avoid having unsigned transactions transit over your internet connection to Infura, it doesn’t hold or manage your private keys and we need to find a way to sign transactions before sending them. </li>
+                            <li>Truffle offers a mechanism to sign your transactions with a HDWalletProvider, a separate package that creates a sequence of accounts based on a provided seed phrase in such a way that no private key needs to be stored anywhere.</li>
+                        </ul>
+                        <p class="bold">HD Wallet</p>
+                        <ul>
+                            <li>On Ethereum or any public blockchain like Bitcoin, you are identified on the network through your public address. This public address can also be used to determine your balance. You can see the balance of anyone knowing their public address. By the way, a smart contract also has a public address with its own balance. </li>
+                            <li>But in order to sign transactions or to spend your money, you need the private key associated with the address of your account. This private key is only known by you and must be as close as at possible to you (local computer, encrypted hardware device).</li>
+                            <li>By the way, remember that your address is a hash of your public key, that in turn is derived from your private key. This means that if you know the private key, you will be able to retrieve its public key and its address, but not the other way around.</li>
+                            <li>To secure your private key, it’s better to protect it with a password. To unlock your private key, you’ll have to remember its password. If you have several accounts, you can imagine that it can be cumbersome to remember all these passwords. </li>
+                            <li>The alternative is to use a HD Wallet. To put it simply,  a HD Wallet, or Hierarchical Deterministic Wallet, is a system that lets you generate a sequence of private keys from a unique seed phrase. And the sequence of keys for a given seed phrase is always the same as the process is deterministic.</li>
+                            <li>This type of wallet is very convenient for users because all you need to back up in a safe place is the seed phrase and this allows you to keep your whole set of addresses safe, and to restore them later. </li>
+                            <li>For example, the accounts you created in Metamask are stored in a HD Wallet and generated thanks to a seed phrase of 12 words. This wallet is stored on you local computer and protected by a password. </li>
+                            <li>You can also create a HD Wallet to be used with Geth. </li>
+                            <li>Just for your information, a HD Wallet is in fact a file based on a set of standards (BIP - Bitcoin Improvement Proposal) such as the one defining the structure of the mnemonic used to create the seed phase (BIP 39), or the mechanism to derive private/public key from a seed phrase in a deterministic way (BIP 44).
+                            </li>
+                            <li>There is plenty of documentation on the web providing details about HD Wallet. Our focus is to describe how to use a HD Wallet to deploy contracts to Infura.</li>
+                        </ul>
+                        <p class="bold">Create the seed phrase</p>
+                        <ul>
+                            <li>HD Wallets on Ethereum use a seed phrase of 12 words compliant with the BIP39 standard. </li>
+                            <li>There are different ways to generate these words. When you install Metamask, the application generates them for you. </li>
+                            <li>Here, we will use a nice online tool available here: <a href="https://iancoleman.io/bip39/">Phrase Generator</a>  </li>
+                            <li>We have to generate a mnemonic (or seed phrase) of 12 words, so let’s change the default value: </li>
+                        </ul>
                     </div>
             </div>
         </div>
      </section>
      
      <section>
-        <h2>Section Title</h2> 
+        <h2>Truffle 5 Update</h2> 
         <div class="content-section">
             <div class="content-title">
-                 <h3 class="empty">Subsection Title</h3>
+                 <h3 class="empty">Updating the development environment</h3>
                  <div class="content-details">                
                  </div>
             </div>
             <div class="content-title">
-                <h3 class="empty">Subsection Title</h3>
+                <h3 class="empty">Updating contracts</h3>
                 <div class="content-details">                
                 </div>
            </div>
+            <div class="content-title">
+                <h3 class="empty">Adapting Happy Path tests</h3>
+                <div class="content-details">                
+                </div>
+            </div>
+            <div class="content-title">
+                <h3 class="empty">Adapting exception tests</h3>
+                 <div class="content-details">             
+            </div>
+            <div class="content-title">
+                <h3 class="empty">Adapting the frontend</h3>
+                 <div class="content-details">             
+            </div>
+            <div class="content-title">
+                <h3 class="empty">Chainlist Update Transcript</h3>
+                 <div class="content-details">             
+            </div>
+        </div>
+        
+     </section>
+
+     <section>
+        <h2>Conclusion</h2> 
+        <div class="content-section">
+            <div class="content-title">
+                 <h3 class="empty">Congratulations</h3>
+                 <div class="content-details">                
+                 </div>
+            </div>
+        </div>
+        
+     </section>
+
+
+
+
+     <section>
+        <h2>Bonus</h2> 
+        <div class="content-section">
+            <div class="content-title">
+                 <h3 class="empty">The Byzantium Hardfork</h3>
+                 <div class="content-details">                
+                 </div>
+            </div>
+        
         </div>
         
      </section>
