@@ -2494,7 +2494,23 @@
 
             <div class="content-title">
                 <h3>Deploying to a test node with an Infure remote node</h3>
-                    <div class="content-details">                <p class="bold"></p>
+                    <div class="content-details">                <p class="bold">Deploying to a test network using an Infura remote node </p>
+                        <ul>
+                            <li>We saw how to deploy our contract to a development node (Ganache), to a private node, to a test network or to the main net.</li>
+                            <li>For the main net and the Rinkeby test net, we started Geth locally, and the local node had to be fully synchronised with the rest of the network before we could deploy our smart contracts.</li>
+                            <li>Running and managing a Geth node can be painful because you must regularly update your Geth installation, and the node database must remain synchronised too. You should also run your Geth node on a computer with enough CPU and free disk space. </li>
+                            <li>Managing such a node can be a barrier to entry into the Ethereum development world, and make your development workflow quite cumbersome.</li>
+                            <li>Thankfully, it is possible to delegate this infrastructure part to a provider that offers all the services and the power required to deploy onto and to interact with various Ethereum networks.</li>
+                            <li>Think of it as a cloud development environment. You can always host and manage your web application (frontend and backend) on your personal server, or you can deploy it to a Cloud environment to take advantage of its elastic resources and all its management tools.</li>
+                            <li>In the Ethereum world, those actors provide the infrastructure to make it easier for you to deploy your smart contracts to Ethereum, and to interact with other decentralised platforms such as IPFS (InterPlanetory File System).</li>
+                            <li>Infura is probably the most popular service, used by major actors such as Metamask, uPort or CryptoKitties. Infura is provided by Consensys, the company behind Metamask, Truffle, Ganache and many more Ethereum projects.</li>
+                            <li>In summary, Infura exposes an API that Web3 can connect to in order to interact with the Ethereum infrastructure with the same level of security as you did if you use a local node. But if you are using Infura, you don’t need to run a local node anymore for development. You can deploy your smart contracts to a remote node instead.</li>
+                            <li>It does have some impact in terms of decentralization, as you are again delegating some of your power to a third party, so you have to trust that their node implementation and database are correct. But for development purposes, it is an acceptable compromise.</li>
+                            <li>To reinforce the security of that remote setup, your private keys are not stored or managed by Infura: you have to find a way to sign your transactions before you send them to Infura.</li>
+                            <li>This way, no unsigned transaction transits over your internet connection to Infura, and there is no risk for Infura to store keys and get attacked for that. We will see how we can configure Truffle to sign your transactions before sending them to Infura thanks to a HD Wallet Provider.</li>
+                            <li>In this lesson, we will show you all the steps to deploy ChainList to Ropsten through Infura.</li>
+                        </ul>
+                        <p class="bold"></p>
                     </div>
             </div>
         </div>
