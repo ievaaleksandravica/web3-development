@@ -2510,7 +2510,17 @@
                             <li>This way, no unsigned transaction transits over your internet connection to Infura, and there is no risk for Infura to store keys and get attacked for that. We will see how we can configure Truffle to sign your transactions before sending them to Infura thanks to a HD Wallet Provider.</li>
                             <li>In this lesson, we will show you all the steps to deploy ChainList to Ropsten through Infura.</li>
                         </ul>
-                        <p class="bold"></p>
+                        <p class="bold">Why Ropsten?</p>
+                        <ul>
+                            <li>Ropsten is a public test network (network id 3) that doesn’t have the same consensus algorithm as Rinkeby</li>
+                            <li>While Rinkeby uses a Proof-of-Authority consensus algorithm to avoid spam, Ropsten uses the same Proof of Work algorithm as the main Ethereum network.</li>
+                            <li>And since Ropsten uses Proof-of-Work with a test crypto-currency that doesn’t have any real value, it is way cheaper to bloat it with fake transactions, so it’s slower to synchronize. Good thing is if you use it with a remote node like the one offered by Infura, you don’t need to care about that.</li>
+                            <li>The other advantage of using Ropsten is that Metamask provides a faucet for Ropsten, that will make it easier for your testers to deposit ETH in their test accounts. Unfortunately this feature is not available yet for Rinkeby.</li>
+                        </ul>
+                        <p class="bold">Create your Infura account</p>
+                        <ul>
+                            <li></li>
+                        </ul>
                     </div>
             </div>
         </div>
