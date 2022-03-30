@@ -2639,7 +2639,25 @@
                             <li>If your project is version-controlled with Git, to avoid exposing your sensitive data to Git, you should ignore the <u>.env</u> file.</li>
                             <li>Open the <u>.gitignore</u> hidden file and add an entry to ignore this file</li>
                         </ul>
-
+                        <p class="bold">Update Truffle’s configuration</p>
+                        <ul>
+                            <li>Open  <u>truffle.js</u>  </li>
+                            <li>Add configuration to the file: the first line loads the HDWalletProvider library. The second line configures the dotenv package in order to be able to fetch entries from the .env file.</li>
+                            <li>Now, add an entry for Ropsten in the networks field in order to define:
+                                <ul>
+                                    <li>the HDWalletProvider to link the seed phrase (mnemonic) and the target server</li>
+                                    <li>the network id used by Ropsten </li>
+                                    <li>the gas and the gas price to define the gas you are willing to pay for deployment transactions</li>
+                                </ul>
+                            </li>
+                            <li>We added a new entry to networks called <u>ropsten</u> (this name will be used when we deploy the contract), using our HDWalletProvider as a provider for it. We fetch the entries from the .env file using the process.env , followed by the identifiers defined in .env.</li>
+                            <li>That’s it. Now we can deploy ChainList to Infura.</li>
+                            <li><b>note<b>By default, HDWalletProvider will use the first account (account #0) from the list of addresses derived from the seed phrase. You can change this default behaviour by providing another index as a third parameter to the constructor for HDWalletProvider, such as: </li>
+                        </ul>
+                        <p class="bold">Deploy to Infura</p>
+                        <ul>
+                            <li></li>
+                        </ul>
                     </div>
             </div>
         </div>
