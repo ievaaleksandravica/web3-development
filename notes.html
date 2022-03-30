@@ -2604,6 +2604,27 @@
                             <li>A transaction hash appears in the transactions area to let you track the progress of your request with the Etherscan application linked to Ropsten. The transaction is confirmed and Now your account has 1 ETH </li>
                             <li>Repeat this process for your two other accounts</li>
                         </ul>
+                        <p class="bold">Configure the project</p>
+                        <ul>
+                            <li>Open the latest version of the ChainList project in Atom, that is the version you can deploy to the main net or Rinkeby.</li>
+                            <li>In order to deploy the contract to Infura, we need to configure Truffle accordingly. </li>
+                            <li>Fortunately, Consensys provides a separate package called HDWalletProvider that can be configured and used in the truffle.js file. </li>
+                            <li>This package is described there: <a href="https://github.com/trufflesuite/truffle-hdwallet-provider">Github</a></li>
+                        </ul>
+                        <p class="bold">Install the HDWalletProvider package</p>
+                        <ul>
+                            <li>Open a terminal window and go to the ChainList folder.</li>
+                            <li><u>npm install truffle-hdwallet-provider
+                            </u></li>
+                        </ul>
+                        <p class="bold">Install dotenv package</p>
+                        <ul>
+                            <li>When configuring the HDWalletProvider, we will need to provide the mnemonic and the API Key from our Infura account.</li>
+                            <li>It’s not good practice to expose your mnemonic to everyone because your private keys will be exposed as well as your ether and the control of your smart contracts.</li>
+                            <li>Same for the Infura API key because this information is linked to your account and you don’t want anyone to release their contracts using your key.</li>
+                            <li>A good practice is to keep sensitive data (mnemonic, API Key) in a separate file that can be kept locally, away from any Git or other versioning system sharing. This information will be exposed to your application as environment variables.</li>
+                            <li>For that purpose, let’s install a well known package called dotenv <u>npm install dotenv</u></li>
+                        </ul>
                     </div>
             </div>
         </div>
