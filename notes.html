@@ -2683,8 +2683,37 @@
         <h2>Truffle 5 Update</h2> 
         <div class="content-section">
             <div class="content-title">
-                 <h3 class="empty">Updating the development environment</h3>
-                 <div class="content-details">                
+                 <h3>Updating the development environment</h3>
+                 <div class="content-details">   
+                     <p class="bold">Introduction</p>  
+                     <ul>
+                         <li>Ethereum and its ECO system are evolving almost every day.</li>
+                         <li>That's why the course material is updated to cover new versions of the following tools: <u>solidity 0.5</u>, <u>truffle 5</u>, <u>truffle contract 4</u>, <u>web3.js 1.2</u>, <u>ganache 2</u>, <u>metamask 7</u>  and <u>geth 1.9</u> </li>
+                         <li>some of these versions contain breaking changes that will impact the dApp</li>
+                         <li>in some of those cases, it will make the development and its workflow much easier and faster, so upgrading is worth it.</li>
+                     </ul>  
+                     <p class="bold">Environment update - NodeJS</p>    
+                     <ul>
+                         <li>ensure that we have the latest <u>lts</u> version of nodejs and npm</li>
+                         <li>to check, we can go to <a href="https://nodejs.org">NodeJS.org</a> </li>
+                         <li>you can see the <u>lts</u> version, which is now 16.14.2 and latest, most experimental (but not the greatest) version</li> 
+                         <li>please stick with the LTS version</li>
+                         <li>check which version you have <u>node -v</u></li>
+                         <li>if you do not have the latest version, update to the latest version, use homebrew <u>brew install node@16</u> </li>
+                     </ul>  
+                     <p class="bold">Environment update - Truffle 5</p>   
+                     <ul>
+                         <li>truffle 5 has significant speed improvements</li>
+                         <li>introduces support for web3.js 1.0, which is complete rewrite of the web3.js library, so we will also need to update our dApp</li>
+                         <li>start by uninstalling the current version <u>npm uninstall -g truffle</u> </li>
+                         <li>install truffle 5 <u>npm install -g truffle@">=5.0.0 <6.0.0" </u> </li>
+                         <li>check your version <u>truffle version</u> </li>
+                         <li>version of <u>soliditiy</u> also changes automatically</li>
+                     </ul>
+                     <p class="bold">Environment update - Metamask</p>
+                     <ul>
+                         <li></li>
+                     </ul>
                  </div>
             </div>
             <div class="content-title">
