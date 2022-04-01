@@ -51,7 +51,7 @@ contract ChainList is Ownable {
         articles[articleCounter] = Article(
             articleCounter,
             msg.sender,
-            0x0,
+            address(0),
             _name,
             _description,
             _price
@@ -75,7 +75,7 @@ contract ChainList is Ownable {
         // iterate over articles
         for (uint256 i = 1; i <= articleCounter; i++) {
             // keep the ID is if the article is still for sale
-            if (articles[i].buyer == 0x0) {
+            if (articles[i].buyer == address(0)) {
                 articleIds[numberOfArticlesForSale] = articles[i].id;
                 numberOfArticlesForSale++;
             }
@@ -102,7 +102,7 @@ contract ChainList is Ownable {
         Article storage article = articles[_id];
 
         // we check that the article has not been sold yet
-        require(article.buyer == 0X0);
+        require(article.buyer == address(0));
 
         // we don't allow the seller to buy his own article
         require(msg.sender != article.seller);
