@@ -2712,8 +2712,50 @@
                      </ul>
                      <p class="bold">Environment update - Metamask</p>
                      <ul>
-                         <li></li>
+                         <li>upgrading it is very easy - it is automatically upgraded through your Chrome browser</li>
+                         <li>go to your Chrome extensions</li>
+                         <li>click on <u>details</u> for the extension and you can see which version is being used</li>
+                         <li>most of the problems that were there with the MetaMask should be solved with version 7+</li>
+                         <li>metamask now provides an interesting feature that let's you reset your test accounts</li>
+                         <li>attempt to connect to the <u>localhost</u>, go to <u>settings</u> -> <u>advanced</u> -> <u>reset account</u>. However, you should only do this on nodes that are used for developments. It resets the transaction history in metamask</li>
+                         <li>this version of metamask also fixes events emmited by your smart contract in your development node</li>
+                         <li>in addition to many visual improvements for user experience, the latest version of metamask also reinforces security by asking for user consent. You can add websites to <u>whitelist</u> in settings</li>
+                         <li>with this privacy feature, there is no <u>web3</u> object injected directly in the page and dApps have to request access to the wallet</li>
                      </ul>
+                     <p class="bold">Environment update - Ganache</p>
+                     <ul>
+                         <li><a href="https://github.com/trufflesuite/ganache/releases">Github Repo</a></li>
+                         <li>choose which version you want to install. Recommended is the latest stable version, which at the time of recording of the course is <u>v7.0.2</u></li>
+                         <li><u>npm install ganache-core@latest</u></li>
+                         <li><u>npm install ganache-core@latest</u></li>
+                         <li>on the homepage of Ganache, you have a <u>quickstart</u> button, that let's you bootstrap a new node</li>
+                         <li>if you use the <u>new workspace</u> option, you have to configure all the settings first</li>
+                         <li>once you have saved a <u>workspace</u>, it will save everything once you restart everything </li>
+                     </ul>
+                     <p class="bold">Environment update - Geth</p>
+                     <ul>
+                         <li>Geth is the <u>go</u> implementation of the Ethereum node and only tool for which we recommend to always use the latest version - in our case it is <u>1.10.17</u></li>
+                         <li><u>brew update && brew upgrade ethereum</u></li>
+                         <li><u>geth version</u></li>
+                         <li>there have been few changes that will make it impossible to start the node with the previously written start script - it is now forbidden to unlock the accounts by it's index, instead you have to unlock it by its address</li>
+                         <li>navigate to <u>chainskills/private</u> directory</li>
+                         <li>run <u>geth --datadir . account list</u> to see the account addresses</li>
+                         <li>take the address of the first account</li>
+                         <li>update the start code script
+                             <ul>
+                                 <li>stick to using <u>rpc</u> before we changed to <u>http</u> expecting it will fix some issues</li>
+                                 <li>for <u>-unlock</u> change from index to address</li>
+                                 <li>add <u>--allow-insecure-unlock</u></li>
+                             </ul>
+                         </li>
+                     </ul>
+                     <p class="bold">Code editors</p>
+                         <ul>
+                             <li>in this update we are switching from <u>atom</u> to <u>visual studio code</u> </li>
+                             <li>add <a href="https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity">extension</a> for solidity</li>
+                             <li>open terminal in vs code: <u>cmd+shift+p</u> -> <u>install code command in PATH</u></li>
+                             <li>now you can type <u>code</u> in terminal</li>
+                         </ul>
                  </div>
             </div>
             <div class="content-title">
@@ -2736,7 +2778,9 @@
             </div>
             <div class="content-title">
                 <h3 class="empty">Chainlist Update Transcript</h3>
-                 <div class="content-details">             
+                 <div class="content-details">   
+                     
+                    
             </div>
         </div>
         
