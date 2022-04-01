@@ -6,7 +6,7 @@ contract ChainList is Ownable {
     // custom types
     struct Article {
         uint256 id;
-        address seller;
+        address payable seller;
         address buyer;
         string name;
         string description;
