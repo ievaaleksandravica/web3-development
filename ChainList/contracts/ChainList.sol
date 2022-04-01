@@ -40,8 +40,8 @@ contract ChainList is Ownable {
 
     // sell an article
     function sellArticle(
-        string _name,
-        string _description,
+        string memory _name,
+        string memory _description,
         uint256 _price
     ) public {
         // a new article
@@ -66,7 +66,7 @@ contract ChainList is Ownable {
     }
 
     // fetch and return all article IDs for articles still for sale
-    function getArticlesForSale() public view returns (uint256[]) {
+    function getArticlesForSale() public view returns (uint256[] memory) {
         // prepare output array
         uint256[] memory articleIds = new uint256[](articleCounter);
 
