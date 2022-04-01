@@ -2732,6 +2732,24 @@
                          <li>if you use the <u>new workspace</u> option, you have to configure all the settings first</li>
                          <li>once you have saved a <u>workspace</u>, it will save everything once you restart everything </li>
                      </ul>
+                     <p class="bold">Environment update - Geth</p>
+                     <ul>
+                         <li>Geth is the <u>go</u> implementation of the Ethereum node and only tool for which we recommend to always use the latest version - in our case it is <u>1.10.17</u></li>
+                         <li><u>brew update && brew upgrade ethereum</u></li>
+                         <li><u>geth version</u></li>
+                         <li>there have been few changes that will make it impossible to start the node with the previously written start script - it is now forbidden to unlock the accounts by it's index, instead you have to unlock it by its address</li>
+                         <li>navigate to <u>chainskills/private</u> directory</li>
+                         <li>run <u>geth --datadir . account list</u> to see the account addresses</li>
+                         <li>take the address of the first account</li>
+                         <li>update the start code script
+                             <ul>
+                                 <li>stick to using <u>rpc</u> before we changed to <u>http</u> expecting it will fix some issues</li>
+                                 <li>for <u>-unlock</u> change from index to address</li>
+                                 <li>add <u>--allow-insecure-unlock</u></li>
+                             </ul>
+                         </li>
+
+                     </ul>
                  </div>
             </div>
             <div class="content-title">
