@@ -1,4 +1,4 @@
-pragma solidity ^0.4.18;
+pragma solidity >0.4.99 <0.6.0;
 
 import "./Ownable.sol";
 
@@ -6,7 +6,7 @@ contract ChainList is Ownable {
     // custom types
     struct Article {
         uint256 id;
-        address seller;
+        address payable seller;
         address buyer;
         string name;
         string description;
@@ -40,8 +40,8 @@ contract ChainList is Ownable {
 
     // sell an article
     function sellArticle(
-        string _name,
-        string _description,
+        string memory _name,
+        string memory _description,
         uint256 _price
     ) public {
         // a new article
@@ -51,13 +51,13 @@ contract ChainList is Ownable {
         articles[articleCounter] = Article(
             articleCounter,
             msg.sender,
-            0x0,
+            address(0),
             _name,
             _description,
             _price
         );
 
-        LogSellArticle(articleCounter, msg.sender, _name, _price);
+        emit LogSellArticle(articleCounter, msg.sender, _name, _price);
     }
 
     // fetch the number of articles in the contract
@@ -66,7 +66,7 @@ contract ChainList is Ownable {
     }
 
     // fetch and return all article IDs for articles still for sale
-    function getArticlesForSale() public view returns (uint256[]) {
+    function getArticlesForSale() public view returns (uint256[] memory) {
         // prepare output array
         uint256[] memory articleIds = new uint256[](articleCounter);
 
@@ -75,7 +75,7 @@ contract ChainList is Ownable {
         // iterate over articles
         for (uint256 i = 1; i <= articleCounter; i++) {
             // keep the ID is if the article is still for sale
-            if (articles[i].buyer == 0x0) {
+            if (articles[i].buyer == address(0)) {
                 articleIds[numberOfArticlesForSale] = articles[i].id;
                 numberOfArticlesForSale++;
             }
@@ -93,22 +93,31 @@ contract ChainList is Ownable {
     // buy an article
     function buyArticle(uint256 _id) public payable {
         // we check whether there is an article for sale
-        require(articleCounter > 0);
+        require(articleCounter > 0, "There should be at least one article");
 
         // we check that the article exists
-        require(_id > 0 && _id <= articleCounter);
+        require(
+            _id > 0 && _id <= articleCounter,
+            "Article with this ID does not exist"
+        );
 
         // retreive the article from the mapping
         Article storage article = articles[_id];
 
         // we check that the article has not been sold yet
-        require(article.buyer == 0X0);
+        require(article.buyer == address(0), "Article was already sold");
 
         // we don't allow the seller to buy his own article
-        require(msg.sender != article.seller);
+        require(
+            msg.sender != article.seller,
+            "Seller cannot buy its own article"
+        );
 
         // we check that the value sent corresponds to the price of the article
-        require(msg.value == article.price);
+        require(
+            msg.value == article.price,
+            "Value provided does not match price of article"
+        );
 
         // keep buyer's information
         article.buyer = msg.sender;
@@ -117,7 +126,7 @@ contract ChainList is Ownable {
         article.seller.transfer(msg.value);
 
         // trigger the event
-        LogBuyArticle(
+        emit LogBuyArticle(
             _id,
             article.seller,
             article.buyer,

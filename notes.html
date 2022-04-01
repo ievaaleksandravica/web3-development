@@ -2759,13 +2759,78 @@
                  </div>
             </div>
             <div class="content-title">
-                <h3 class="empty">Updating contracts</h3>
-                <div class="content-details">                
+                <h3>Updating contracts</h3>
+                <div class="content-details">  
+                    <p>we will start with the code as it was in the previous version of the course and will update it progressively</p>      
+                    <p class="bold">Prepare the environment</p> 
+                    <ul>
+                        <li>navigate to <u>chainlist</u> directory</li>
+                        <li>run <u>npm install to download all the dependencies</u></li>
+                        <li>you might see some warning, but that's ok, you can ignore those</li>
+                        <li>open the project <u>code .</u></li>
+                    </ul>    
+                    <p class="bold">Change the <u>truffle.js</u> file name</p>   
+                    <ul>
+                        <li>in Truffle 4, you could store your project configuration in <u>truffle.js</u> or <u>truffle-config.js</u> because it was a system script</li>
+                        <li>in Truffle 5, you should have all your configuration in <u>truffle-config.js</u>, so you should rename the file</li>
+                        
+                    </ul>
+                    <p class="bold">Update the <u>truffle-config.js</u> file</p>
+                    <ul>
+                        <li>if you have a network <u>development</u> you should rename it, because that is a reserved name for truffle</li>
+                        <li>after <u>networks</u> object, add another one: <u>compilers</u></li>
+                        <li>add <u>solc -> settings -> optimizer</u> for 200 transactions</li>
+                    </ul>
+                    <p class="bold">Change version of the source code</p>
+                    <ul>
+                        <li>open <u>chainlist.sol</u></li>
+                        <li>change the first <u>pragma</u> line to <u>pragma solidity >0.4.99 <0.6.0;</u></li>
+                        <li>change it also in <u>migrations.sol</u> and <u>ownable.sol</u></li>
+                    </ul>
+                    <p class="bold">Payable addresses</p>
+                    <ul>
+                        <li>solidity 0.5 introduces payable addresses: subtype of normal address on which you can call value transfering functions like <u>transfer</u>. These functions are not available for non payable addresses </li>
+                        <li>declare the <u>seller</u> as payable address: <u>address payable seller;</u></li>
+                        <li>do the same with <u>owner</u> in <u>ownable.sol</u></li>
+                    </ul>
+                    <p class="bold">Data storage</p>
+                    <ul>
+                        <li>solidity 0.5 requires you to be more explicit about the variable storage location in a lot of places, in particular, explicit data locations for all variables of struct, array or mapping types is now mandatory</li>
+                        <li>it is also applicable for functions and return variables</li>
+                        <li>add a memory location specifier to all string arguments and return values, e.g. <u> string memory _name</u></li>
+                        <li></li>
+                    </ul>
+                    <p class="bold">Null address</p>
+                    <ul>
+                        <li><u>0x0</u> is not explicitly converted in an address anymore, so you have to replace it with    <u>address(0)</u></li>
+                    </ul>
+                    <p class="bold">Events</p>
+                    <ul>
+                        <li>In older versions of solidity you could trigger events by calling them like they were functions</li>
+                        <li>in solidity 0.5 we have to use the <u>emit</u> keyword to emit the events <u>emit LogSellArticle()</u></li>
+                    </ul>
+                    <p class="bold">Constructors</p>
+                    <ul>
+                        <li>there is no constructor in <u>chainlist</u>, but in <u>ownable</u> contract</li>
+                        <li>constructors used to be functions with the same name as the contract, now you have to change the syntax <u>constructor()</u> </li>
+                        <li>have to change it in <u>ownable</u> and in <u>migrations</u></li>
+                    </ul>
+                    <p class="bold">Reason strings</p>
+                    <ul>
+                        <li>add reason strings inside of <u>require</u></li>
+                        <li>update all the <u>require</u> in our contracts with error message</li>
+                        <li>e.g. <u>require(articleCounter > 0, "There should be at least one article");</u></li>
+                    </ul>
+                    <p class="bold">Finalize</p>
+                    <ul>
+                        <li>in terminal run <u>truffle compile</u></li>
+                    </ul>
                 </div>
            </div>
             <div class="content-title">
-                <h3 class="empty">Adapting Happy Path tests</h3>
-                <div class="content-details">                
+                <h3>Adapting Happy Path tests</h3>
+                <div class="content-details">      
+                    <p class="bold"></p>          
                 </div>
             </div>
             <div class="content-title">
