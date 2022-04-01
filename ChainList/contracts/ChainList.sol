@@ -93,22 +93,31 @@ contract ChainList is Ownable {
     // buy an article
     function buyArticle(uint256 _id) public payable {
         // we check whether there is an article for sale
-        require(articleCounter > 0);
+        require(articleCounter > 0, "There should be at least one article");
 
         // we check that the article exists
-        require(_id > 0 && _id <= articleCounter);
+        require(
+            _id > 0 && _id <= articleCounter,
+            "Article with this ID does not exist"
+        );
 
         // retreive the article from the mapping
         Article storage article = articles[_id];
 
         // we check that the article has not been sold yet
-        require(article.buyer == address(0));
+        require(article.buyer == address(0), "Article was already sold");
 
         // we don't allow the seller to buy his own article
-        require(msg.sender != article.seller);
+        require(
+            msg.sender != article.seller,
+            "Seller cannot buy its own article"
+        );
 
         // we check that the value sent corresponds to the price of the article
-        require(msg.value == article.price);
+        require(
+            msg.value == article.price,
+            "Value provided does not match price of article"
+        );
 
         // keep buyer's information
         article.buyer = msg.sender;
