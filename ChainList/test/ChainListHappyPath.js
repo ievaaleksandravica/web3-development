@@ -3,17 +3,17 @@ var ChainList = artifacts.require("./ChainList.sol");
 
 //test suite
 contract("ChainList", function(accounts) {
-    var chainListInstance;
-    var seller = accounts[1];
-    var buyer = accounts[2];
-    var articleName1 = "article 1";
-    var articleDescription1 = "Description for Article 1";
-    var articlePrice1 = 10;
-    var articleName2 = "article 2";
-    var articleDescription2 = "Description for Article 2";
-    var articlePrice2 = 20;
-    var sellerBalanceBeforeBuy, sellerBalanceAfterBuy;
-    var buyerBalanceBeforeBuy, buyerBalanceAfterBuy;
+    let chainListInstance;
+    const seller = accounts[1];
+    const buyer = accounts[2];
+    const articleName1 = "article 1";
+    const articleDescription1 = "Description for Article 1";
+    const articlePrice1 = 10;
+    const articleName2 = "article 2";
+    const articleDescription2 = "Description for Article 2";
+    const articlePrice2 = 20;
+    let sellerBalanceBeforeBuy, sellerBalanceAfterBuy;
+    let buyerBalanceBeforeBuy, buyerBalanceAfterBuy;
 
 
     it("should be initialized with empty values", function(){

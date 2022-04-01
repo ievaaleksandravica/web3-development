@@ -3,12 +3,12 @@ var ChainList = artifacts.require("./ChainList.sol")
 
 // test suite
 contract("Chainlist", function(accounts) {
-    var chainListInstance;
-    var seller = accounts[1];
-    var buyer = accounts[2];
-    var articleName = "article 1";
-    var articleDescription = "Description for Article 1";
-    var articlePrice = 10;
+    let chainListInstance;
+    const seller = accounts[1];
+    const buyer = accounts[2];
+    const articleName = "article 1";
+    const articleDescription = "Description for Article 1";
+    const articlePrice = 10;
 
     // no article for sale yet
     it("should throw an exception if you try to buy an article when there is no article for sale yet", function() {
