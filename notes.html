@@ -2830,7 +2830,57 @@
             <div class="content-title">
                 <h3>Adapting Happy Path tests</h3>
                 <div class="content-details">      
-                    <p class="bold"></p>          
+                    <p class="bold">Changes for test scripts in Truffle 5</p>   
+                    <ul>
+                        <li>it incorporates <u>web3 1.0</u></li>
+                        <li>truffle test runner uses a modern version of js, so it supports <u>async/await</u> construct</li>
+                        <li><u>web3 1.0</u> is fully asynchronous and uses promises instead of error/data callback functions</li>
+                        <li>it lets us write <u>accept/reject</u> handlers as if they were synchronous</li>
+                    </ul>       
+                    <p class="bold">Refactor the test scripts</p>
+                    <ul>
+                        <li>we shouldn't use <u>var</u> to declare variables, but <u>let</u> and <u>const</u> instead</li>
+                    </ul>
+                    <p class="bold">Change from <u>then</u> to <u>async</u> </p>
+                    <ul>
+                        <li>make runnable part of the test <u>async</u></li>
+                        <li>replace the <u>function()</u> syntax to <u>() => {}</u></li>
+                        <li>make the function <u>async () => {}</u></li>
+                        <li>replace all the <u>.then</u> with <u>await</u></li>
+                        <li>all content is now on one linear block, which makes it much easier to read, but it behaves exactly the same way as before</li>
+                    </ul>
+                    <p class="bold">Adjust <u>getBalance</u> function</p>
+                    <ul>
+                        <li>as web3 is asynchronous right now and uses promises, also the <u>getBalance</u> function is asynchronous now</li>
+                        <li>add <u>await</u> to all the places where you call <u>getBalance</u></li>
+                    </ul>
+                    <p class="bold">Changing from <u>big number</u> to <u>bn</u></p>
+                    <ul>
+                        <li>web3.js 1.0 switched from big number js to <u>bn js</u> </li>
+                    </ul>
+                    <p class="bold">Wei conversion functions</p>
+                    <ul>
+                        <li><u>fromWei</u> and <u>toWei</u> are now functions of utils num space and take either a <u>string</u> or <u>bn</u> as a parameter</li>
+                        <li>if you pass a <u>bn</u> remember, that it can be only an integer and not a decimal</li>
+                        <li>so, when you are converting decimal amount of ether into wei, you have to convert it into a <u>string</u> first</li>
+                        <li>change all <u>web3.toWei</u> to <u>web3.utils.toWei</u></li>
+                        <li>convert prices to <u>bn</u>, e.g. <u> const articlePrice1 = web3.utils.toBN(10)</u></li>
+                        <li>since all the  <u>uint 256</u> variables from contracts are returned as <u>BNs</u>, we can remove all the calls from <u>web3</u> to <u>bignumber</u> because it does not even exist anymore</li>
+                        <li>in these comparisons, we are now comparing one <u>bn</u> to another <u>bn</u>, but somehow the current version does not support it, so we have to compare it to strings <u>.toString()</u> </li>
+                        <li>instead of using <u>toNumber</u> (it does not exist on string), we want to use <u>parseFloat</u></li>
+                        <li>convert <u>articlePrice</u> back in js numbers before we are able to make mathematical operations on them </li>
+                    </ul>
+                    <p class="bold">Avoid replication of chainlist instance</p>
+                    <ul>
+                        <li>use the <u>before</u> method to set up the <u>chainlistInstance</u> only once</li>
+                    </ul>
+                    <p class="bold">Test conversion checklist</p>
+                    <ul>
+                        <li>replace all the <u>vars</u> with <u>let</u> or <u>const</u></li>
+                        <li>transform the <u>it</u> function into an <u>async</u> fat arrow function</li>
+                        <li>replace all <u>then()</u> blocks with <u>awaits</u></li>
+                        <li>... more in lecture video</li>
+                    </ul>
                 </div>
             </div>
             <div class="content-title">
