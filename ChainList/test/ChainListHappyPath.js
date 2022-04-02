@@ -107,16 +107,18 @@ contract("ChainList", function(accounts) {
     })
 
     // buy the first article
-    it("should buy an article", function() {
-        return ChainList.deployed().then(function(instance){
-            chainListInstance = instance;
+    it("should let us buy the article", async () => {
+        const chainListInstance = await ChainList.deployed()
+            
+            articleId = 1
+
             sellerBalanceBeforeBuy = web3.fromWei(web3.eth.getBalance(seller), "ether").toNumber();
             buyerBalanceBeforeBuy = web3.fromWei(web3.eth.getBalance(buyer), "ether").toNumber(); ;
             return chainListInstance.buyArticle(1, {
                 from: buyer,
                 value: web3.toWei(articlePrice1, "ether")
             })
-        }).then(function(receipt) {
+        .then(function(receipt) {
                 assert.equal(receipt.logs.length, 1, "one event should have been triggered");
                 assert.equal(receipt.logs[0].event, "LogBuyArticle", "event should be LogBuyArticle");
                 assert.equal(receipt.logs[0].args._id, 1, "article id must be one");
