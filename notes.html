@@ -2931,6 +2931,16 @@
                          <li>use <u>jquery</u> to display the address of the account</li>
                          <li>other <u>async</u> call to check the balance and display it with <u>jQuery</u></li>
                      </ul>
+                     <p class="bold">Refactor <u>initContract</u> function</p>
+                     <ul>
+                         <li>make it <u>async</u></li>
+                         <li><u>getJSON</u> function stays the same, just make it <u>async</u></li>
+                         <li>initialize TruffleContract abstraction <u> App.contracts.ChainList = TruffleContract(chainListArtifact)</u></li>
+                         <li>connect to metamask</li>
+                         <li>listen to events</li>
+                         <li>reload articles</u></li>
+                     </ul>
+                     <p class="bold">Refactor <u>listenToEvents</u> function</p>
             </div>
          
         

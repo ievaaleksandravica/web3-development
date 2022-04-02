@@ -36,16 +36,12 @@ App = {
        $("#accountBalance").text(window.web3.utils.fromWei(balance, "ether") + " ETH")
      },
    
-     initContract: function() {
-       $.getJSON('ChainList.json', function(chainListArtifact) {
-         // get the contract artifact file and use it to instantiate a truffle contract abstraction
-         App.contracts.ChainList = TruffleContract(chainListArtifact);
-         // set the provider for our contracts
-         App.contracts.ChainList.setProvider(App.web3Provider);
-         // listen to events
-         App.listenToEvents();
-         // retrieve the article from the contract
-         return App.reloadArticles();
+     initContract: async () => {
+       $.getJSON('ChainList.json', (chainListArtifact) => { 
+          App.contracts.ChainList = TruffleContract(chainListArtifact)
+          App.contracts.ChainList.setProvider(window.web3.currentProvider)
+          App.listenToEvents();
+          return App.reloadArticles();
        });
      },
    
