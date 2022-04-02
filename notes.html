@@ -2868,6 +2868,7 @@
                         <li>since all the  <u>uint 256</u> variables from contracts are returned as <u>BNs</u>, we can remove all the calls from <u>web3</u> to <u>bignumber</u> because it does not even exist anymore</li>
                         <li>in these comparisons, we are now comparing one <u>bn</u> to another <u>bn</u>, but somehow the current version does not support it, so we have to compare it to strings <u>.toString()</u> </li>
                         <li>instead of using <u>toNumber</u> (it does not exist on string), we want to use <u>parseFloat</u></li>
+                        <li>convert <u>articlePrice</u> back in js numbers before we are able to make mathematical operations on them </li>
                     </ul>
                 </div>
             </div>

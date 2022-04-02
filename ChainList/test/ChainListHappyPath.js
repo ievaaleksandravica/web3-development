@@ -135,8 +135,8 @@ contract("ChainList", function(accounts) {
         buyerBalanceAfterBuy = parseFloat(web3.utils.fromWei(await web3.eth.getBalance(buyer), "ether"));
 
         // check the effect of the buy on balances of buyer and seller, accounting for gas
-        assert(sellerBalanceAfterBuy == sellerBalanceBeforeBuy + articlePrice1, "true", "seller should have earned " + articlePrice1 + " ETH");
-        assert(buyerBalanceAfterBuy <= buyerBalanceBeforeBuy - articlePrice1, "buyer should have spent " + articlePrice1 + " ETH");
+        assert(sellerBalanceAfterBuy == sellerBalanceBeforeBuy + articlePrice1.toNumber(), "true", "seller should have earned " + articlePrice1.toNumber() + " ETH");
+        assert(buyerBalanceAfterBuy <= buyerBalanceBeforeBuy - articlePrice1.toNumber(), "buyer should have spent " + articlePrice1.toNumber() + " ETH");
 
         const article = await chainListInstance.getArticlesForSale();
         
