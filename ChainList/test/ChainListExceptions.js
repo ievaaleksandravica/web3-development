@@ -50,7 +50,7 @@ contract('ChainList', function (accounts) {
             });
             assert.fail();
         } catch(error) {
-            assert.equal(error.reason, "Article with this id does not exist");
+            assert.equal(error.reason, "Article with this ID does not exist");
         }
         
         const article = await chainListInstance.articles(articleId);
@@ -71,7 +71,7 @@ contract('ChainList', function (accounts) {
             });
             assert.fail();
         } catch(error) {
-            assert.equal(error.reason, "Seller cannot buy his own article");
+            assert.equal(error.reason, "Seller cannot buy its own article");
         }
         
         const article = await chainListInstance.articles(articleId);
