@@ -2966,8 +2966,17 @@
                      </ul>
                      <p class="bold">Refactor <u>sellArticle</u> function</p>
                      <ul>
-                         <li></li>
+                         <li>make the function <u>async</u></li>
+                         <li>retrieve the <u>articlePriceValue</u></li>
+                         <li>convert into a number <u>articlePrice</u></li>
+                         <li>get the <u>_name</u> and <u>_description</u></li>
+                         <li>convert the <u>_price</u></li>
+                         <li>if there is no <u>_name</u> or <u>_price</u> return <u>false</u></li>
+                         <li>otherwise call the <u>chainListInstance</u> and <u>sellArticle</u> function</li>
+                         <li><u>sellArticle</u> will return an event emmiter interface, use that to capture an event. Use this to console.log the event</li>
+                         <li>if there is an error, console.log it</li>
                      </ul>
+                     <p class="bold">Refactor <u>buyArticle</u> function</p>
             </div>
          
         

@@ -97,6 +97,37 @@ lApp = {
       $('.btn-show-events').hide();
     },
    
+    sellArticle: async () => {
+      const articlePriceValue = parseFloat($("#article_price").val());
+      const articlePrice = isNan(articlePriceValue) ? "0" : articlePriceValue.toString();
+      const _name = $("#article_name").val();
+      const _description = $("#article_description").val();
+      const _price = window.web3.utils.toWei(articlePrice, "ether");
+
+      if (_name.trim() == "" | _price === "0") {
+        return false;
+      }
+
+      try {
+        const chainListInstance = await App.contract.ChainList.deployed();
+        const transactionReciept = await chainListInstance.sellArticle(
+          _name,
+          _description,
+          _price,
+          {
+            from: App.account, gas: 500000
+          }
+        ).on("transactionHash", hash => {
+          console.log("transaction hash: ", hash);
+        });
+        console.log("transaction receipt: ", transactionReciept)
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+
+
      reloadArticles: function() {
        // avoid reentry 
        if(App.loading) {
@@ -156,28 +187,7 @@ lApp = {
         articlesRow.append(articleTemplate.html());
      },
    
-     sellArticle: function() {
-       // retrieve the detail of the article
-       var _article_name = $('#article_name').val();
-       var _description = $('#article_description').val();
-       var _price = web3.toWei(parseFloat($('#article_price').val() || 0), "ether");
-   
-       if((_article_name.trim() == '') || (_price == 0)) {
-         // nothing to sell
-         return false;
-       }
-   
-       App.contracts.ChainList.deployed().then(function(instance) {
-         return instance.sellArticle(_article_name, _description, _price, {
-           from: App.account,
-           gas: 500000
-         });
-       }).then(function(result) {
-   
-       }).catch(function(err) {
-         console.error(err);
-       });
-     },
+    
    
  
    
