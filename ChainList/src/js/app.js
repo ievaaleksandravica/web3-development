@@ -126,6 +126,33 @@ lApp = {
       }
     },
 
+    buyArticle: async () => {
+      event.preventDefault();
+  
+      // retrieve the article price
+      var _articleId = $(event.target).data("id");
+      const articlePriceValue = parseFloat($("#event.targer").data("value"));
+      const articlePrice = isNan(articlePriceValue) ? "0" : articlePriceValue.toString();
+      
+      const _price = window.web3.utils.toWei(articlePrice, "ether");
+
+      try {
+        const chainListInstance = await App.contracts.ChainList.deployed();
+        const transactionReciept = await chainListInstance.buyArticle(
+          _articleId, 
+          {
+            from: App.account,
+            value: _price,
+            gas: 500000
+          }
+        ).on("transactionHash", hash => {
+          console.log("transaction hash: ", hash)
+        });
+        console.log("transaction receipt: ", transactionReciept)
+      } catch (error) {
+        console.error(error)
+      }
+    },
 
 
      reloadArticles: function() {
@@ -191,23 +218,7 @@ lApp = {
    
  
    
-     buyArticle: function() {
-       event.preventDefault();
-   
-       // retrieve the article price
-       var _articleId = $(event.target).data("id");
-       var _price = parseFloat($(event.target).data('value'));
-   
-       App.contracts.ChainList.deployed().then(function(instance){
-         return instance.buyArticle(_articleId, {
-           from: App.account,
-           value: web3.toWei(_price, "ether"),
-           gas: 500000
-         });
-       }).catch(function(error) {
-         console.error(error);
-       });
-     }
+    
    };
    
    $(function() {
