@@ -15,6 +15,10 @@ contract("ChainList", function(accounts) {
     let sellerBalanceBeforeBuy, sellerBalanceAfterBuy;
     let buyerBalanceBeforeBuy, buyerBalanceAfterBuy;
 
+    before("set up contract instance for each test", async () => {
+        chainListInstance = await ChainList.deployed()
+    }) 
+
 
     it("should be initialized with empty values", function(){
         return ChainList.deployed().then(function(instance) {
@@ -108,8 +112,6 @@ contract("ChainList", function(accounts) {
 
     // buy the first article
     it("should let us buy the article", async () => {
-        const chainListInstance = await ChainList.deployed();
-            
         const articleId = 1;
 
         sellerBalanceBeforeBuy = parseFloat(web3.utils.fromWei(await web3.eth.getBalance(seller), "ether"));
