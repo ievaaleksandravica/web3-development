@@ -2866,6 +2866,7 @@
                         <li>change all <u>web3.toWei</u> to <u>web3.utils.toWei</u></li>
                         <li>convert prices to <u>bn</u>, e.g. <u> const articlePrice1 = web3.utils.toBN(10)</u></li>
                         <li>since all the  <u>uint 256</u> variables from contracts are returned as <u>BNs</u>, we can remove all the calls from <u>web3</u> to <u>bignumber</u> because it does not even exist anymore</li>
+                        <li>in these comparisons, we are now comparing one <u>bn</u> to another <u>bn</u>, but somehow the current version does not support it, so we have to compare it to strings <u>.toString()</u> </li>
                     </ul>
                 </div>
             </div>
