@@ -78,6 +78,24 @@ lApp = {
         $('.btn-show-events').show();
 
     },
+
+    stopListeningToEvents: async () => {
+      if (App.logSellArticleEventListener != null) {
+        console.log("unsubscribe from sell events");
+        await App.logSellArticleEventListener.removeAllListeners()
+        App.logSellArticleEventListener = null
+      }
+      if (App.logBuyArticleEventListener != null) {
+        console.log("unsubscribe from buy events");
+        await App.logBuyArticleEventListener.removeAllListeners()
+        App.logBuyArticleEventListener = null
+      }
+
+      $('#events')[0].className = "list-group-collapse";
+      $('.btn-subscribe').show();
+      $('.btn-unsubscribe').hide();
+      $('.btn-show-events').hide();
+    },
    
      reloadArticles: function() {
        // avoid reentry 
