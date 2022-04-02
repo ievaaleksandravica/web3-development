@@ -8,10 +8,10 @@ contract("ChainList", function(accounts) {
     const buyer = accounts[2];
     const articleName1 = "article 1";
     const articleDescription1 = "Description for Article 1";
-    const articlePrice1 = 10;
+    const articlePrice1 = web3.utils.toBN(10);
     const articleName2 = "article 2";
     const articleDescription2 = "Description for Article 2";
-    const articlePrice2 = 20;
+    const articlePrice2 = web3.utils.toBN(20);
     let sellerBalanceBeforeBuy, sellerBalanceAfterBuy;
     let buyerBalanceBeforeBuy, buyerBalanceAfterBuy;
 

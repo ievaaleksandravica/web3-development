@@ -2864,6 +2864,7 @@
                         <li>if you pass a <u>bn</u> remember, that it can be only an integer and not a decimal</li>
                         <li>so, when you are converting decimal amount of ether into wei, you have to convert it into a <u>string</u> first</li>
                         <li>change all <u>web3.toWei</u> to <u>web3.utils.toWei</u></li>
+                        <li>convert prices to <u>bn</u>, e.g. <u> const articlePrice1 = web3.utils.toBN(10)</u></li>
                     </ul>
                 </div>
             </div>
