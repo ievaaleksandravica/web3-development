@@ -2841,12 +2841,22 @@
                     <ul>
                         <li>we shouldn't use <u>var</u> to declare variables, but <u>let</u> and <u>const</u> instead</li>
                     </ul>
-                    <p class="bold">Update "should let us buy the article" test case</p>
+                    <p class="bold">Change from <u>then</u> to <u>async</u> </p>
                     <ul>
                         <li>make runnable part of the test <u>async</u></li>
                         <li>replace the <u>function()</u> syntax to <u>() => {}</u></li>
                         <li>make the function <u>async () => {}</u></li>
                         <li>replace all the <u>.then</u> with <u>await</u></li>
+                        <li>all content is now on one linear block, which makes it much easier to read, but it behaves exactly the same way as before</li>
+                    </ul>
+                    <p class="bold">Adjust <u>getBalance</u> function</p>
+                    <ul>
+                        <li>as web3 is asynchronous right now and uses promises, also the <u>getBalance</u> function is asynchronous now</li>
+                        <li>add <u>await</u> to all the places where you call <u>getBalance</u></li>
+                    </ul>
+                    <p class="bold"></p>
+                    <ul>
+                        <li>web</li>
                     </ul>
                 </div>
             </div>
