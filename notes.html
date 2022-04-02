@@ -2941,6 +2941,17 @@
                          <li>reload articles</u></li>
                      </ul>
                      <p class="bold">Refactor <u>listenToEvents</u> function</p>
+                     <ul>
+                         <li>make it <u>async</u></li>
+                         <li><u>event subscription</u> is added in the new web3 version</li>
+                         <li>initialize instance of contract <u>const chainListInstance</u></li>
+                         <li>check if you already started to listen to events</li>
+                         <li>if not call the <u>LogSellArticle()</u> function</li>
+                         <li>listen to data event</li>
+                         <li>listen to error event</li>
+                         <li>do the same for <u>logBuyArticleEventListener</u></li>
+                         <li>hide or display the <u>.btn-subscribe, btn-unsubscribe, btn-show-events</u> buttons</li>
+                     </ul>
             </div>
          
         

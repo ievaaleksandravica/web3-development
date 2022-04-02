@@ -1,4 +1,4 @@
-App = {
+lApp = {
      web3Provider: null,
      contracts: {},
      account: 0x0,
@@ -44,6 +44,40 @@ App = {
           return App.reloadArticles();
        });
      },
+
+         // listen to events triggered by the contract
+    listenToEvents: async () => {
+        const chainListInstance = await App.contract.ChainList.deployed();
+        if (App.logSellArticleEventListener == null) {
+          App.logSellArticleEventListener = chainListInstance
+            .LogSellArticle({fromBlock: "0"})
+            .on("data", event => {
+              $("#" + event.id).remove();
+              $("#events").append('<li class ="list-group-item" id="">' + event.id + '">"' + event.returnValues._name + ' is for sale</li>')
+              App.reloadArticles();
+            })
+            .on("error", error => {
+              console.error(error);
+            })
+        }
+        if (App.logBuyArticleEventListener == null) {
+          App.logBuyArticleEventListener = chainListInstance
+            .LogBuyArticle({fromBlock: "0"})
+            .on("data", event => {
+              $("#" + event.id).remove();
+              $("#events").append('<li class ="list-group-item" id="">' + event.id + '">"' + event.returnValues._buyer + ' bought ' + event.returnValues._name  + '</li>')
+              App.reloadArticles();
+            })
+            .on("error", error => {
+              console.error(error);
+            })
+        }
+
+        $('.btn-subscribe').hide();
+        $('.btn-unsubscribe').show();
+        $('.btn-show-events').show();
+
+    },
    
      reloadArticles: function() {
        // avoid reentry 
@@ -127,28 +161,7 @@ App = {
        });
      },
    
-     // listen to events triggered by the contract
-     listenToEvents: function() {
-       App.contracts.ChainList.deployed().then(function(instance) {
-         instance.LogSellArticle({}, {}).watch(function(error, event) {
-           if (!error) {
-             $("#events").append('<li class="list-group-item">' + event.args._name + ' is now for sale</li>');
-           } else {
-             console.error(error);
-           }
-           App.reloadArticles();
-         });
-   
-         instance.LogBuyArticle({}, {}).watch(function(error, event) {
-           if (!error) {
-             $("#events").append('<li class="list-group-item">' + event.args._buyer + ' bought ' + event.args._name + '</li>');
-           } else {
-             console.error(error);
-           }
-           App.reloadArticles();
-         });
-       });
-     },
+ 
    
      buyArticle: function() {
        event.preventDefault();
