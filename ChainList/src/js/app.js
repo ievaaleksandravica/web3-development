@@ -1,55 +1,101 @@
-App = {
+lApp = {
      web3Provider: null,
      contracts: {},
      account: 0x0,
      loading: false,
    
-     init: function() {
+     init: async () => {
        return App.initWeb3();
      },
    
-     initWeb3: function() {
-       // initialize web3
-       if(typeof web3 !== 'undefined') {
-         //reuse the provider of the Web3 object injected by Metamask
-         App.web3Provider = web3.currentProvider;
-       } else {
-         //create a new provider and plug it directly into our local node
-         App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
-       }
-       web3 = new Web3(App.web3Provider);
-   
-       App.displayAccountInfo();
-   
-       return App.initContract();
+     initWeb3: async () => {
+        if(window.ethereum) {
+          window.web3 = new Web3(window.ethereum);
+          try {
+            await window.ethereum.enable();
+            App.displayAccountInfo();
+            return App.initContract();
+          } catch(error) {
+            // user denied access
+            console.error("Unable to retrieve your accounts! You have to approve this application on Metamask")
+          }
+        } else if (window.web3) {
+          window.web3 = new Web3(web3.currentProvider || "ws://localhost:8545")
+          App.displayAccountInfo();
+          return app.initContract();
+        } else {
+          console.log("non-ethereum browser detected. You should consider trying Metamask.")
+        }
      },
    
-     displayAccountInfo: function() {
-       web3.eth.getCoinbase(function(err, account) {
-         if(err === null) {
-           App.account = account;
-           $('#account').text(account);
-           web3.eth.getBalance(account, function(err, balance) {
-             if(err === null) {
-               $('#accountBalance').text(web3.fromWei(balance, "ether") + " ETH");
-             }
-           })
-         }
+     displayAccountInfo: async () => {
+       const accounts = await window.web3.eth.getAccounts();
+       App.account = accounts[0];
+       $("#account").text(App.account);
+       const balance = await window.web3.eth.getBalance(App.account);
+       $("#accountBalance").text(window.web3.utils.fromWei(balance, "ether") + " ETH")
+     },
+   
+     initContract: async () => {
+       $.getJSON('ChainList.json', (chainListArtifact) => { 
+          App.contracts.ChainList = TruffleContract(chainListArtifact)
+          App.contracts.ChainList.setProvider(window.web3.currentProvider)
+          App.listenToEvents();
+          return App.reloadArticles();
        });
      },
-   
-     initContract: function() {
-       $.getJSON('ChainList.json', function(chainListArtifact) {
-         // get the contract artifact file and use it to instantiate a truffle contract abstraction
-         App.contracts.ChainList = TruffleContract(chainListArtifact);
-         // set the provider for our contracts
-         App.contracts.ChainList.setProvider(App.web3Provider);
-         // listen to events
-         App.listenToEvents();
-         // retrieve the article from the contract
-         return App.reloadArticles();
-       });
-     },
+
+         // listen to events triggered by the contract
+    listenToEvents: async () => {
+        const chainListInstance = await App.contract.ChainList.deployed();
+        if (App.logSellArticleEventListener == null) {
+          App.logSellArticleEventListener = chainListInstance
+            .LogSellArticle({fromBlock: "0"})
+            .on("data", event => {
+              $("#" + event.id).remove();
+              $("#events").append('<li class ="list-group-item" id="">' + event.id + '">"' + event.returnValues._name + ' is for sale</li>')
+              App.reloadArticles();
+            })
+            .on("error", error => {
+              console.error(error);
+            })
+        }
+        if (App.logBuyArticleEventListener == null) {
+          App.logBuyArticleEventListener = chainListInstance
+            .LogBuyArticle({fromBlock: "0"})
+            .on("data", event => {
+              $("#" + event.id).remove();
+              $("#events").append('<li class ="list-group-item" id="">' + event.id + '">"' + event.returnValues._buyer + ' bought ' + event.returnValues._name  + '</li>')
+              App.reloadArticles();
+            })
+            .on("error", error => {
+              console.error(error);
+            })
+        }
+
+        $('.btn-subscribe').hide();
+        $('.btn-unsubscribe').show();
+        $('.btn-show-events').show();
+
+    },
+
+    stopListeningToEvents: async () => {
+      if (App.logSellArticleEventListener != null) {
+        console.log("unsubscribe from sell events");
+        await App.logSellArticleEventListener.removeAllListeners()
+        App.logSellArticleEventListener = null
+      }
+      if (App.logBuyArticleEventListener != null) {
+        console.log("unsubscribe from buy events");
+        await App.logBuyArticleEventListener.removeAllListeners()
+        App.logBuyArticleEventListener = null
+      }
+
+      $('#events')[0].className = "list-group-collapse";
+      $('.btn-subscribe').show();
+      $('.btn-unsubscribe').hide();
+      $('.btn-show-events').hide();
+    },
    
      reloadArticles: function() {
        // avoid reentry 
@@ -133,28 +179,7 @@ App = {
        });
      },
    
-     // listen to events triggered by the contract
-     listenToEvents: function() {
-       App.contracts.ChainList.deployed().then(function(instance) {
-         instance.LogSellArticle({}, {}).watch(function(error, event) {
-           if (!error) {
-             $("#events").append('<li class="list-group-item">' + event.args._name + ' is now for sale</li>');
-           } else {
-             console.error(error);
-           }
-           App.reloadArticles();
-         });
-   
-         instance.LogBuyArticle({}, {}).watch(function(error, event) {
-           if (!error) {
-             $("#events").append('<li class="list-group-item">' + event.args._buyer + ' bought ' + event.args._name + '</li>');
-           } else {
-             console.error(error);
-           }
-           App.reloadArticles();
-         });
-       });
-     },
+ 
    
      buyArticle: function() {
        event.preventDefault();

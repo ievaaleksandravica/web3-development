@@ -2892,22 +2892,78 @@
                 <h3>Adapting exception tests</h3>
                  <div class="content-details">    
                      <p>similarly as we fixed the <u>HappyPath</u> test suite, we have to fix the <u>ChainListExceptions.js</u>. Here we will have couple of more changes to apply</p>     
-                     <p class="bold">Apply same changes as before</p>
+                  
+            </div>
+            <div class="content-title">
+                <h3>Adapting the frontend</h3>
+                 <div class="content-details"> 
+                     <p>Last thing to do is to refactor the frontend to work with the privacy mechanism in metamask </p>
+                     <p>We need to reconfigure the frontend and all the functions in <u>src/js/app.js</u> will have to be rewritten from scratch</p>                   
+                     <p class="bold">Update <u>src/js/truffle-contract.js</u> </p> 
+                     <ul>
+                         <li>download the latest version from <u>cdn</u></li>
+                         <li>have a look at <u>src/index.html</u> - we are importing <u>truffle-contract.js</u></li>
+                         <li><a href="https://jsdelivr.com">JSDelivr</a>, search for <u>truffle-contract</u>, go to <u>dist</u> folder and download the non-minified version and replace the <u>truffle-contract.js</u> file</li>
+                         <li>import instructions in <u>index.html</u> do not change</li>
+                     </ul>     
+                     <p class="bold">Upgrade web3</p>      
+                     <ul>
+                         <li>in terminal run <u>truffle version</u>. You should see that it integrates with version higher than <u>v.1.2.1</u></li>
+                         <li>at the time of the recording, metamask was not supporting this version. So we will fall back to version <u>v.1.2.0</u> </li>
+                         <li><a href="https://github.com/ethereum/web3.js/releases">Web3 on Github</a> go to <u>releases</u>. Then go to the version you want to use</li>
+                         <li>click the tag next to it and go to the <u>dist</u> folder</li>
+                         <li>open the <u>web3.min.js</u> and open raw</li>
+                         <li><u>file -> save page as</u> and overwrite the file you have in <u>src/js</u></li>
+                     </ul>
+                     <p class="bold">Refactor <u>initWeb3</u> function</p>
+                     <ul>
+                         <li>need to refactor to apply the privacy mechanism to access users metamask wallet</li>
+                         <li>refactor the old <u>function</u> syntax to <u>await () => {}</u></li>
+                         <li>if we have <u>window.ethereum</u> object present, we are in the case where metamask is installed in recent version. This means user will have to approve the application on metamask</li>
+                         <li>if we have <u>window.web3</u> object present, we are in metamask, but in older version</li>
+                         <li>last case is that there is no dApp browser at all</li>
+                     </ul>
+                     <p class="bold">Refactor <u>displayAccount</u> function</p>
+                     <ul>
+                         <li>make it <u>async</u></li>
+                         <li>call <u>await window.web3.eth.getAccounts()</u></li>
+                         <li>store the first account <u>App.account = accounts[0]</u></li>
+                         <li>use <u>jquery</u> to display the address of the account</li>
+                         <li>other <u>async</u> call to check the balance and display it with <u>jQuery</u></li>
+                     </ul>
+                     <p class="bold">Refactor <u>initContract</u> function</p>
+                     <ul>
+                         <li>make it <u>async</u></li>
+                         <li><u>getJSON</u> function stays the same, just make it <u>async</u></li>
+                         <li>initialize TruffleContract abstraction <u> App.contracts.ChainList = TruffleContract(chainListArtifact)</u></li>
+                         <li>connect to metamask</li>
+                         <li>listen to events</li>
+                         <li>reload articles</u></li>
+                     </ul>
+                     <p class="bold">Refactor <u>listenToEvents</u> function</p>
+                     <ul>
+                         <li>make it <u>async</u></li>
+                         <li><u>event subscription</u> is added in the new web3 version</li>
+                         <li>initialize instance of contract <u>const chainListInstance</u></li>
+                         <li>check if you already started to listen to events</li>
+                         <li>if not call the <u>LogSellArticle()</u> function</li>
+                         <li>listen to data event</li>
+                         <li>listen to error event</li>
+                         <li>do the same for <u>logBuyArticleEventListener</u></li>
+                         <li>hide or display the <u>.btn-subscribe, btn-unsubscribe, btn-show-events</u> buttons</li>
+                         <li>there is some code added to prevent processing the events twice</li>
+                     </ul>
+                     <p class="bold"><u>stopListeningToEvents</u> function</p>
+                     <ul>
+                         <li>unsubsribe from all the events</li>
+                         <li>reverse the button behavior</li>
+                     </ul>
+                     <p class="bold">Contract functions</p>
                      <ul>
                          <li></li>
                      </ul>
             </div>
-            <div class="content-title">
-                <h3 class="empty">Adapting the frontend</h3>
-                 <div class="content-details">             
-            </div>
-            <div class="content-title">
-                <h3 class="empty">Chainlist Update Transcript</h3>
-                 <div class="content-details">   
-                     
-                    
-            </div>
-        </div>
+         
         
      </section>
 
