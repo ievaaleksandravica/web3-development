@@ -155,7 +155,7 @@ lApp = {
     },
 
 
-     reloadArticles: function() {
+     reloadArticles: async () => {
        // avoid reentry 
        if(App.loading) {
          return;
@@ -166,28 +166,20 @@ lApp = {
        // refresh account information because the balance might have changed
        App.displayAccountInfo();
    
-       // local variable to store the instance of the chainlist contract
-       var chainListInstance;
-
-       App.contracts.ChainList.deployed().then(function(instance) {
-         chainListInstance = instance
-         return chainListInstance.getArticlesForSale();
-       }).then(function(articleIds) {
-        $('#articlesRow').empty();
-
-        for(var i = 0; i < articleIds.length; i++) {
-          var articleId = articleIds[i];
-          chainListInstance.articles(articleId.toNumber()).then(function(article) {
-            App.displayArticle(article[0], article[1], article[3], article[4], article[5])
-          })
+       try {
+        const chainListInstance = await App.contracts.ChainList.deployed();
+        const articleIds = await chainListInstance.getArticlesForSale();
+        $("#articlesRow").empty();
+        for(let i = 0; i < articlesIds.length; i++) {
+          const article = await chainListInstance.articles(articleIds[i]);
+          App.displayArticle(article[0], article[1], article[3], article[4], article[5]);
         }
-
         App.loading = false;
+       } catch (error) {
+        console.error(error);
+        App.loading = false;
+       }
    
-       }).catch(function(err) {
-         console.error(err.message);
-         App.loading = false;
-       });
      },
 
      displayArticle: function(id, seller, name, description, price) {
