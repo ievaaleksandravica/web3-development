@@ -2960,40 +2960,47 @@
                      </ul>
                      <p class="bold">Contract functions</p>
                      <ul>
-                         <li></li>
+                         <li>with Truffle Contract 4 and web3 1.0 it is now possible to intercept intermediate events not to confuse with contract events when calling contract functions</li>
+                         <li>we can be notified when transaction is broadcasted to Ethereum node and gets a transaction hash before it even gets mined</li>
+                         <li>we can use <u>async/await </u> to retrieve a transaction reciept. We can also listen to intermediate events by using the event emmiter interface returned by Truffle Contract function calls</li>
+                     </ul>
+                     <p class="bold">Refactor <u>sellArticle</u> function</p>
+                     <ul>
+                         <li>make the function <u>async</u></li>
+                         <li>retrieve the <u>articlePriceValue</u></li>
+                         <li>convert into a number <u>articlePrice</u></li>
+                         <li>get the <u>_name</u> and <u>_description</u></li>
+                         <li>convert the <u>_price</u></li>
+                         <li>if there is no <u>_name</u> or <u>_price</u> return <u>false</u></li>
+                         <li>otherwise call the <u>chainListInstance</u> and <u>sellArticle</u> function</li>
+                         <li><u>sellArticle</u> will return an event emmiter interface, use that to capture an event. Use this to console.log the event</li>
+                         <li>if there is an error, console.log it</li>
+                     </ul>
+                     <p class="bold">Refactor <u>buyArticle</u> function</p>
+                     <ul>
+                         <li>very similar to <u>sellArticle</u></li>
+                     </ul>
+                     <p class="bold">Refactor <u>reloadArticles</u> function</p>
+                     <ul>
+                         <li>similar manner as for the last two functions</li>
+                     </ul>
+                     <p class="bold">Refactor <u>displayArticles</u> function</p>
+                     <ul>
+                         <li>only the basic changes needed (like async, const)</li>
+                     </ul>
+                     <p class="bold">Test your work</p>
+                     <ul>
+                         <li>start <u>ganache</u></li>
+                         <li>in terminal <u>truffle migrate --compile-all --reset --network ganache</u></li>
+                         <li><u>npm run dev</u></li>
+                         <li>attempt to buy and sell articles</li>
                      </ul>
             </div>
          
         
      </section>
 
-     <section>
-        <h2>Conclusion</h2> 
-        <div class="content-section">
-            <div class="content-title">
-                 <h3 class="empty">Congratulations</h3>
-                 <div class="content-details">                
-                 </div>
-            </div>
-        </div>
-        
-     </section>
-
-
-
-
-     <section>
-        <h2>Bonus</h2> 
-        <div class="content-section">
-            <div class="content-title">
-                 <h3 class="empty">The Byzantium Hardfork</h3>
-                 <div class="content-details">                
-                 </div>
-            </div>
-        
-        </div>
-        
-     </section>
+     
      <script src="/script.js"></script>
 </body>
 </html>
