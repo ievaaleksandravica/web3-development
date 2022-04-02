@@ -28,18 +28,12 @@ App = {
         }
      },
    
-     displayAccountInfo: function() {
-       web3.eth.getCoinbase(function(err, account) {
-         if(err === null) {
-           App.account = account;
-           $('#account').text(account);
-           web3.eth.getBalance(account, function(err, balance) {
-             if(err === null) {
-               $('#accountBalance').text(web3.fromWei(balance, "ether") + " ETH");
-             }
-           })
-         }
-       });
+     displayAccountInfo: async () => {
+       const accounts = await window.web3.eth.getAccounts();
+       App.account = accounts[0];
+       $("#account").text(App.account);
+       const balance = await window.web3.eth.getBalance(App.account);
+       $("#accountBalance").text(window.web3.utils.fromWei(balance, "ether") + " ETH")
      },
    
      initContract: function() {

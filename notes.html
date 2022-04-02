@@ -2923,6 +2923,14 @@
                          <li>if we have <u>window.web3</u> object present, we are in metamask, but in older version</li>
                          <li>last case is that there is no dApp browser at all</li>
                      </ul>
+                     <p class="bold">Refactor <u>displayAccount</u> function</p>
+                     <ul>
+                         <li>make it <u>async</u></li>
+                         <li>call <u>await window.web3.eth.getAccounts()</u></li>
+                         <li>store the first account <u>App.account = accounts[0]</u></li>
+                         <li>use <u>jquery</u> to display the address of the account</li>
+                         <li>other <u>async</u> call to check the balance and display it with <u>jQuery</u></li>
+                     </ul>
             </div>
          
         
