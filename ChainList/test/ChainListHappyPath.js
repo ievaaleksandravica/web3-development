@@ -112,8 +112,8 @@ contract("ChainList", function(accounts) {
             
         const articleId = 1;
 
-        sellerBalanceBeforeBuy = web3.utils.fromWei(await web3.eth.getBalance(seller), "ether").toNumber();
-        buyerBalanceBeforeBuy = web3.utils.fromWei(await web3.eth.getBalance(buyer), "ether").toNumber(); 
+        sellerBalanceBeforeBuy = parseFloat(web3.utils.fromWei(await web3.eth.getBalance(seller), "ether"));
+        buyerBalanceBeforeBuy = parseFloat(web3.utils.fromWei(await web3.eth.getBalance(buyer), "ether")); 
            
         
         const receipt = await chainListInstance.buyArticle(1, {
@@ -131,8 +131,8 @@ contract("ChainList", function(accounts) {
         assert.equal(receipt.logs[0].args._seller, seller, "event seller must be " + seller);
 
         // record balances of buyer and seller after the buy
-        sellerBalanceAfterBuy = web3.utils.fromWei(await web3.eth.getBalance(seller), "ether").toNumber();
-        buyerBalanceAfterBuy = web3.utils.fromWei(await web3.eth.getBalance(buyer), "ether").toNumber(); ;
+        sellerBalanceAfterBuy = parseFloat(web3.utils.fromWei(await web3.eth.getBalance(seller), "ether"));
+        buyerBalanceAfterBuy = parseFloat(web3.utils.fromWei(await web3.eth.getBalance(buyer), "ether"));
 
         // check the effect of the buy on balances of buyer and seller, accounting for gas
         assert(sellerBalanceAfterBuy == sellerBalanceBeforeBuy + articlePrice1, "true", "seller should have earned " + articlePrice1 + " ETH");
