@@ -182,10 +182,9 @@ lApp = {
    
      },
 
-     displayArticle: function(id, seller, name, description, price) {
-        var articlesRow = $('#articlesRow');
-
-        var etherPrice = web3.fromWei(price, "ether")
+     displayArticle: (id, seller, name, description, price) => {
+        const articlesRow = $('#articlesRow');
+        const etherPrice = web3.utils.fromWei(price, "ether");
 
         var articleTemplate = $('#articleTemplate');
 
@@ -205,10 +204,6 @@ lApp = {
 
         articlesRow.append(articleTemplate.html());
      },
-   
-    
-   
- 
    
     
    };
