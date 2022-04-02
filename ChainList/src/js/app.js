@@ -4,24 +4,28 @@ App = {
      account: 0x0,
      loading: false,
    
-     init: function() {
+     init: async () => {
        return App.initWeb3();
      },
    
-     initWeb3: function() {
-       // initialize web3
-       if(typeof web3 !== 'undefined') {
-         //reuse the provider of the Web3 object injected by Metamask
-         App.web3Provider = web3.currentProvider;
-       } else {
-         //create a new provider and plug it directly into our local node
-         App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
-       }
-       web3 = new Web3(App.web3Provider);
-   
-       App.displayAccountInfo();
-   
-       return App.initContract();
+     initWeb3: async () => {
+        if(window.ethereum) {
+          window.web3 = new Web3(window.ethereum);
+          try {
+            await window.ethereum.enable();
+            App.displayAccountInfo();
+            return App.initContract();
+          } catch(error) {
+            // user denied access
+            console.error("Unable to retrieve your accounts! You have to approve this application on Metamask")
+          }
+        } else if (window.web3) {
+          window.web3 = new Web3(web3.currentProvider || "ws://localhost:8545")
+          App.displayAccountInfo();
+          return app.initContract();
+        } else {
+          console.log("non-ethereum browser detected. You should consider trying Metamask.")
+        }
      },
    
      displayAccountInfo: function() {

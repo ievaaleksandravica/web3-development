@@ -2915,7 +2915,14 @@
                          <li>open the <u>web3.min.js</u> and open raw</li>
                          <li><u>file -> save page as</u> and overwrite the file you have in <u>src/js</u></li>
                      </ul>
-                     <p class="bold"></p>
+                     <p class="bold">Refactor <u>initWeb3</u> function</p>
+                     <ul>
+                         <li>need to refactor to apply the privacy mechanism to access users metamask wallet</li>
+                         <li>refactor the old <u>function</u> syntax to <u>await () => {}</u></li>
+                         <li>if we have <u>window.ethereum</u> object present, we are in the case where metamask is installed in recent version. This means user will have to approve the application on metamask</li>
+                         <li>if we have <u>window.web3</u> object present, we are in metamask, but in older version</li>
+                         <li>last case is that there is no dApp browser at all</li>
+                     </ul>
             </div>
          
         
