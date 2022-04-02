@@ -2858,9 +2858,12 @@
                     <ul>
                         <li>web3.js 1.0 switched from big number js to <u>bn js</u> </li>
                     </ul>
-                    <p class="bold">Wei conversion</p>
+                    <p class="bold">Wei conversion functions</p>
                     <ul>
-                        <li></li>
+                        <li><u>fromWei</u> and <u>toWei</u> are now functions of utils num space and take either a <u>string</u> or <u>bn</u> as a parameter</li>
+                        <li>if you pass a <u>bn</u> remember, that it can be only an integer and not a decimal</li>
+                        <li>so, when you are converting decimal amount of ether into wei, you have to convert it into a <u>string</u> first</li>
+                        <li>change all <u>web3.toWei</u> to <u>web3.utils.toWei</u></li>
                     </ul>
                 </div>
             </div>
